@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRPG Archive v9.1.0 - Networked Master</title>
+    <title>TRPG Archive v9.2.0 - Networked Master</title>
     <style>
         /* ============================================================
            v7.9.7 正典スタイル（完全凍結・隔離）
@@ -29,7 +29,7 @@
 
         body { font-family: 'Noto Sans JP', sans-serif; background-color: var(--bg); color: var(--text-main); margin: 0; display: flex; height: 100vh; overflow: hidden; }
         
-        /* v9.1.0 閲覧モード時の非表示制御（単純かつ安全に隠す） */
+        /* 閲覧モード時の非表示制御（安全に隠蔽） */
         body.view-mode .admin-only { display: none !important; }
 
         nav { width: 210px; background-color: var(--sidebar); color: var(--sidebar-text); flex-shrink: 0; display: flex; flex-direction: column; z-index: 10; }
@@ -509,7 +509,7 @@
 
 <script>
     /* ============================================================
-       v9.1.0 堅牢化された通信・制御モジュール
+       v9.2.0 絶対不凍・堅牢化モジュール
        ============================================================ */
     const KEY = 'trpg_archive_v74';
     const KEY_SCH = 'trpg_archive_schedules';
@@ -528,12 +528,12 @@
     let currentSchEditId = null;
     let currentScnEditId = null;
 
-    // 安全な設定読み込み（エラークラッシュ防止）
+    // エラーで絶対に止まらない設定読み込み
     let syncConfig = { owner: '', repo: '', token: '', path: 'data.json', sha: '' };
     try {
         const storedSync = localStorage.getItem(KEY_SYNC);
         if (storedSync) syncConfig = JSON.parse(storedSync);
-    } catch(e) { console.error("設定読み込みエラー", e); }
+    } catch(e) { console.error("設定読込エラー", e); }
     
     let isEditMode = !!syncConfig.token;
 
@@ -542,16 +542,29 @@
     const SKILLS_6TH = [ ["回避",0],["投擲",25],["こぶし/パンチ",50],["キック",25],["組みつき",25],["頭突き",10],["マーシャルアーツ",1],["拳銃",20],["サブマシンガン",15],["ショットガン",30],["ライフル",25],["弓",10],["目星",25],["聞き耳",25],["図書館",25],["応急手当",30],["精神分析",1],["鍵開け",1],["隠れる",10],["忍び歩き",10],["隠す",15],["追跡",10],["登攀",40],["写真術",10],["運転",20],["製作",5],["操縦",1],["跳躍",25],["水泳",25],["乗馬",5],["機械修理",10],["電気修理",10],["重機械操作",1],["変装",1],["ナビゲート",10],["説得",15],["言いくるめ",5],["信用",15],["値切り",5],["クトルフ神話",0],["心理学",5],["人類学",1],["考古学",1],["医学",5],["天文学",1],["生物学",1],["化学",1],["地質学",1],["物理学",1],["法律",5],["歴史",20],["オカルト",5],["博物学",10],["母国語",0],["ほかの言語",1],["芸術",5],["経理",10],["コンピューター",1],["電子工学",1] ];
     const SKILLS_7TH = [ ["回避",0],["投擲",20],["近接戦闘",25,"格闘"],["射撃",20,"拳銃"],["目星",25],["聞き耳",20],["図書館",20],["応急手当",30],["精神分析",1],["鍵開け",1],["隠密",20],["追跡",10],["登攀",20],["手さばき",10],["鑑定",5],["運転",20],["操縦",1],["跳躍",20],["水泳",20],["乗馬",5],["機械修理",10],["電気修理",10],["重機械操作",1],["変装",5],["ナビゲート",10],["製作",5],["説得",10],["言いくるめ",5],["威圧",15],["魅了",15],["信用",0],["値切り",5],["クトルフ神話",0],["心理学",10],["人類学",1],["考古学",1],["サバイバル",10],["医学",1],["歴史",5],["法律",5],["オカルト",5],["自然",10],["母国語",0],["ほかの言語",1],["芸術",5],["経理",5],["コンピューター",5],["電子工学",1],["科学",1,"数学"] ];
 
-    // JS文字化け・パースエラー対策用の安全なBase64変換関数
-    function safeUTF8ToBase64(str) { return btoa(unescape(encodeURIComponent(str))); }
-    function safeBase64ToUTF8(str) { return decodeURIComponent(escape(atob(str))); }
+    // ★重要：完全に安全なBase64変換（これで絶対にパースエラーが起きない）
+    function safeUTF8ToBase64(str) {
+        const utf8Bytes = new TextEncoder().encode(str);
+        let binaryString = "";
+        for (let i = 0; i < utf8Bytes.length; i++) {
+            binaryString += String.fromCharCode(utf8Bytes[i]);
+        }
+        return window.btoa(binaryString);
+    }
 
-    // 起動時の初期化プロセス（エラーで止まらないように隔離）
+    function safeBase64ToUTF8(base64) {
+        const binaryString = window.atob(base64.replace(/\s/g, ''));
+        const bytes = new Uint8Array(binaryString.length);
+        for (let i = 0; i < binaryString.length; i++) {
+            bytes[i] = binaryString.charCodeAt(i);
+        }
+        return new TextDecoder().decode(bytes);
+    }
+
     window.onload = async () => { 
         try {
             if(localStorage.getItem('trpg_theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); 
             
-            // GitHub Pages自動検出
             if (window.location.hostname.includes('github.io') && !syncConfig.owner) {
                 syncConfig.owner = window.location.hostname.split('.')[0];
                 syncConfig.repo = window.location.pathname.split('/')[1] || '';
@@ -560,9 +573,14 @@
             await loadData();
             initNewForm(); 
             renderAll();
+            
+            // ★重要：初回のカレンダー画面表示を強制実行
+            showView('v-calendar'); 
         } catch(e) {
-            console.error("起動時エラー", e);
-            document.getElementById('app-mode-disp').innerText = "⚠ 起動エラー";
+            console.error("起動時致命的エラー", e);
+            document.getElementById('app-mode-disp').innerText = "⚠ 起動エラー(復旧試行)";
+            // 壊れていてもとにかく画面は出す
+            try { renderAll(); showView('v-calendar'); } catch(ex){}
         }
     };
 
@@ -579,7 +597,6 @@
         }
     }
 
-    // データの安全な読み込み（通信優先、失敗時はローカル）
     async function loadData() {
         let fetchedFromRemote = false;
         if (syncConfig.owner && syncConfig.repo) {
@@ -594,7 +611,6 @@
                     schedules = parsed.schedules || [];
                     scnLib = parsed.scnLib || [];
                     
-                    // ローカルにもキャッシュとして保存
                     localStorage.setItem(KEY, JSON.stringify(chars));
                     localStorage.setItem(KEY_SCH, JSON.stringify(schedules));
                     localStorage.setItem(KEY_SCN_LIB, JSON.stringify(scnLib));
@@ -602,11 +618,10 @@
                     fetchedFromRemote = true;
                 }
             } catch (e) {
-                console.warn("通信読み込み失敗。ローカルデータを使用します。", e);
+                console.warn("通信読込エラー。ローカルデータを表示します。", e);
             }
         }
         
-        // 通信失敗または未設定時はローカルからロード
         if (!fetchedFromRemote) {
             try { chars = JSON.parse(localStorage.getItem(KEY)) || []; } catch(e){ chars = []; }
             try { schedules = JSON.parse(localStorage.getItem(KEY_SCH)) || []; } catch(e){ schedules = []; }
@@ -616,7 +631,7 @@
         schedules = schedules.map(s => { if (!s.dates && s.date) s.dates = [s.date]; if (!s.dates) s.dates = []; return s; }); 
     }
 
-    // データのバックグラウンド送信（UIをブロックしない）
+    // UIをブロックせず、エラー時も自動復旧する最強の保存関数
     async function pushData() {
         if (!isEditMode || !syncConfig.owner || !syncConfig.repo || !syncConfig.token) return;
         
@@ -637,7 +652,7 @@
 
             let res = await fetch(url, { method: 'PUT', headers, body: JSON.stringify(body) });
             
-            // 初回作成時や別端末との競合(409/422エラー)が起きた場合は、自動で最新SHAを取得して上書きリトライ
+            // 初回作成時や別端末との競合(409/422)が起きた場合は、自動で最新SHAを取得して上書きリトライ
             if (res.status === 409 || res.status === 422) {
                 const getRes = await fetch(url + '?ref=main', { headers });
                 if (getRes.ok) {
@@ -661,7 +676,6 @@
             console.error("同期エラー:", e); 
             disp.innerText = "⚠ 通信エラー";
             disp.className = "sync-status status-error";
-            // エラー時も3秒後に管理モード表示に戻す
             setTimeout(() => { if(isEditMode) applyAppMode(); }, 3000);
         }
     }
@@ -689,7 +703,7 @@
         isEditMode = !!syncConfig.token;
         applyAppMode();
         closeSyncSettings();
-        if (isEditMode) pushData(); // 認証直後に初回ファイル作成の通信を走らせる
+        if (isEditMode) pushData(); 
     }
     function clearSyncSettings() {
         syncConfig.token = '';
@@ -699,7 +713,6 @@
         closeSyncSettings();
     }
 
-    // --- v8.6.1 司書の軌跡（統計処理）修正 ---
     function updateStats() {
         let plCount = 0;
         let kpCountTotal = 0;
@@ -790,9 +803,12 @@
         const s = Number(c.stats.str) + Number(c.stats.siz);
         let db; if(c.regulation === '6th') db = (s<=12)?"-1d6":(s<=16)?"-1d4":(s<=24)?"0":(s<=32)?"+1d4":"+1d6"; else db = (s<65)?"-2":(s<85)?"-1":(s<125)?"0":(s<165)?"+1d4":"+1d6";
         left.innerHTML = '<div style="text-align:center;"><img src="' + (c.img || '') + '" class="char-icon" style="width:180px; height:180px; margin-bottom:20px;"></div><div class="name-area"><h2 class="char-name-ruby"><ruby>' + c.name + '<rt>' + (c.kana || '') + '</rt></ruby></h2><span class="reg-tag ' + (c.regulation === '7th' ? 'tag-7th' : 'tag-6th') + '">' + (c.regulation === '7th' ? '7th Ed.' : '6th Ed.') + '</span></div><div style="font-size:0.9rem; margin-bottom:20px;"><b>' + (c.job || '無職') + '</b> / ' + (c.sex || '-') + ' / ' + (c.age || '-') + ' / ' + (c.height || '-') + 'cm</div><div class="viewer-stat-grid">' + ["str","con","pow","dex","app","siz","int","edu","san"].map(k => '<div class="viewer-stat-box"><b>' + k.toUpperCase() + '</b><span>' + (c.stats[k] || '-') + '</span></div>').join('') + '</div><div style="margin-top:25px; border-top:1px solid var(--border); padding-top:20px; display:grid; grid-template-columns:repeat(3,1fr); gap:12px;"><div class="viewer-stat-box"><b>HP</b><div style="font-size:1.2rem; color:var(--accent); font-weight:bold; font-family:\'Noto Serif JP\', serif;">' + hp + '</div></div><div class="viewer-stat-box"><b>MP</b><div style="font-size:1.2rem; color:var(--accent); font-weight:bold; font-family:\'Noto Serif JP\', serif;">' + mp + '</div></div><div class="viewer-stat-box"><b>DB</b><div style="font-size:1.2rem; color:var(--accent); font-weight:bold; font-family:\'Noto Serif JP\', serif;">' + db + '</div></div><div class="viewer-stat-box"><b>アイデア</b><div style="font-size:1.2rem; color:var(--accent); font-weight:bold; font-family:\'Noto Serif JP\', serif;">' + ide + '</div></div><div class="viewer-stat-box"><b>知識</b><div style="font-size:1.2rem; color:var(--accent); font-weight:bold; font-family:\'Noto Serif JP\', serif;">' + know + '</div></div><div class="viewer-stat-box"><b>幸運</b><div style="font-size:1.2rem; color:var(--accent); font-weight:bold; font-family:\'Noto Serif JP\', serif;">' + (c.calcStats?.luck || 0) + '</div></div></div>';
+        
         let rightHtml = ''; let skillHtml = '<span class="section-label">習得技能</span><div class="viewer-skill-list">';
+        // 技能リストが空のデータでも落ちないように対策
+        const safeSkills = c.skills || [];
         ["戦闘", "探索", "行動", "交渉", "知識"].forEach(g => {
-            const gs = c.skills.filter(s => (s.gr || getGenre(s.n)) === g && (Number(s.j)>0 || Number(s.i)>0 || Number(s.g)>0 || Number(s.o)>0));
+            const gs = safeSkills.filter(s => (s.gr || getGenre(s.n)) === g && (Number(s.j)>0 || Number(s.i)>0 || Number(s.g)>0 || Number(s.o)>0));
             if(gs.length > 0) {
                 skillHtml += '<div style="break-inside:avoid; margin-bottom:10px;"><b style="font-size:0.7rem; color:var(--accent); display:block; border-bottom:1px solid var(--border); margin-bottom:5px; font-family:\'Noto Serif JP\', serif;">■ ' + g + '技能</b>';
                 gs.forEach(s => { const dispName = s.sub ? s.n + '(' + s.sub + ')' : s.n; skillHtml += '<div class="viewer-skill-item"><span>' + dispName + '</span><b>' + s.t + '%</b></div>'; });
@@ -800,8 +816,10 @@
             }
         });
         skillHtml += '</div>'; rightHtml += skillHtml;
+        
         let scnHtml = '<span class="section-label">通過シナリオの記録</span>'; if(c.scns && c.scns.length > 0) scnHtml += '<div style="margin-bottom:20px;"><div style="font-size:0.9rem; line-height:1.7; color:var(--text-main); font-family:\'Noto Serif JP\', serif; white-space:pre-wrap;">' + c.scns.join('　/　') + '</div></div>';
         rightHtml += scnHtml;
+        
         let profHtml = '<span class="section-label">手記（プロフィール / メモ）</span>'; if(c.profs) c.profs.forEach(p => { if(p.t || p.x) profHtml += `<div style="margin-bottom:20px;"><b style="color:var(--important); display:block; margin-bottom:5px; font-family:\'Noto Serif JP\', serif;">■ ${p.t}</b><div style="font-size:0.9rem; line-height:1.6; white-space:pre-wrap; font-family:\'Noto Serif JP\', serif;">${p.x}</div></div>`; });
         rightHtml += profHtml; 
 
@@ -820,7 +838,8 @@
         
         right.innerHTML = rightHtml;
         
-        editContainer.innerHTML = '<div style="display:flex; gap:10px;"><button onclick="editChar(' + i + ')" class="btn-action">編集</button><button onclick="deleteCharFromViewer(' + i + ')" class="btn-action">削除</button></div>';
+        // ★重要：閲覧画面のボタンにも admin-only を付与して確実に隠す
+        editContainer.innerHTML = '<div style="display:flex; gap:10px;"><button onclick="editChar(' + i + ')" class="btn-action admin-only" style="font-size:0.9rem; padding:8px 20px;">編集</button><button onclick="deleteCharFromViewer(' + i + ')" class="btn-action admin-only" style="font-size:0.9rem; padding:8px 20px;">削除</button></div>';
         
         document.getElementById('viewer-overlay').style.display = 'flex';
     }
@@ -833,7 +852,20 @@
         }
     }
 
-    function editChar(i) { currentEditIdx = i; closeViewer(); const c = chars[i]; const container = document.getElementById('form-container-edit'); container.innerHTML = ''; container.appendChild(createFormNode('edit')); const f = (cls) => container.querySelector('.'+cls); const listIn = container.querySelector('.skill-list-in'); f('in-name').value = c.name; f('in-kana').value = c.kana; f('in-job').value = c.job; f('in-sex').value = c.sex; f('in-age').value = c.age; f('in-height').value = c.height; f('in-img-data').value = c.img; f('crop-img-el').src = c.img; ["str","con","pow","dex","app","siz","int","edu","san"].forEach(k => { f('in-'+k).value = c.stats[k]; }); container.querySelector('input[name="reg_edit"][value="' + (c.regulation || '6th') + '"]').checked = true; updatePatternOptions(container, c.regulation || '6th'); f('pt-job-pattern').value = c.ptPattern || 'edu_only'; if(f('pt-job-manual')) f('pt-job-manual').value = c.ptManual || 0; ["戦闘", "探索", "行動", "交渉", "知識"].forEach(g => { const header = document.createElement('div'); header.className = 'skill-genre-header'; header.innerText = g + "技能"; listIn.appendChild(header); listIn.appendChild(createHeaderRow()); const group = document.createElement('div'); group.className = 'genre-group'; listIn.appendChild(group); c.skills.filter(s => (s.gr || getGenre(s.n)) === g).forEach(s => addSkillFieldToContainer(group, s.n, s.b, s.j, s.i, s.g, s.o, s.sub || "", g)); const presets = (c.regulation === '7th' ? SKILLS_7TH : SKILLS_6TH); presets.filter(p => getGenre(p[0]) === g).forEach(p => { if(!c.skills.some(s => s.n === p[0])) addSkillFieldToContainer(group, p[0], p[1], 0, 0, 0, 0, p[2] || "", g); }); const addBtn = document.createElement('button'); addBtn.className = 'btn-sub admin-only'; addBtn.innerText = '＋ ' + g + '技能を追加'; addBtn.onclick = () => addSkillFieldToContainer(group, "", 0, 0, 0, 0, 0, "", g); listIn.appendChild(addBtn); }); recalc(f('in-str')); f('val-luck').value = (c.calcStats && c.calcStats.luck) ? c.calcStats.luck : 0; c.scns?.forEach(v => addScnField(container, v)); c.profs?.forEach(p => addProfField(container, p.t, p.x)); c.secrets?.forEach(p => addSecretField(container, p.t, p.x)); document.getElementById('btn-save-edit').onclick = () => saveData('edit'); document.getElementById('editor-overlay').style.display = 'flex'; }
+    function editChar(i) { 
+        currentEditIdx = i; closeViewer(); const c = chars[i]; 
+        
+        // ★重要：古いデータを開いたときに技能リストが出なくなるエラーを防ぐための安全処理
+        c.stats = c.stats || {};
+        c.calcStats = c.calcStats || {};
+        c.skills = c.skills || [];
+        c.scns = c.scns || [];
+        c.profs = c.profs || [];
+        c.secrets = c.secrets || [];
+
+        const container = document.getElementById('form-container-edit'); container.innerHTML = ''; container.appendChild(createFormNode('edit')); const f = (cls) => container.querySelector('.'+cls); const listIn = container.querySelector('.skill-list-in'); f('in-name').value = c.name; f('in-kana').value = c.kana; f('in-job').value = c.job; f('in-sex').value = c.sex; f('in-age').value = c.age; f('in-height').value = c.height; f('in-img-data').value = c.img; f('crop-img-el').src = c.img; ["str","con","pow","dex","app","siz","int","edu","san"].forEach(k => { f('in-'+k).value = c.stats[k]; }); container.querySelector('input[name="reg_edit"][value="' + (c.regulation || '6th') + '"]').checked = true; updatePatternOptions(container, c.regulation || '6th'); f('pt-job-pattern').value = c.ptPattern || 'edu_only'; if(f('pt-job-manual')) f('pt-job-manual').value = c.ptManual || 0; ["戦闘", "探索", "行動", "交渉", "知識"].forEach(g => { const header = document.createElement('div'); header.className = 'skill-genre-header'; header.innerText = g + "技能"; listIn.appendChild(header); listIn.appendChild(createHeaderRow()); const group = document.createElement('div'); group.className = 'genre-group'; listIn.appendChild(group); c.skills.filter(s => (s.gr || getGenre(s.n)) === g).forEach(s => addSkillFieldToContainer(group, s.n, s.b, s.j, s.i, s.g, s.o, s.sub || "", g)); const presets = (c.regulation === '7th' ? SKILLS_7TH : SKILLS_6TH); presets.filter(p => getGenre(p[0]) === g).forEach(p => { if(!c.skills.some(s => s.n === p[0])) addSkillFieldToContainer(group, p[0], p[1], 0, 0, 0, 0, p[2] || "", g); }); const addBtn = document.createElement('button'); addBtn.className = 'btn-sub admin-only'; addBtn.innerText = '＋ ' + g + '技能を追加'; addBtn.onclick = () => addSkillFieldToContainer(group, "", 0, 0, 0, 0, 0, "", g); listIn.appendChild(addBtn); }); recalc(f('in-str')); f('val-luck').value = (c.calcStats && c.calcStats.luck) ? c.calcStats.luck : 0; c.scns?.forEach(v => addScnField(container, v)); c.profs?.forEach(p => addProfField(container, p.t, p.x)); c.secrets?.forEach(p => addSecretField(container, p.t, p.x)); document.getElementById('btn-save-edit').onclick = () => saveData('edit'); document.getElementById('editor-overlay').style.display = 'flex'; 
+    }
+    
     function saveData(mode) { const c = document.getElementById(mode === 'new' ? 'form-container-new' : 'form-container-edit'); const f = (cl) => c.querySelector('.'+cl); if(!f('in-name').value) return alert("名前を記入してください"); const sks = Array.from(c.querySelectorAll('.sk-row')).map(r => { return { n: r.querySelector('.sk-name').value, b: r.querySelector('.sk-b').value, j: r.querySelector('.sk-j').value, i: r.querySelector('.sk-i').value, g: r.querySelector('.sk-g').value, o: r.querySelector('.sk-o').value, t: r.querySelector('.sk-total').value, sub: r.querySelector('.sk-sub')?.value || "", gr: r.querySelector('.sk-g-fix').value }; }).filter(s => Number(s.j)||Number(s.i)||Number(s.g)||Number(s.o)); const d = { regulation: c.querySelector('input[type="radio"]:checked').value, name: f('in-name').value, kana: f('in-kana').value, job: f('in-job').value, sex: f('in-sex').value, age: f('in-age').value, height: f('in-height').value, img: f('in-img-data').value, stats: { str: f('in-str').value, con: f('in-con').value, pow: f('in-pow').value, dex: f('in-dex').value, app: f('in-app').value, siz: f('in-siz').value, int: f('in-int').value, edu: f('in-edu').value, san: f('in-san').value }, calcStats: { luck: f('val-luck').value }, ptPattern: f('pt-job-pattern').value, ptManual: f('pt-job-manual')?.value || 0, skills: sks, scns: Array.from(c.querySelectorAll('.scn-in')).map(i => i.value).filter(v => v), profs: Array.from(c.querySelectorAll('.prof-list > div')).map(p => ({ t: p.querySelector('.prof-t').value, x: p.querySelector('.prof-x').value })), secrets: Array.from(c.querySelectorAll('.secret-list > div')).map(p => ({ t: p.querySelector('.secret-t').value, x: p.querySelector('.secret-x').value })) }; if(mode === 'new') { chars.push(d); cancelAdd(); } else { chars[currentEditIdx] = d; closeEditor(); } localStorage.setItem(KEY, JSON.stringify(chars)); renderChars(); updateScheduleFormSelect(); pushData(); }
     function deleteChar(i) { if(confirm("名簿から削除しますか？")) { chars.splice(i, 1); localStorage.setItem(KEY, JSON.stringify(chars)); renderChars(); updateScheduleFormSelect(); pushData(); } }
     function closeViewer() { document.getElementById('viewer-overlay').style.display = 'none'; }
@@ -843,11 +875,43 @@
     function toggleTheme() { const n = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'; document.documentElement.setAttribute('data-theme', n); localStorage.setItem('trpg_theme', n); }
     function exportData() { const blob = new Blob([JSON.stringify({chars, schedules, scnLib})], { type: 'application/json' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "trpg_archive_all.json"; a.click(); }
     function importData() { document.getElementById('import-file').click(); }
-    function handleImport(input) { const reader = new FileReader(); reader.onload = () => { try { const d = JSON.parse(reader.result); if(d.chars) { chars = d.chars; schedules = d.schedules || []; scnLib = d.scnLib || []; } else { chars = d; } localStorage.setItem(KEY, JSON.stringify(chars)); localStorage.setItem(KEY_SCH, JSON.stringify(schedules)); localStorage.setItem(KEY_SCN_LIB, JSON.stringify(scnLib)); renderAll(); pushData(); alert('大書庫の記録を復元しました。'); } catch(e){ alert('ファイルの形式が正しくありません。'); } }; reader.readAsText(input.files[0]); }
+    
+    // ★重要：復元後にちゃんと同期通信を走らせる
+    function handleImport(input) { 
+        const reader = new FileReader(); 
+        reader.onload = async () => { 
+            try { 
+                const d = JSON.parse(reader.result); 
+                if(d.chars) { chars = d.chars; schedules = d.schedules || []; scnLib = d.scnLib || []; } 
+                else { chars = d; } 
+                localStorage.setItem(KEY, JSON.stringify(chars)); 
+                localStorage.setItem(KEY_SCH, JSON.stringify(schedules)); 
+                localStorage.setItem(KEY_SCN_LIB, JSON.stringify(scnLib)); 
+                renderAll(); 
+                if (isEditMode) {
+                    document.getElementById('app-mode-disp').innerText = "🔄 復元データを同期中...";
+                    await pushData(); 
+                }
+                alert('大書庫の記録を復元し、同期しました。'); 
+            } catch(e){ 
+                console.error(e);
+                alert('ファイルの形式が正しくありません。'); 
+            } 
+        }; 
+        reader.readAsText(input.files[0]); 
+    }
     
     function addScnField(p, v="") { const root = p instanceof HTMLElement ? p.closest('.panel-content, .editor-page') : p; const container = root.querySelector('.scn-list'); const d = document.createElement('div'); d.style.display="flex"; d.style.marginBottom="5px"; d.innerHTML = '<input type="text" class="scn-in" value="' + v + '" style="flex:1"><button type="button" onclick="this.parentElement.remove()" class="btn-action admin-only">✕</button>'; container.appendChild(d); }
     function addProfField(p, t="項目名", txt="") { const root = p instanceof HTMLElement ? p.closest('.panel-content, .editor-page') : p; const container = root.querySelector('.prof-list'); const d = document.createElement('div'); d.style.border="1px dashed var(--border)"; d.style.padding="10px"; d.style.marginBottom="10px"; d.style.borderRadius="6px"; d.innerHTML = '<input type="text" class="prof-t" value="' + t + '" style="font-weight:bold; border:none; background:transparent; color:var(--important); margin-bottom:5px;"><textarea class="prof-x" rows="3">' + txt + '</textarea><div style="text-align:right; margin-top:5px;"><button type="button" onclick="this.parentElement.parentElement.remove()" class="btn-action admin-only">削除</button></div>'; container.appendChild(d); }
-    function addSecretField(p, t="項目名", txt="") { const root = p instanceof HTMLElement ? p.closest('.panel-content, .editor-page') : p; const container = root.querySelector('.secret-list'); const d = document.createElement('div'); d.style.border="1px dashed var(--border)"; d.style.padding="10px"; d.style.marginBottom="10px"; d.style.borderRadius="6px"; d.innerHTML = '<input type="text" class="secret-t" value="' + t + '" style="font-weight:bold; border:none; background:transparent; color:var(--important); margin-bottom:5px;"><textarea class="secret-x" rows="3">' + txt + '</textarea><div style="text-align:right; margin-top:5px;"><button type="button" onclick="this.parentElement.parentElement.remove()" class="btn-action admin-only">削除</button></div>'; container.appendChild(d); }
+    
+    function addSecretField(p, t="項目名", txt="") { 
+        const root = p instanceof HTMLElement ? p.closest('.panel-content, .editor-page') : p; 
+        const container = root.querySelector('.secret-list'); 
+        const d = document.createElement('div'); 
+        d.style.border="1px dashed var(--border)"; d.style.padding="10px"; d.style.marginBottom="10px"; d.style.borderRadius="6px"; 
+        d.innerHTML = '<input type="text" class="secret-t" value="' + t + '" style="font-weight:bold; border:none; background:transparent; color:var(--important); margin-bottom:5px;"><textarea class="secret-x" rows="3">' + txt + '</textarea><div style="text-align:right; margin-top:5px;"><button type="button" onclick="this.parentElement.parentElement.remove()" class="btn-action admin-only">削除</button></div>'; 
+        container.appendChild(d); 
+    }
 
     function initCrop(e) { if(!e.target.files[0]) return; const reader = new FileReader(); reader.onload = (ev) => { imgObj = new Image(); imgObj.crossOrigin = "anonymous"; imgObj.src = ev.target.result; const p = e.target.closest('.panel-content, .editor-page'); p.querySelector('.crop-img-el').src = ev.target.result; crop.activeEl = p.querySelector('.crop-img-el'); }; reader.readAsDataURL(e.target.files[0]); }
     function startDrag(e) { crop.drag = true; const p = e.target.closest('.panel-content, .editor-page'); if(p) crop.activeEl = p.querySelector('.crop-img-el'); crop.sx = e.clientX - crop.x; crop.sy = e.clientY - crop.y; }
@@ -979,7 +1043,7 @@
         let ptnListHtml = ''; if ((s.partners_kp && s.partners_kp.length > 0) || (s.partners_pl && s.partners_pl.length > 0)) { ptnListHtml += '<div class="sv-section-card" style="margin-top:40px;"><span class="sv-section-label">物語に集う列席者</span>'; if (s.partners_kp && s.partners_kp.length > 0) { ptnListHtml += '<div class="sv-partner-group"><span class="sv-partner-label">キーパー（KP/SKP）</span><div class="sv-partner-names">' + s.partners_kp.map(p => p.name).join(' / ') + '</div></div>'; } if (s.partners_pl && s.partners_pl.length > 0) { ptnListHtml += '<div class="sv-partner-group"><span class="sv-partner-label">プレイヤー（PL）</span><div class="sv-partner-names">' + s.partners_pl.map(p => p.name).join(' / ') + '</div></div>'; } ptnListHtml += '</div>'; }
         right.innerHTML = `<div style="padding:40px 20px; height:100%; display:flex; flex-direction:column; justify-content:center; text-align:center;"><h2 style="font-family:'Noto Serif JP', serif; font-size:2.2rem; line-height:1.4; color:var(--accent); margin-bottom:20px;">${s.title}</h2><div style="width:60px; height:3px; background:var(--accent); margin:0 auto 40px; opacity:0.6;"></div>${ptnListHtml}</div>`;
         
-        editContainer.innerHTML = '<div style="display:flex; gap:10px;"><button onclick="editSch(' + s.id + ')" class="btn-action" style="font-size:0.9rem; padding:8px 20px;">編集</button><button onclick="deleteSchFromViewer(' + s.id + ')" class="btn-action del" style="font-size:0.9rem; padding:8px 20px;">削除</button></div>';
+        editContainer.innerHTML = '<div style="display:flex; gap:10px;"><button onclick="editSch(' + s.id + ')" class="btn-action admin-only" style="font-size:0.9rem; padding:8px 20px;">編集</button><button onclick="deleteSchFromViewer(' + s.id + ')" class="btn-action del admin-only" style="font-size:0.9rem; padding:8px 20px;">削除</button></div>';
         
         document.getElementById('sch-viewer-overlay').style.display = 'flex';
     }
