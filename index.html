@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRPG Archive v7.4.20 - Grand Archive Master</title>
+    <title>TRPG Archive v8.3.2 - Grand Archive Master</title>
     <style>
+        /* ============================================================
+           v7.9.7 正典スタイル（完全凍結・隔離）
+           ============================================================ */
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@400;700&display=swap');
         
         :root {
@@ -45,19 +48,21 @@
         .panel-content.open { display: block; }
 
         .section-label { font-family: 'Noto Serif JP', serif; font-size: 0.85rem; font-weight: 700; color: var(--accent); margin: 30px 0 15px; display: block; border-left: 3px solid var(--accent); padding-left: 12px; }
-        
         .skill-genre-header { grid-column: 1 / -1; font-family: 'Noto Serif JP', serif; font-size: 0.75rem; font-weight: bold; color: var(--important); border-bottom: 1px solid var(--border); padding: 5px 0; margin: 15px 0 2px; position: relative; }
         .skill-genre-header::before { content: '■'; font-size: 0.6rem; margin-right: 6px; }
 
         input, textarea, select { width: 100%; padding: 10px 15px; border: 1px solid var(--input-border); border-radius: 4px; font-family: inherit; font-size: 0.95rem; box-sizing: border-box; background: var(--input-bg); color: var(--text-main); text-align: left; }
-        input[type="number"] { font-family: 'Noto Serif JP', serif; font-weight: 700; -moz-appearance: textfield; text-align: center; font-size: 1.1rem; }
-        input[type="number"]::-webkit-outer-spin-button,
-        input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        input[type="number"] { font-family: 'Noto Serif JP', serif; font-weight: 700; text-align: center; font-size: 1.1rem; }
+        input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        input[type="radio"], input[type="checkbox"] { width: auto; margin: 0; cursor: pointer; }
 
-        .sk-row { transition: background-color 0.2s; border-radius: 4px; }
+        .sk-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1.2fr 30px; gap: 4px; margin-bottom: 5px; align-items: center; border-radius: 4px; }
         .sk-row:nth-of-type(even) { background-color: rgba(130, 120, 100, 0.04); }
         .sk-b { background-color: rgba(130, 120, 100, 0.08) !important; border-color: rgba(130, 120, 100, 0.2) !important; }
         .sk-total { background-color: rgba(184, 115, 51, 0.05) !important; color: var(--important) !important; }
+
+        .skill-header-row-pts { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1.2fr 30px; gap: 4px; padding: 0 4px; margin-bottom: 8px; }
+        .skill-header-label { font-size: 0.65rem; color: var(--text-sub); font-weight: bold; text-align: center; }
 
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 15px; }
         .form-group label { font-size: 0.75rem; color: var(--text-sub); display: block; margin-bottom: 5px; font-weight: bold; }
@@ -66,16 +71,14 @@
         .calc-box label { font-size: 0.6rem; color: var(--text-sub); font-weight: bold; margin-bottom: 4px; }
         .calc-val { font-family: 'Noto Serif JP', serif; font-size: 1.2rem; font-weight: bold; color: var(--important); line-height: 1.2; }
 
-        .skill-header-row-pts { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1.2fr 30px; gap: 4px; padding: 0 4px; margin-bottom: 8px; }
-        .skill-header-label { font-size: 0.65rem; color: var(--text-sub); font-weight: bold; text-align: center; }
-
         .char-card { background: var(--card-bg); border: 1px solid var(--border); padding: 25px 30px; border-radius: 12px; display: flex; gap: 25px; align-items: flex-start; margin-bottom: 20px; position: relative; box-shadow: var(--shadow); cursor: pointer; transition: transform 0.2s; }
         .char-card:hover { transform: translateY(-3px); }
         .char-icon { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 4px solid var(--card-bg); box-shadow: 0 4px 12px rgba(0,0,0,0.2); flex-shrink: 0; background: #e0e0e0; }
 
-        #viewer-overlay, #editor-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
-        .viewer-book, .editor-book { width: 95%; max-width: 1100px; height: 90vh; background: var(--bg); display: flex; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border-radius: 4px; overflow: hidden; position: relative; }
-        .viewer-page, .editor-page { flex: 1; padding: 40px; overflow-y: auto; position: relative; }
+        #viewer-overlay, #editor-overlay, #import-overlay, #sch-viewer-overlay, #sch-editor-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
+        .viewer-book, .editor-book, .import-book { width: 95%; max-width: 1100px; height: 90vh; background: var(--bg); display: flex; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border-radius: 4px; overflow: hidden; position: relative; }
+        .viewer-page, .editor-page, .import-page { flex: 1; padding: 40px; overflow-y: auto; position: relative; scrollbar-width: none; -ms-overflow-style: none; }
+        .viewer-page::-webkit-scrollbar { display: none; }
         .viewer-page.left { border-right: 2px solid rgba(0,0,0,0.05); background: var(--card-bg); }
         .close-btn { position: absolute; top: 20px; right: 30px; color: var(--text-sub); font-size: 1.5rem; cursor: pointer; z-index: 110; }
         
@@ -90,14 +93,12 @@
         .name-area { display: flex; align-items: center; gap: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 15px; }
         .char-name-ruby { font-family: 'Noto Serif JP', serif; font-size: 1.5rem; margin: 0; font-weight: 700; color: var(--text-main); }
         .reg-tag { font-size: 0.65rem; padding: 3px 8px; border-radius: 4px; color: white; font-weight: bold; }
-        .tag-6th { background-color: var(--tag-6th); }
-        .tag-7th { background-color: var(--tag-7th); }
+        .tag-6th { background-color: var(--tag-6th); } .tag-7th { background-color: var(--tag-7th); }
 
         .btn-action { border: 1px solid var(--border); background: var(--panel-header-bg); font-size: 0.7rem; cursor: pointer; padding: 5px 12px; border-radius: 4px; color: var(--text-main); }
         .btn-main { background: var(--accent); color: white; border: none; padding: 15px; cursor: pointer; border-radius: 6px; font-weight: bold; width: 100%; font-family: 'Noto Serif JP', serif; font-size: 1.1rem; letter-spacing: 2px; }
         .btn-sub { width: 100%; cursor: pointer; font-size: 0.85rem; padding: 10px; border-radius: 6px; border: 2px dashed var(--border); background:none; color:var(--text-sub); margin-bottom: 15px; transition: 0.2s; }
-        .btn-sub:hover { background: rgba(0,0,0,0.02); color: var(--text-main); }
-
+        
         .crop-container { position: relative; width: 180px; height: 180px; margin: 15px auto; border: 3px solid var(--border); border-radius: 50%; overflow: hidden; background: #e0e0e0; cursor: move; }
         .crop-img-el { position: absolute; top: 0; left: 0; transform-origin: 0 0; pointer-events: none; }
         
@@ -107,18 +108,80 @@
         .info-sep { color: var(--border); margin: 0 2px; }
         .scn-count { color: var(--important); font-weight: bold; margin-left: 6px; font-size: 0.8rem; }
         
-        /* 技能ポイント管理パネル */
+        /* 技能ポイント管理：左右対称の調和（がたつき解消） (cite: image_8099a2.png) */
         .pt-mgmt-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; background: var(--panel-header-bg); padding: 18px; border-radius: 8px; margin-top: 10px; border: 1px solid var(--border); }
-        .pt-box { text-align: center; display: flex; flex-direction: column; }
-        .pt-box label { font-size: 0.7rem; color: var(--text-sub); font-weight: bold; display: block; margin-bottom: 6px; letter-spacing: 1px; }
-        .pt-control-row { height: 42px; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; position: relative; }
-        .pt-formula-static { font-size: 0.85rem; color: var(--text-sub); font-weight: 700; background: var(--input-bg); border: 1px solid var(--input-border); border-radius: 4px; padding: 10px 15px; width: 100%; box-sizing: border-box; }
+        .pt-box { text-align: center; display: flex; flex-direction: column; align-items: center; }
+        .pt-box label { font-size: 0.7rem; color: var(--text-sub); font-weight: bold; display: block; margin-bottom: 10px; letter-spacing: 1px; }
+        .pt-formula-box { background: var(--input-bg); border: 1px solid var(--input-border); border-radius: 4px; height: 42px; display: flex; align-items: center; justify-content: center; width: 100%; margin-bottom: 10px; box-sizing: border-box; overflow: hidden; }
+        .pt-formula-box select { border: none !important; background: transparent !important; text-align: center !important; font-weight: bold; width: 100%; padding: 0 10px; cursor: pointer; color: var(--text-main); }
+        .pt-formula-text { font-size: 0.85rem; color: var(--text-sub); font-weight: 700; letter-spacing: 1px; }
+        .pt-extra-row { display: none; width: 100%; margin-bottom: 10px; }
+        .pt-extra-row.open { display: block; }
+
         .pt-display { font-family: 'Noto Serif JP', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 2px; }
         .pt-remain { font-family: 'Noto Sans JP', sans-serif; font-size: 0.85rem; font-weight: 700; }
+        
+        .archive-controls { display: flex; gap: 15px; background: var(--card-bg); padding: 15px 25px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 25px; align-items: center; box-shadow: var(--shadow); }
+        .control-group { display: flex; align-items: center; gap: 10px; font-size: 0.8rem; color: var(--text-sub); font-weight: bold; }
+        .control-group select { width: auto; padding: 5px 10px; font-size: 0.8rem; background: var(--panel-header-bg); border-color: var(--border); }
+        .skill-filter-toggle { display: flex; align-items: center; gap: 8px; margin: 10px 0 20px; font-size: 0.8rem; font-weight: bold; color: var(--accent); background: var(--panel-header-bg); width: fit-content; padding: 8px 15px; border-radius: 20px; border: 1px solid var(--border); cursor: pointer; }
 
-        /* レギュレーション・セレクター調整 */
-        .reg-option { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.95rem; font-weight: bold; color: var(--text-main); }
-        .reg-option input[type="radio"] { width: auto; margin: 0; cursor: pointer; }
+        /* ============================================================
+           活動予定表追加・精錬スタイル (v8.2.15)
+           ============================================================ */
+        .cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; font-family: 'Noto Serif JP', serif; }
+        .cal-title { font-size: 1.5rem; font-weight: bold; color: var(--accent); letter-spacing: 2px; }
+        .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+        .cal-day-label { background: var(--panel-header-bg); padding: 12px; text-align: center; font-size: 0.75rem; font-weight: bold; color: var(--text-sub); }
+        .cal-cell { background: var(--card-bg); min-height: 105px; padding: 8px; position: relative; transition: 0.2s; cursor: pointer; }
+        .cal-cell:hover { background: var(--panel-header-bg); }
+        .cal-cell.today { background: var(--san-bg); }
+        .cal-cell.today .cal-date-num { color: var(--accent); font-weight: bold; text-decoration: underline; }
+        .cal-cell.other-month { opacity: 0.35; background: #eee; }
+        .cal-date-num { font-family: 'Noto Serif JP', serif; font-size: 0.95rem; color: var(--text-sub); margin-bottom: 8px; display: block; }
+        
+        .cal-event-preview { font-size: 0.65rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.7; font-family: 'Noto Serif JP', serif; border-left: 4px solid var(--accent); padding: 1px 6px; margin-bottom: 4px; font-weight: bold; box-shadow: 1px 1px 3px rgba(0,0,0,0.08); border-radius: 0 4px 4px 0; transition: 0.2s; }
+        .cal-event-preview:hover { filter: brightness(1.1); transform: translateX(2px); }
+        .cal-event-preview.status-adj { background: rgba(108, 117, 125, 0.15); border-left-color: #6c757d; color: #495057; }
+        .cal-event-preview.status-wait { background: rgba(74, 111, 165, 0.15); border-left-color: #4a6fa5; color: #4a6fa5; }
+        .cal-event-preview.status-ongoing { background: rgba(88, 129, 87, 0.15); border-left-color: #588157; color: #588157; }
+        .cal-event-preview.status-done { background: rgba(184, 115, 51, 0.15); border-left-color: var(--important); color: var(--important); }
+
+        .chr-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 0; margin-bottom: 25px; display: flex; overflow: hidden; box-shadow: var(--shadow); cursor: pointer; transition: transform 0.2s; position: relative; }
+        .chr-card:hover { transform: translateX(5px); }
+        .chr-date-sidebar { width: 100px; background: var(--panel-header-bg); display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 1px solid var(--border); padding: 25px 10px; flex-shrink: 0; }
+        .chr-month { font-size: 0.85rem; color: var(--text-sub); font-weight: bold; }
+        .chr-day { font-family: 'Noto Serif JP', serif; font-size: 2.4rem; font-weight: bold; color: var(--accent); line-height: 1; margin: 8px 0; }
+        .chr-main-content { flex: 1; padding: 25px 35px; display: flex; flex-direction: column; justify-content: center; }
+        .chr-title { font-family: 'Noto Serif JP', serif; font-size: 1.5rem; font-weight: bold; margin: 0 0 10px; color: var(--accent); line-height: 1.2; letter-spacing: 1px; }
+        .chr-divider { width: 100%; height: 1px; background: var(--border); margin-bottom: 18px; opacity: 0.4; }
+        .chr-meta-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+        
+        .chr-status-pill { font-size: 0.7rem; padding: 4px 14px; border-radius: 20px; color: white; font-weight: bold; letter-spacing: 1px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .status-adj { background: #6c757d; } .status-wait { background: #4a6fa5; } 
+        .status-ongoing { background: #588157; } .status-done { background: var(--important); }
+
+        .chr-info-item { font-size: 0.95rem; color: var(--text-sub); display: flex; align-items: center; gap: 8px; line-height: 1.5; }
+        .chr-info-item b { color: var(--text-main); font-family: 'Noto Serif JP', serif; font-size: 1rem; }
+
+        .chr-card-simple-row { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px 20px; margin-bottom: 10px; display: flex; align-items: center; gap: 15px; box-shadow: var(--shadow); cursor: pointer; transition: 0.2s; position: relative; }
+        .chr-card-simple-row:hover { transform: translateX(5px); background: var(--panel-header-bg); }
+        .chr-title-simple-row { font-family: 'Noto Serif JP', serif; font-size: 1.1rem; font-weight: bold; color: var(--text-main); margin: 0; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .chr-meta-simple-row { font-size: 0.8rem; color: var(--text-sub); white-space: nowrap; font-family: 'Noto Serif JP', serif; }
+
+        .card-btn-area { position: absolute; top: 15px; right: 15px; display: flex; gap: 8px; }
+        .card-btn-area-simple { position: relative; display: flex; gap: 8px; margin-left: 10px; }
+
+        /* 物語詳細ビューア：空間を活かした叙情的改良 */
+        .sv-section-card { background: rgba(128, 0, 0, 0.03); border-radius: 8px; padding: 25px; margin-bottom: 30px; border: 1px solid rgba(0,0,0,0.04); }
+        .sv-section-label { font-size: 0.8rem; font-weight: bold; color: var(--text-sub); letter-spacing: 3px; margin-bottom: 20px; display: block; border-bottom: 1px solid var(--border); padding-bottom: 8px; text-transform: uppercase; }
+        .sv-date-badge { font-family: 'Noto Serif JP', serif; font-size: 1.3rem; color: var(--text-main); margin-bottom: 15px; display: block; padding-left: 15px; border-left: 5px solid var(--accent); line-height: 1.4; }
+        .sv-date-badge small { float: right; font-size: 1rem; color: var(--accent); font-weight: bold; }
+        .sv-partner-group { margin-bottom: 20px; }
+        .sv-partner-label { font-size: 0.75rem; color: var(--accent); font-weight: bold; margin-bottom: 8px; display: block; }
+        .sv-partner-names { font-family: 'Noto Serif JP', serif; font-size: 1.2rem; line-height: 1.8; color: var(--text-main); letter-spacing: 1px; }
+        
+        .viewer-edit-btn-area { position: absolute; bottom: 40px; left: 40px; z-index: 120; }
     </style>
 </head>
 <body>
@@ -131,6 +194,7 @@
     </div>
     <div class="nav-footer">
         <button class="btn-util" onclick="toggleTheme()">モード切替</button>
+        <button class="btn-util" onclick="openImportOverlay()" style="background:var(--important); border:none; color:white; font-weight:bold;">テキストから記帳</button>
         <button class="btn-util" onclick="exportData()">全保存 (JSON)</button>
         <button class="btn-util" onclick="importData()">復元</button>
         <input type="file" id="import-file" style="display:none" onchange="handleImport(this)">
@@ -140,12 +204,57 @@
 <main>
     <div class="content-area">
         <div id="v-calendar" class="view-section active">
-            <div class="panel"><div class="panel-trigger">活動予定表</div><div class="panel-content open" style="padding:60px; text-align:center; color:var(--text-sub); font-style:italic;">—— 予定表は現在、白紙です ——</div></div>
+            <div class="panel">
+                <button class="panel-trigger" onclick="togglePanel('add-sch-form')">＋ 新しい物語の予定を記帳する</button>
+                <div id="add-sch-form" class="panel-content">
+                    <span class="section-label">刻限と状況</span>
+                    <div id="sch-date-list-new" class="sch-date-list"></div>
+                    <button class="btn-sub" onclick="addSchDateField(this)">＋ 日程を追加</button>
+                    <div class="form-group" style="margin-top:15px;"><label>進行状況</label><select id="sch-status"><option value="調整中">調整中</option><option value="待機中" selected>待機中</option><option value="進行中">進行中</option><option value="完走">完走</option></select></div>
+                    <span class="section-label">物語の題名</span>
+                    <div class="form-group" style="margin-bottom:15px;"><input type="text" id="sch-title" placeholder="挑むシナリオの題名を記入"></div>
+                    <span class="section-label">役割</span>
+                    <div class="form-row">
+                        <div class="form-group"><label>ロール</label><select id="sch-role" onchange="handleSchRoleChange(this)"><option value="プレイヤー（PL）">プレイヤー（PL）</option><option value="キーパー（KP/SKP）">キーパー（KP/SKP）</option><option value="キーパー（KPC）">キーパー（KPC）</option></select></div>
+                        <div class="form-group"><label>探索者（PC）</label><select id="sch-char-select" class="sch-char-select-el"><option value="">選択しない</option></select></div>
+                    </div>
+                    <span class="section-label">同卓者</span>
+                    <span style="font-size:0.65rem; color:var(--text-sub); font-weight:bold;">キーパー（KP/SKP）</span>
+                    <div id="sch-ptn-list-kp-new" class="partner-list-kp"></div>
+                    <button class="btn-sub" onclick="addPartnerField(this, 'kp')">＋ キーパーを追加</button>
+                    <span style="font-size:0.65rem; color:var(--text-sub); font-weight:bold;">プレイヤー（PL）</span>
+                    <div id="sch-ptn-list-pl-new" class="partner-list-pl"></div>
+                    <button class="btn-sub" onclick="addPartnerField(this, 'pl')">＋ プレイヤーを追加</button>
+                    <button class="btn-main" onclick="saveSchedule('new')" style="margin-top:30px;">予定表に書き加える</button>
+                </div>
+            </div>
+            
+            <div class="cal-header">
+                <button class="btn-action" onclick="changeMonth(-1)">前月</button>
+                <div class="cal-title" id="cal-display-month">2024年 3月</div>
+                <button class="btn-action" onclick="changeMonth(1)">翌月</button>
+            </div>
+            <div id="calendar-grid-ui" class="cal-grid"></div>
+            
+            <div style="margin-top:60px;">
+                <span class="section-label">進行中の物語</span>
+                <div id="chronicle-ongoing-ui"></div>
+                <span class="section-label" style="margin-top:40px;">控えている物語</span>
+                <div id="chronicle-upcoming-ui"></div>
+                <span class="section-label" style="margin-top:40px;">調整中の物語</span>
+                <div id="chronicle-adjusting-ui"></div>
+            </div>
         </div>
+
         <div id="v-characters" class="view-section">
             <div class="panel">
                 <button class="panel-trigger" onclick="togglePanel('add-form')">＋ 新しい探索者を記帳する</button>
                 <div id="add-form" class="panel-content"><div id="form-container-new"></div><button class="btn-main" onclick="saveData('new')" style="margin-top:30px;">名簿に記帳する</button><button type="button" onclick="cancelAdd()" style="width:100%; border:none; background:none; color:var(--text-sub); margin-top:10px; text-decoration:underline; cursor:pointer;">取り消す</button></div>
+            </div>
+            <div class="archive-controls">
+                <div class="control-group"><span>順序：</span><select id="sort-order" onchange="renderChars()"><option value="new">記帳が新しい順</option><option value="old">記帳が古い順</option><option value="name">名前（五十音）順</option><option value="san_desc">正気度が高い順</option><option value="san_asc">正気度が低い順</option></select></div>
+                <div class="control-group"><span>抽出：</span><select id="filter-reg" onchange="renderChars()"><option value="all">すべての版</option><option value="6th">6版のみ</option><option value="7th">7版のみ</option></select></div>
+                <div style="flex:1"></div><div class="control-group" style="font-style:italic;"><span id="char-count-disp">0</span> 名の記録</div>
             </div>
             <div id="char-list-ui"></div>
         </div>
@@ -156,12 +265,12 @@
     <input type="hidden" class="in-img-data">
     <span class="section-label">肖像調整</span>
     <div style="text-align:center; padding-bottom:15px;">
-        <div class="crop-container" onmousedown="startDrag(event)" onmousemove="doDrag(event)" onmouseup="stopDrag()"><img class="crop-img-el" src=""></div>
+        <div class="crop-container" onmousedown="startDrag(event)" onmousemove="doDrag(event)" onmouseup="stopDrag()"><img class="crop-img-el" src="" crossorigin="anonymous"></div>
         <input type="range" class="zoom-range" min="0.1" max="3" step="0.01" value="1" oninput="updateZoom(this.value)" style="width:180px; margin-bottom:10px; accent-color:var(--accent);">
         <div style="display:flex; justify-content:center; gap:10px;"><input type="file" accept="image/*" onchange="initCrop(event)" style="font-size:0.75rem; width:160px;"><button type="button" onclick="lockCrop(this)" class="btn-action">肖像を確定</button></div>
     </div>
     <span class="section-label">準拠レギュレーション</span>
-    <div class="reg-selector" style="display:flex; gap:35px; padding:15px 20px; background:var(--panel-header-bg); border-radius:6px; border:1px solid var(--border);">
+    <div class="reg-selector" style="display:flex; gap:25px; padding:15px 20px; background:var(--panel-header-bg); border-radius:6px; border:1px solid var(--border);">
         <label class="reg-option"><input type="radio" name="regulation_tmp" value="6th" checked onchange="handleRegChange(this)"> クトゥルフ神話TRPG (6版)</label>
         <label class="reg-option"><input type="radio" name="regulation_tmp" value="7th" onchange="handleRegChange(this)"> 新クトゥルフ神話TRPG (7版)</label>
     </div>
@@ -171,15 +280,15 @@
     <div class="form-row"><div class="form-group"><label>年齢</label><input type="text" class="in-age"></div><div class="form-group"><label>身長</label><input type="text" class="in-height"></div></div>
     <span class="section-label">能力値</span>
     <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px;">
-        <div class="viewer-stat-box"><label style="font-size:0.65rem; color:var(--text-sub); font-weight:bold;">STR</label><input type="number" class="in-str" oninput="recalc(this)"></div>
-        <div class="viewer-stat-box"><label style="font-size:0.65rem; color:var(--text-sub); font-weight:bold;">CON</label><input type="number" class="in-con" oninput="recalc(this)"></div>
-        <div class="viewer-stat-box"><label style="font-size:0.65rem; color:var(--text-sub); font-weight:bold;">POW</label><input type="number" class="in-pow" oninput="recalc(this)"></div>
-        <div class="viewer-stat-box"><label style="font-size:0.65rem; color:var(--text-sub); font-weight:bold;">DEX</label><input type="number" class="in-dex" oninput="recalc(this)"></div>
-        <div class="viewer-stat-box"><label style="font-size:0.65rem; color:var(--text-sub); font-weight:bold;">APP</label><input type="number" class="in-app" oninput="recalc(this)"></div>
-        <div class="viewer-stat-box"><label style="font-size:0.65rem; color:var(--text-sub); font-weight:bold;">SIZ</label><input type="number" class="in-siz" oninput="recalc(this)"></div>
-        <div class="viewer-stat-box"><label style="font-size:0.65rem; color:var(--text-sub); font-weight:bold;">INT</label><input type="number" class="in-int" oninput="recalc(this)"></div>
-        <div class="viewer-stat-box"><label style="font-size:0.65rem; color:var(--text-sub); font-weight:bold;">EDU</label><input type="number" class="in-edu" oninput="recalc(this)"></div>
-        <div class="viewer-stat-box" style="background:var(--san-bg); border:1px solid var(--san-border) !important;"><label style="font-size:0.65rem; color:var(--accent); font-weight:bold;">SAN</label><input type="number" class="in-san" style="color:var(--accent); border:none; background:transparent;"></div>
+        <div class="viewer-stat-box"><label>STR</label><input type="number" class="in-str" oninput="recalc(this)"></div>
+        <div class="viewer-stat-box"><label>CON</label><input type="number" class="in-con" oninput="recalc(this)"></div>
+        <div class="viewer-stat-box"><label>POW</label><input type="number" class="in-pow" oninput="recalc(this)"></div>
+        <div class="viewer-stat-box"><label>DEX</label><input type="number" class="in-dex" oninput="recalc(this)"></div>
+        <div class="viewer-stat-box"><label>APP</label><input type="number" class="in-app" oninput="recalc(this)"></div>
+        <div class="viewer-stat-box"><label>SIZ</label><input type="number" class="in-siz" oninput="recalc(this)"></div>
+        <div class="viewer-stat-box"><label>INT</label><input type="number" class="in-int" oninput="recalc(this)"></div>
+        <div class="viewer-stat-box"><label>EDU</label><input type="number" class="in-edu" oninput="recalc(this)"></div>
+        <div class="viewer-stat-box" style="background:var(--san-bg); border:1px solid var(--san-border) !important;"><label>SAN</label><input type="number" class="in-san" style="color:var(--accent); border:none; background:transparent;"></div>
     </div>
     <span class="section-label">算出ステータス</span>
     <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:15px; background:var(--panel-header-bg); padding:15px; border-radius:8px;">
@@ -194,226 +303,325 @@
     <div class="pt-mgmt-container">
         <div class="pt-box">
             <label>職業技能ポイント</label>
-            <div class="pt-control-row">
-                <select class="pt-job-pattern" onchange="recalc(this)"></select>
-                <input type="number" class="pt-job-manual" style="display:none; position:absolute; top:0; left:0; z-index:1; padding:10px 15px;" placeholder="最大値を入力" oninput="recalc(this)">
-            </div>
-            <div class="pt-display"><span class="pt-job-used" style="font-family: 'Noto Serif JP', serif;">0</span> / <span class="pt-job-max" style="font-family: 'Noto Serif JP', serif;">0</span></div>
+            <div class="pt-formula-box"><select class="pt-job-pattern" onchange="recalc(this)"></select></div>
+            <div class="pt-extra-row"><input type="number" class="pt-job-manual" placeholder="ポイントを入力" oninput="recalc(this)"></div>
+            <div class="pt-display"><span class="pt-job-used">0</span> / <span class="pt-job-max">0</span></div>
             <div class="pt-remain pt-job-remain">残り: 0</div>
         </div>
         <div class="pt-box">
             <label>興味技能ポイント</label>
-            <div class="pt-control-row">
-                <div class="pt-formula-static pt-int-formula">INT × 10</div>
-            </div>
-            <div class="pt-display"><span class="pt-int-used" style="font-family: 'Noto Serif JP', serif;">0</span> / <span class="pt-int-max" style="font-family: 'Noto Serif JP', serif;">0</span></div>
+            <div class="pt-formula-box"><div class="pt-formula-text">INT × 10</div></div>
+            <div class="pt-display"><span class="pt-int-used">0</span> / <span class="pt-int-max">0</span></div>
             <div class="pt-remain pt-int-remain">残り: 0</div>
         </div>
     </div>
     <span class="section-label">技能リスト</span>
+    <label class="skill-filter-toggle"><input type="checkbox" onchange="applySkillFilter(this)"> 習得技能のみ表示</label>
     <div class="skill-list-in"></div>
-    <span class="section-label">通過記録 / 手記</span>
-    <div class="scn-list"></div><button class="btn-sub" onclick="addScnField(this)">＋ シナリオを追加</button>
-    <div class="prof-list"></div><button class="btn-sub" onclick="addProfField(this)">＋ 項目を追加</button>
+    <span class="section-label">通過シナリオの記録</span><div class="scn-list"></div><button class="btn-sub" onclick="addScnField(this)">＋ シナリオを追加</button>
+    <span class="section-label">手記（プロフィール / メモ）</span><div class="prof-list"></div><button class="btn-sub" onclick="addProfField(this)">＋ 項目を追加</button>
 </template>
 
-<div id="viewer-overlay" onclick="closeViewer()"><div class="viewer-book" onclick="event.stopPropagation()"><div class="close-btn" onclick="closeViewer()">×</div><div class="viewer-page left" id="v-page-left"></div><div class="viewer-page" id="v-page-right"></div></div></div>
-<div id="editor-overlay"><div class="editor-book"><div class="close-btn" onclick="closeEditor()">×</div><div class="editor-page" style="width:100%; max-width:850px; margin:0 auto;"><h2 style="font-family:'Noto Serif JP',serif; border-bottom:1px solid var(--accent); padding-bottom:10px;">探索者の手記を改変する</h2><div id="form-container-edit"></div><button class="btn-main" id="btn-save-edit" style="margin-top:30px;">変更を名簿に上書きする</button></div></div></div>
+<div id="viewer-overlay" onclick="closeViewer()"><div class="viewer-book" onclick="event.stopPropagation()"><div class="close-btn" onclick="closeViewer()">×</div><div class="viewer-page left" id="v-page-left"></div><div class="viewer-page" id="v-page-right"></div><div class="viewer-edit-btn-area" id="v-edit-btn-container"></div></div></div>
+<div id="editor-overlay"><div class="editor-book"><div class="close-btn" onclick="closeEditor()">×</div><div class="editor-page" id="editor-page-inner"><h2 style="font-family:'Noto Serif JP',serif; border-bottom:1px solid var(--accent); padding-bottom:10px;">探索者の手記を改変する</h2><div id="form-container-edit"></div><button class="btn-main" id="btn-save-edit" style="margin-top:30px;">変更を名簿に上書きする</button></div></div></div>
+<div id="import-overlay"><div class="import-book"><div class="close-btn" onclick="closeImportOverlay()">×</div><div class="import-page"><h2 style="font-family:'Noto Serif JP',serif; border-bottom:1px solid var(--accent); padding-bottom:10px;">「いあきゃら」テキストから写記する</h2><textarea id="import-text-area" style="height:350px; font-family:monospace; font-size:0.8rem;" placeholder="ここにテキストをペースト..."></textarea><button class="btn-main" style="margin-top:20px;" onclick="parseAndAddChar()">大書庫へ記帳する</button></div></div></div>
+<div id="sch-viewer-overlay" onclick="closeSchViewer()"><div class="viewer-book" onclick="event.stopPropagation()"><div class="close-btn" onclick="closeSchViewer()">×</div><div class="viewer-page left" id="sv-page-left"></div><div class="viewer-page" id="sv-page-right"></div><div class="viewer-edit-btn-area" id="sv-edit-btn-container"></div></div></div>
+
+<div id="sch-editor-overlay"><div class="editor-book"><div class="close-btn" onclick="closeSchEditor()">×</div><div class="editor-page">
+    <h2 style="font-family:'Noto Serif JP',serif; border-bottom:1px solid var(--accent); padding-bottom:10px;">物語の予定を改編する</h2>
+    <div id="sch-edit-form-area">
+        <span class="section-label">刻限と状況</span>
+        <div id="sch-date-list-edit" class="sch-date-list"></div>
+        <button class="btn-sub" onclick="addSchDateField(this)">＋ 日程を追加</button>
+        <div class="form-group" style="margin-top:15px;"><label>進行状況</label><select id="edit-sch-status"><option value="調整中">調整中</option><option value="待機中">待機中</option><option value="進行中">進行中</option><option value="完走">完走</option></select></div>
+        <span class="section-label">物語の題名</span>
+        <div class="form-group" style="margin-bottom:15px;"><input type="text" id="edit-sch-title"></div>
+        <span class="section-label">役割</span>
+        <div class="form-row">
+            <div class="form-group"><label>ロール</label><select id="edit-sch-role" onchange="handleSchRoleChange(this)"><option value="プレイヤー（PL）">プレイヤー（PL）</option><option value="キーパー（KP/SKP）">キーパー（KP/SKP）</option><option value="キーパー（KPC）">キーパー（KPC）</option></select></div>
+            <div class="form-group"><label>探索者（PC）</label><select id="edit-sch-char-select" class="sch-char-select-el"></select></div>
+        </div>
+        <span class="section-label">同卓者</span>
+        <span style="font-size:0.65rem; color:var(--text-sub); font-weight:bold;">キーパー（KP/SKP）</span>
+        <div id="sch-ptn-list-kp-edit" class="partner-list-kp"></div>
+        <button class="btn-sub" onclick="addPartnerField(this, 'kp')">＋ キーパーを追加</button>
+        <span style="font-size:0.65rem; color:var(--text-sub); font-weight:bold;">プレイヤー（PL）</span>
+        <div id="sch-ptn-list-pl-edit" class="partner-list-pl"></div>
+        <button class="btn-sub" onclick="addPartnerField(this, 'pl')">＋ プレイヤーを追加</button>
+    </div>
+    <button class="btn-main" id="btn-update-sch" style="margin-top:30px;">物語を書き換える</button>
+</div></div></div>
 
 <script>
     const KEY = 'trpg_archive_v74';
+    const KEY_SCH = 'trpg_archive_schedules';
+    const MY_NAME = 'いとめん';
     let chars = JSON.parse(localStorage.getItem(KEY)) || [];
+    let schedules = JSON.parse(localStorage.getItem(KEY_SCH)) || [];
+    let currentViewDate = new Date();
     let imgObj = new Image();
     let crop = { x: 0, y: 0, z: 1, drag: false, sx: 0, sy: 0, activeEl: null };
     let currentEditIdx = -1;
+    let currentSchEditId = null;
 
-    const GENRE_MAP = {
-        "戦闘": ["回避","近接戦闘","射撃","格闘","投擲","こぶし/パンチ","キック","組みつき","頭突き","マーシャルアーツ","拳銃","ライフル","ショットガン","サブマシンガン","弓","投石器"],
-        "探索": ["目星","聞き耳","図書館","応急手当","精神分析","鍵開け","かぎあけ","隠密","隠れる","隠密","聞き耳","忍び歩き","追跡","登攀","鑑定","サバイバル","写真術"],
-        "行動": ["運転","製作","芸術/製作","芸術","操縦","跳躍","水泳","乗馬","機械修理","電気修理","電子工学","重機械操作","変装","手さばき","コンピューター","経理","ナビゲート"],
-        "交渉": ["説得","言いくるめ","信用","心理学","対人技能(威圧)","対人技能(魅了)","値切り","威圧","魅了"],
-        "知識": ["クトゥルフ神話","法律","歴史","オカルト","医学","博物学","天文学","地質学","物理学","生物学","考古学","人類学","母国語","ほかの言語","自然","科学","化学"]
-    };
+    const GENRE_MAP = { "戦闘": ["回避","投擲","こぶし","キック","組みつき","頭突き","マーシャルアーツ","拳銃","ライフル","ショットガン","サブマシンガン","SMG","マシンガン","重火器","弓","ナイフ","刀","剣","槍","斧","武器","近接戦闘","射撃"], "探索": ["目星","聞き耳","図書館","応急手当","精神分析","鍵開け","隠れる","隠密","忍び歩き","追跡","登攀","鑑定","手さばき","写真術","隠す"], "行動": ["運転","製作","操縦","跳躍","水泳","乗馬","機械修理","電気修理","重機械操作","変装","ナビゲート"], "交渉": ["説得","言いくるめ","信用","値切り","威圧","魅了"], "知識": ["クトルフ神話","心理学","人類学","考古学","天文学","生物学","地質学","物理学","法医学","気象学","学","法律","歴史","オカルト","医学","母国語","言語","科学","化学","芸術","経理","コンピューター","電子工学","薬学","サバイバル"] };
+    const SUBTYPES = { "近接戦闘": { "格闘":25, "斧":15, "刀剣":20, "槍":20, "フレイル":10, "チェーンソー":10, "鞭":05 }, "射撃": { "拳銃":20, "ライフル/SG":25, "弓":15, "SMG":15, "マシンガン":10, "重火器":10 }, "科学": { "数学":10, "暗号学":1, "天文学":1, "生物学":1, "植物学":1, "化学":1, "地質学":1, "物理学":1, "薬学":1, "動物学":1, "法医学":1, "気象学":1, "工学":1 } };
+    const SKILLS_6TH = [ ["回避",0],["投擲",25],["こぶし/パンチ",50],["キック",25],["組みつき",25],["頭突き",10],["マーシャルアーツ",1],["拳銃",20],["サブマシンガン",15],["ショットガン",30],["ライフル",25],["弓",10],["目星",25],["聞き耳",25],["図書館",25],["応急手当",30],["精神分析",1],["鍵開け",1],["隠れる",10],["忍び歩き",10],["隠す",15],["追跡",10],["登攀",40],["写真術",10],["運転",20],["製作",5],["操縦",1],["跳躍",25],["水泳",25],["乗馬",5],["機械修理",10],["電気修理",10],["重機械操作",1],["変装",1],["ナビゲート",10],["説得",15],["言いくるめ",5],["信用",15],["値切り",5],["クトルフ神話",0],["心理学",5],["人類学",1],["考古学",1],["医学",5],["天文学",1],["生物学",1],["化学",1],["地質学",1],["物理学",1],["法律",5],["歴史",20],["オカルト",5],["博物学",10],["母国語",0],["ほかの言語",1],["芸術",5],["経理",10],["コンピューター",1],["電子工学",1] ];
+    const SKILLS_7TH = [ ["回避",0],["投擲",20],["近接戦闘",25,"格闘"],["射撃",20,"拳銃"],["目星",25],["聞き耳",20],["図書館",20],["応急手当",30],["精神分析",1],["鍵開け",1],["隠密",20],["追跡",10],["登攀",20],["手さばき",10],["鑑定",5],["運転",20],["操縦",1],["跳躍",20],["水泳",20],["乗馬",5],["機械修理",10],["電気修理",10],["重機械操作",1],["変装",5],["ナビゲート",10],["製作",5],["説得",10],["言いくるめ",5],["威圧",15],["魅了",15],["信用",0],["値切り",5],["クトルフ神話",0],["心理学",10],["人類学",1],["考古学",1],["サバイバル",10],["医学",1],["歴史",5],["法律",5],["オカルト",5],["自然",10],["母国語",0],["ほかの言語",1],["芸術",5],["経理",5],["コンピューター",5],["電子工学",1],["科学",1,"数学"] ];
 
-    const SKILLS_6TH = [["言いくるめ",5],["医学",5],["運転",20],["応急手当",30],["オカルト",5],["回避",0],["化学",1],["鍵開け",1],["隠れる",10],["聞き耳",25],["クトゥルフ神話",0],["芸術",5],["経理",10],["考古学",1],["コンピューター",1],["忍び歩き",10],["写真術",10],["重機械操作",1],["乗馬",5],["信用",15],["心理学",5],["人類学",1],["水泳",25],["製作",5],["精神分析",1],["生物学",1],["説得",15],["操縦",1],["地質学",1],["跳躍",25],["追跡",10],["電気修理",10],["電子工学",1],["天文学",1],["投擲",25],["登攀",40],["図書館",25],["ナビゲート",10],["値切り",5],["博物学",10],["物理学",1],["変装",1],["法律",5],["ほかの言語",1],["母国語",0],["目星",25],["歴史",20],["拳銃",20],["ライフル",25],["ショットガン",30],["サブマシンガン",15],["弓",10],["投石器",1],["こぶし/パンチ",50],["キック",25],["組みつき",25],["頭突き",10],["マーシャルアーツ",1]];
-    const SKILLS_7TH = [["言いくるめ",5],["医学",5],["運転",20],["応急手当",30],["オカルト",5],["回避",0],["科学",1],["鍵開け",1],["鑑定",5],["聞き耳",20],["クトゥルフ神話",0],["芸術/製作",5],["経理",5],["考古学",1],["コンピューター",5],["近接戦闘(格闘)",25],["射撃(拳銃)",20],["射撃(ライフル/SG)",25],["隠密",20],["サバイバル",10],["心理学",10],["自然",10],["精神分析",1],["説得",10],["跳躍",20],["追跡",10],["電気修理",10],["電子工学",1],["図書館",20],["投擲",20],["登攀",20],["対人技能(威圧)",15],["対人技能(魅了)",15],["ナビゲート",10],["変装",5],["法律",5],["ほかの言語",1],["母国語",0],["目星",25],["歴史",5]];
+    function getGenre(n) { const cleaned = n.split(/[(\（]/)[0]; for (const [g, l] of Object.entries(GENRE_MAP)) { if (l.some(s => cleaned.includes(s))) return g; } return "知識"; }
 
-    function getGenre(n) { for (const [g, l] of Object.entries(GENRE_MAP)) { if (l.some(s => n.includes(s))) return g; } return "知識"; }
-
-    window.onload = () => { if(localStorage.getItem('trpg_theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); initNewForm(); renderChars(); };
+    /* --- 聖域：名簿ロジック (v7.9.7 隔離凍結) --- */
+    window.onload = () => { if(localStorage.getItem('trpg_theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); schedules = (JSON.parse(localStorage.getItem(KEY_SCH)) || []).map(s => { if (!s.dates && s.date) s.dates = [s.date]; if (!s.dates) s.dates = []; return s; }); initNewForm(); renderChars(); renderScheduleView(); };
     
-    function initNewForm() {
-        const c = document.getElementById('form-container-new'); c.innerHTML = '';
-        c.appendChild(createFormNode('new'));
-        crop.activeEl = c.querySelector('.crop-img-el'); crop.x = 0; crop.y = 0; crop.z = 1;
-        updatePatternOptions(c, '6th'); applyPresets(c, '6th');
+    /* --- 物語の自動同期 (Scenario Sync) 実装回路 --- */
+    function syncScenarioToChar(charName, scenarioTitle) {
+        if (!charName || !scenarioTitle || charName === "" || charName === "選択しない") return;
+        
+        // ローカルストレージから最新の探索者リストを再取得
+        let currentChars = JSON.parse(localStorage.getItem(KEY)) || [];
+        const charIdx = currentChars.findIndex(c => c.name === charName);
+        
+        if (charIdx !== -1) {
+            if (!currentChars[charIdx].scns) currentChars[charIdx].scns = [];
+            // 重複チェック
+            if (!currentChars[charIdx].scns.includes(scenarioTitle)) {
+                currentChars[charIdx].scns.push(scenarioTitle);
+                chars = currentChars; // メモリ上のcharsを同期
+                localStorage.setItem(KEY, JSON.stringify(chars));
+                renderChars(); // 名簿UIをリフレッシュ
+                console.log(`Synced: ${scenarioTitle} added to ${charName}`);
+            }
+        }
     }
 
+    function showView(id) { document.querySelectorAll('.view-section').forEach(v => v.classList.remove('active')); document.getElementById(id).classList.add('active'); document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active')); document.getElementById(id === 'v-calendar' ? 'nav-cal' : 'nav-char').classList.add('active'); if(id === 'v-calendar') renderScheduleView(); }
+    function initNewForm() { const c = document.getElementById('form-container-new'); c.innerHTML = ''; c.appendChild(createFormNode('new')); crop.activeEl = c.querySelector('.crop-img-el'); updatePatternOptions(c, '6th'); applyPresets(c, '6th'); document.getElementById('sch-date-list-new').innerHTML = ''; addSchDateField(document.querySelector('#add-sch-form .btn-sub')); document.getElementById('sch-ptn-list-kp-new').innerHTML = ''; document.getElementById('sch-ptn-list-pl-new').innerHTML = ''; handleSchRoleChange(document.getElementById('sch-role')); }
     function createFormNode(s) { const t = document.getElementById('form-template').content.cloneNode(true); t.querySelectorAll('input[name="regulation_tmp"]').forEach(r => r.name = "reg_" + s); return t; }
-    
     function handleRegChange(el) { const p = el.closest('.panel-content, .editor-page'); updatePatternOptions(p, el.value); recalc(el); if(confirm("レギュレーションに合わせて技能リストを整理しますか？")) applyPresets(p, el.value); }
-
-    function updatePatternOptions(p, r) {
-        const sel = p.querySelector('.pt-job-pattern');
-        const intFormula = p.querySelector('.pt-int-formula');
-        const m = r === '7th' ? 2 : 10;
-        sel.innerHTML = `<option value="edu_only">EDU × ${r==='7th'?4:20}</option><option value="str">EDU×${m} + STR×${m}</option><option value="con">EDU×${m} + CON×${m}</option><option value="pow">EDU×${m} + POW×${m}</option><option value="dex">EDU×${m} + DEX×${m}</option><option value="app">EDU×${m} + APP×${m}</option><option value="siz">EDU×${m} + SIZ×${m}</option><option value="int">EDU×${m} + INT×${m}</option><option value="manual">自由入力</option>`;
-        intFormula.innerText = `INT × ${m}`;
-    }
-
-    function createHeaderRow() {
-        const h = document.createElement('div'); h.className = 'skill-header-row-pts';
-        h.innerHTML = '<div class="skill-header-label">技能名</div><div class="skill-header-label">初期</div><div class="skill-header-label">職業(J)</div><div class="skill-header-label">興味(I)</div><div class="skill-header-label">成長</div><div class="skill-header-label">他</div><div class="skill-header-label">合計</div><div></div>';
-        return h;
-    }
-
-    function applyPresets(parent, reg) {
-        const listIn = parent.querySelector('.skill-list-in'); listIn.innerHTML = '';
-        const presets = reg === '7th' ? SKILLS_7TH : SKILLS_6TH;
-        ["戦闘", "探索", "行動", "交渉", "知識"].forEach(g => {
-            const header = document.createElement('div'); header.className = 'skill-genre-header'; header.innerText = g + "技能"; listIn.appendChild(header);
-            listIn.appendChild(createHeaderRow());
-            const group = document.createElement('div'); group.className = 'genre-group'; listIn.appendChild(group);
-            presets.filter(p => getGenre(p[0]) === g).forEach(p => {
-                let v = p[1];
-                if(p[0] === "回避") { const dex = Number(parent.querySelector('.in-dex').value) || 0; v = reg === '7th' ? Math.floor(dex/2) : dex*2; }
-                if(p[0] === "母国語") { const edu = Number(parent.querySelector('.in-edu').value) || 0; v = reg === '7th' ? edu : edu*5; }
-                addSkillFieldToContainer(group, p[0], v);
-            });
-            const addBtn = document.createElement('button'); addBtn.className = 'btn-sub'; addBtn.innerText = `＋ ${g}技能を追加`; addBtn.onclick = () => addSkillFieldToContainer(group); listIn.appendChild(addBtn);
-        });
-        recalc(parent.querySelector('.in-str'));
-    }
-
-    function addSkillFieldToContainer(container, n="", b=0, j=0, i=0, g=0, o=0) {
-        const d = document.createElement('div'); d.className = "form-row sk-row"; d.style.gridTemplateColumns = "2fr 1fr 1fr 1fr 1fr 1fr 1.2fr 30px"; d.style.gap="4px"; d.style.marginBottom="5px";
-        d.innerHTML = `<input type="text" class="sk-name" value="${n}" placeholder="技能名"><input type="number" class="sk-b" value="${b}" oninput="updateSkillTotal(this)"><input type="number" class="sk-j" value="${j}" oninput="updateSkillTotal(this)"><input type="number" class="sk-i" value="${i}" oninput="updateSkillTotal(this)"><input type="number" class="sk-g" value="${g}" oninput="updateSkillTotal(this)"><input type="number" class="sk-o" value="${o}" oninput="updateSkillTotal(this)"><input type="number" class="sk-total" value="${Number(b)+Number(j)+Number(i)+Number(g)+Number(o)}" readonly style="font-weight:bold; color:var(--important);"><button type="button" onclick="this.parentElement.remove(); recalc(document.body);" class="btn-action">✕</button>`;
-        container.appendChild(d);
-    }
-
+    function updatePatternOptions(p, r) { const sel = p.querySelector('.pt-job-pattern'); const m = r === '7th' ? 2 : 10; sel.innerHTML = '<option value="edu_only">EDU × ' + (r==='7th'?4:20) + '</option><option value="str">EDU×' + m + ' + STR×' + m + '</option><option value="con">EDU×' + m + ' + CON×' + m + '</option><option value="pow">EDU×' + m + ' + POW×' + m + '</option><option value="dex">EDU×' + m + ' + DEX×' + m + '</option><option value="app">EDU×' + m + ' + APP×' + m + '</option><option value="siz">EDU×' + m + ' + SIZ×' + m + '</option><option value="int">EDU×' + m + ' + INT×' + m + '</option><option value="manual">自由入力</option>'; }
+    function createHeaderRow() { const h = document.createElement('div'); h.className = 'skill-header-row-pts'; h.innerHTML = '<div class="skill-header-label">技能名</div><div class="skill-header-label">初期</div><div class="skill-header-label">職業(J)</div><div class="skill-header-label">興味(I)</div><div class="skill-header-label">成長</div><div class="skill-header-label">他</div><div class="skill-header-label">合計</div><div></div>'; return h; }
+    function applyPresets(parent, reg) { const listIn = parent.querySelector('.skill-list-in'); listIn.innerHTML = ''; const presets = reg === '7th' ? SKILLS_7TH : SKILLS_6TH; ["戦闘", "探索", "行動", "交渉", "知識"].forEach(g => { const header = document.createElement('div'); header.className = 'skill-genre-header'; header.innerText = g + "技能"; listIn.appendChild(header); listIn.appendChild(createHeaderRow()); const group = document.createElement('div'); group.className = 'genre-group'; listIn.appendChild(group); presets.filter(p => getGenre(p[0]) === g).forEach(p => { let v = p[1]; if(p[0] === "回避") { const dex = Number(parent.querySelector('.in-dex').value) || 0; v = reg === '7th' ? Math.floor(dex/2) : dex*2; } if(p[0] === "母国語") { const edu = Number(parent.querySelector('.in-edu').value) || 0; v = reg === '7th' ? edu : edu*5; } addSkillFieldToContainer(group, p[0], v, 0, 0, 0, 0, p[2] || "", g); }); const addBtn = document.createElement('button'); addBtn.className = 'btn-sub'; addBtn.innerText = '＋ ' + g + '技能を追加'; addBtn.onclick = () => addSkillFieldToContainer(group, "", 0, 0, 0, 0, 0, "", g); listIn.appendChild(addBtn); }); recalc(parent.querySelector('.in-str')); }
+    function addSkillFieldToContainer(container, n="", b=0, j=0, i=0, g=0, o=0, sub="", genre="") { const d = document.createElement('div'); d.className = "sk-row"; let nameHtml = '<input type="text" class="sk-name" value="' + n + '" placeholder="技能名">'; if (SUBTYPES[n]) { nameHtml = '<div style="display:flex; flex-direction:column; gap:2px;"><b style="font-size:0.6rem; color:var(--text-sub);">' + n + '</b><select class="sk-sub" onchange="updateDefaultValue(this, \'' + n + '\')">'; for (let s in SUBTYPES[n]) { nameHtml += '<option value="' + s + '" ' + (s === sub ? 'selected' : '') + '>' + s + '</option>'; } nameHtml += '</select><input type="hidden" class="sk-name" value="' + n + '"></div>'; } d.innerHTML = nameHtml + '<input type="hidden" class="sk-g-fix" value="' + (genre || '') + '"><input type="number" class="sk-b" value="' + b + '" oninput="updateSkillTotal(this)"><input type="number" class="sk-j" value="' + j + '" oninput="updateSkillTotal(this)"><input type="number" class="sk-i" value="' + i + '" oninput="updateSkillTotal(this)"><input type="number" class="sk-g" value="' + g + '" oninput="updateSkillTotal(this)"><input type="number" class="sk-o" value="' + o + '" oninput="updateSkillTotal(this)"><input type="number" class="sk-total" value="' + (Number(b)+Number(j)+Number(i)+Number(g)+Number(o)) + '" readonly style="font-weight:bold; color:var(--important);"><button type="button" onclick="this.parentElement.remove(); recalc(document.body);" class="btn-action">✕</button>'; container.appendChild(d); }
+    function updateDefaultValue(sel, category) { const row = sel.closest('.sk-row'); const newVal = SUBTYPES[category][sel.value] || 1; row.querySelector('.sk-b').value = newVal; updateSkillTotal(row.querySelector('.sk-b')); }
     function updateSkillTotal(el) { const p = el.parentElement; const total = Number(p.querySelector('.sk-b').value) + Number(p.querySelector('.sk-j').value) + Number(p.querySelector('.sk-i').value) + Number(p.querySelector('.sk-g').value) + Number(p.querySelector('.sk-o').value); p.querySelector('.sk-total').value = total; recalc(el); }
-
-    function recalc(el) {
-        const p = el.closest('.panel-content, .editor-page'); if(!p) return;
-        const r = p.querySelector('input[type="radio"]:checked').value;
-        const g = (c) => Number(p.querySelector('.'+c).value) || 0;
-        const str=g('in-str'), con=g('in-con'), pow=g('in-pow'), dex=g('in-dex'), app=g('in-app'), siz=g('in-siz'), int=g('in-int'), edu=g('in-edu');
-        let hp, mp, ide, know, db;
-        if(r === '6th') { hp = Math.ceil((con + siz) / 2); mp = pow; ide = int * 5; know = edu * 5; const s = str + siz; db = (s<=12)?"-1d6":(s<=16)?"-1d4":(s<=24)?"0":(s<=32)?"+1d4":"+1d6"; }
-        else { hp = Math.floor((con + siz) / 10); mp = Math.floor(pow / 5); ide = int; know = edu; const s = str + siz; db = (s<65)?"-2":(s<85)?"-1":(s<125)?"0":(s<165)?"+1d4":"+1d6"; }
-        p.querySelector('.val-hp').innerText = hp; p.querySelector('.val-mp').innerText = mp; p.querySelector('.val-db').innerText = db; p.querySelector('.val-ide').innerText = ide; p.querySelector('.val-know').innerText = know;
-        const pattern = p.querySelector('.pt-job-pattern').value;
-        const manualInput = p.querySelector('.pt-job-manual');
-        let jobMax = 0; const m = r === '7th' ? 2 : 10; const total_m = r === '7th' ? 4 : 20;
-        if(pattern === 'edu_only') { jobMax = edu * total_m; manualInput.style.display = 'none'; }
-        else if(pattern === 'manual') { manualInput.style.display = 'block'; jobMax = Number(manualInput.value) || 0; }
-        else { manualInput.style.display = 'none'; jobMax = (edu * m) + (g('in-' + pattern) * m); }
-        const intMax = r === '7th' ? int * 2 : int * 10;
-        let jobUsed = 0, intUsed = 0; p.querySelectorAll('.sk-row').forEach(row => { jobUsed += Number(row.querySelector('.sk-j').value) || 0; intUsed += Number(row.querySelector('.sk-i').value) || 0; });
-        const updatePt = (used, max, prefix) => {
-            const usedEl = p.querySelector(`.pt-${prefix}-used`); const maxEl = p.querySelector(`.pt-${prefix}-max`); const remainEl = p.querySelector(`.pt-${prefix}-remain`);
-            usedEl.innerText = used; maxEl.innerText = max; const remain = max - used; remainEl.innerText = `残り: ${remain}`;
-            const color = remain < 0 ? 'var(--san-border)' : remain === 0 ? 'var(--important)' : 'var(--accent)';
-            usedEl.style.color = color; remainEl.style.color = color;
-        };
-        updatePt(jobUsed, jobMax, 'job'); updatePt(intUsed, intMax, 'int');
-    }
-
-    function editChar(i) {
-        currentEditIdx = i; closeViewer(); const c = chars[i]; const container = document.getElementById('form-container-edit');
-        container.innerHTML = ''; container.appendChild(createFormNode('edit'));
-        const f = (cls) => container.querySelector('.'+cls); const listIn = container.querySelector('.skill-list-in');
-        crop.activeEl = container.querySelector('.crop-img-el'); crop.x = 0; crop.y = 0; crop.z = 1;
-        f('in-name').value = c.name; f('in-kana').value = c.kana; f('in-job').value = c.job; f('in-sex').value = c.sex; f('in-age').value = c.age; f('in-height').value = c.height;
-        f('in-img-data').value = c.img; f('crop-img-el').src = c.img;
-        ["str","con","pow","dex","app","siz","int","edu","san"].forEach(k => { f('in-'+k).value = c.stats[k]; });
-        container.querySelector(`input[name="reg_edit"][value="${c.regulation || '6th'}"]`).checked = true;
-        updatePatternOptions(container, c.regulation || '6th'); f('pt-job-pattern').value = c.ptPattern || 'edu_only'; f('pt-job-manual').value = c.ptManual || 0;
-        ["戦闘", "探索", "行動", "交渉", "知識"].forEach(g => {
-            const header = document.createElement('div'); header.className = 'skill-genre-header'; header.innerText = g + "技能"; listIn.appendChild(header);
-            listIn.appendChild(createHeaderRow()); const group = document.createElement('div'); group.className = 'genre-group'; listIn.appendChild(group);
-            c.skills.filter(s => getGenre(s.n) === g).forEach(s => addSkillFieldToContainer(group, s.n, s.b, s.j, s.i, s.g, s.o));
-            const presets = (c.regulation === '7th' ? SKILLS_7TH : SKILLS_6TH);
-            presets.filter(p => getGenre(p[0]) === g).forEach(p => { if(!c.skills.some(s => s.n === p[0])) addSkillFieldToContainer(group, p[0], p[1]); });
-            const addBtn = document.createElement('button'); addBtn.className = 'btn-sub'; addBtn.innerText = `＋ ${g}技能を追加`; addBtn.onclick = () => addSkillFieldToContainer(group); listIn.appendChild(addBtn);
-        });
-        recalc(f('in-str')); f('val-luck').value = (c.calcStats && c.calcStats.luck) ? c.calcStats.luck : 0;
-        c.scns.forEach(v => addScnField(container, v)); c.profs.forEach(p => addProfField(container, p.t, p.x));
-        document.getElementById('btn-save-edit').onclick = () => saveData('edit'); document.getElementById('editor-overlay').style.display = 'flex';
-    }
-
+    function applySkillFilter(checkbox) { const p = checkbox.closest('.panel-content, .editor-page'); const rows = p.querySelectorAll('.sk-row'); rows.forEach(row => { const j=Number(row.querySelector('.sk-j').value)||0, i=Number(row.querySelector('.sk-i').value)||0, g=Number(row.querySelector('.sk-g').value)||0, o=Number(row.querySelector('.sk-o').value)||0; const isAcq = (j+i+g+o)>0; row.style.setProperty('display', (checkbox.checked && !isAcq) ? 'none' : 'grid', 'important'); }); }
+    function recalc(el) { const p = el.closest('.panel-content, .editor-page'); if(!p) return; const r = p.querySelector('input[type="radio"]:checked').value; const g = (c) => Number(p.querySelector('.'+c).value) || 0; const str=g('in-str'), con=g('in-con'), pow=g('in-pow'), dex=g('in-dex'), app=g('in-app'), siz=g('in-siz'), int=g('in-int'), edu=g('in-edu'); let hp, mp, ide, know, db; if(r === '6th') { hp = Math.ceil((con + siz) / 2); mp = pow; ide = int * 5; know = edu * 5; const s = str + siz; db = (s<=12)?"-1d6":(s<=16)?"-1d4":(s<=24)?"0":(s<=32)?"+1d4":"+1d6"; } else { hp = Math.floor((con + siz) / 10); mp = Math.floor(pow / 5); ide = int; know = edu; const s = str + siz; db = (s<65)?"-2":(s<85)?"-1":(s<125)?"0":(s<165)?"+1d4":"+1d6"; } p.querySelector('.val-hp').innerText = hp; p.querySelector('.val-mp').innerText = mp; p.querySelector('.val-db').innerText = db; p.querySelector('.val-ide').innerText = ide; p.querySelector('.val-know').innerText = know; const pattern = p.querySelector('.pt-job-pattern').value; const manualInput = p.querySelector('.pt-job-manual'); const extraRow = p.querySelector('.pt-extra-row'); let jobMax = 0; const m = r === '7th' ? 2 : 10; const total_m = r === '7th' ? 4 : 20; if(pattern === 'manual') { if(extraRow) extraRow.classList.add('open'); jobMax = Number(manualInput?.value) || 0; } else { if(extraRow) extraRow.classList.remove('open'); if(pattern === 'edu_only') jobMax = edu * total_m; else jobMax = (edu * m) + (g('in-' + pattern) * m); } const intMax = r === '7th' ? int * 2 : int * 10; let jUsed = 0, iUsed = 0; p.querySelectorAll('.sk-row').forEach(row => { jUsed += Number(row.querySelector('.sk-j').value) || 0; iUsed += Number(row.querySelector('.sk-i').value) || 0; }); const upd = (u, max, pre) => { const uEl=p.querySelector('.pt-' + pre + '-used'), mEl=p.querySelector('.pt-' + pre + '-max'), rEl=p.querySelector('.pt-' + pre + '-remain'); uEl.innerText = u; mEl.innerText = max; const rem = max - u; if(rEl) rEl.innerText = '残り: ' + rem; const color = rem < 0 ? 'var(--san-border)' : rem === 0 ? 'var(--important)' : 'var(--accent)'; uEl.style.color = color; if(rEl) rEl.style.color = color; }; upd(jUsed, jobMax, 'job'); upd(iUsed, intMax, 'int'); }
+    function renderChars() { const ui = document.getElementById('char-list-ui'); ui.innerHTML = ''; const sortVal = document.getElementById('sort-order').value; const filterVal = document.getElementById('filter-reg').value; let dList = [...chars]; if(filterVal !== 'all') dList = dList.filter(c => c.regulation === filterVal); if(sortVal === 'new') dList.reverse(); else if(sortVal === 'name') dList.sort((a,b) => (a.kana || a.name).localeCompare(b.kana || b.name, 'ja')); else if(sortVal === 'san_desc') dList.sort((a,b) => Number(b.stats.san) - Number(a.stats.san)); else if(sortVal === 'san_asc') dList.sort((a,b) => Number(a.stats.san) - Number(b.stats.san)); document.getElementById('char-count-disp').innerText = dList.length; dList.forEach((c) => { const i = chars.indexOf(c); let scnDisp = (c.scns && c.scns.length) ? c.scns[0] + (c.scns.length > 1 ? '<span class="scn-count">+' + (c.scns.length - 1) + '</span>' : '') : '—— 未通過 ——'; ui.innerHTML += '<div class="char-card" onclick="openViewer(' + i + ')"><img src="' + (c.img || '') + '" class="char-icon" onerror="this.src=\'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIGZpbGw9IiNlMGUwZTAiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzlhOWE5YSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIEltZzwvdGV4dD48L3N2Zz4=\'"><div style="flex:1"><div style="position:absolute; top:20px; right:20px; display:flex; gap:8px;"><button onclick="event.stopPropagation(); editChar(' + i + ')" class="btn-action">編集</button><button onclick="event.stopPropagation(); deleteChar(' + i + ')" class="btn-action del">削除</button></div><div class="name-area" style="margin-bottom:12px;"><h3 class="char-name-ruby"><ruby>' + c.name + '<rt>' + (c.kana || '') + '</rt></ruby></h3><span class="reg-tag ' + (c.regulation === '7th' ? 'tag-7th' : 'tag-6th') + '">' + (c.regulation === '7th' ? '7th Ed.' : '6th Ed.') + '</span></div><div class="basic-info-row"><div class="info-item"><span class="info-label-inline">職業：</span>' + (c.job || '-') + '</div><span class="info-sep">/</span><div class="info-item"><span class="info-label-inline">性別：</span>' + (c.sex || '-') + '</div><span class="info-sep">/</span><div class="info-item"><span class="info-label-inline">年齢：</span>' + (c.age || '-') + '</div><span class="info-sep">/</span><div class="info-item"><span class="info-label-inline">身長：</span>' + (c.height || '-') + '</div><div class="info-item" style="width:100%; margin-top:2px;"><span class="info-label-inline">通過シナリオ：</span>' + scnDisp + '</div></div><div style="display:grid; grid-template-columns: repeat(9, 1fr); gap:4px;">' + ['str','con','pow','dex','app','siz','int','edu'].map(k => '<div style="text-align:center; background:var(--panel-header-bg); border-radius:4px; padding:4px 0;"><div style="font-size:0.55rem; color:var(--text-sub); font-weight:bold;">' + k.toUpperCase() + '</div><div style="font-size:0.9rem; font-weight:bold; font-family:\'Noto Serif JP\', serif;">' + (c.stats[k] || '-') + '</div></div>').join('') + '<div style="text-align:center; background:var(--san-bg); border:1px solid var(--san-border); border-radius:4px; padding:3px 0;"><div style="font-size:0.55rem; color:var(--accent); font-weight:bold;">SAN</div><div style="font-size:0.9rem; font-weight:bold; color:var(--accent); font-family:\'Noto Serif JP\', serif;">' + (c.stats.san || '-') + '</div></div></div></div></div>'; }); }
     function openViewer(i) {
-        const c = chars[i]; const left = document.getElementById('v-page-left'); const right = document.getElementById('v-page-right');
-        const regTag = `<span class="reg-tag ${c.regulation === '7th' ? 'tag-7th' : 'tag-6th'}">${c.regulation === '7th' ? '7th Ed.' : '6th Ed.'}</span>`;
+        const c = chars[i]; const left = document.getElementById('v-page-left'); const right = document.getElementById('v-page-right'); const editContainer = document.getElementById('v-edit-btn-container');
         const hp = Math.ceil((Number(c.stats.con)+Number(c.stats.siz))/(c.regulation === '7th' ? 10 : 2));
         const mp = c.regulation === '7th' ? Math.floor(Number(c.stats.pow)/5) : c.stats.pow;
         const ide = c.regulation === '7th' ? c.stats.int : Number(c.stats.int)*5;
         const know = c.regulation === '7th' ? c.stats.edu : Number(c.stats.edu)*5;
         const s = Number(c.stats.str) + Number(c.stats.siz);
         let db; if(c.regulation === '6th') db = (s<=12)?"-1d6":(s<=16)?"-1d4":(s<=24)?"0":(s<=32)?"+1d4":"+1d6"; else db = (s<65)?"-2":(s<85)?"-1":(s<125)?"0":(s<165)?"+1d4":"+1d6";
-        left.innerHTML = `<div style="text-align:center;"><img src="${c.img || ''}" class="char-icon" style="width:180px; height:180px; margin-bottom:20px;"></div><div class="name-area"><h2 class="char-name-ruby"><ruby>${c.name}<rt>${c.kana || ''}</rt></ruby></h2>${regTag}</div><div style="font-size:0.9rem; margin-bottom:20px;"><b>${c.job || '無職'}</b> / ${c.sex || '-'} / ${c.age || '-'} / ${c.height || '-'}cm</div><div class="viewer-stat-grid">${["str","con","pow","dex","app","siz","int","edu","san"].map(k => `<div class="viewer-stat-box"><b>${k.toUpperCase()}</b><span>${c.stats[k] || '-'}</span></div>`).join('')}</div>
-            <div style="margin-top:25px; border-top:1px solid var(--border); padding-top:20px; display:grid; grid-template-columns:repeat(3,1fr); gap:12px;">
-                <div class="viewer-stat-box"><b style="font-family:'Noto Serif JP', serif;">HP</b><div style="font-size:1.2rem; color:var(--accent); font-weight:bold; font-family:'Noto Serif JP', serif;">${hp}</div></div>
-                <div class="viewer-stat-box"><b style="font-family:'Noto Serif JP', serif;">MP</b><div style="font-size:1.2rem; color:var(--accent); font-weight:bold; font-family:'Noto Serif JP', serif;">${mp}</div></div>
-                <div class="viewer-stat-box"><b style="font-family:'Noto Serif JP', serif;">DB</b><div style="font-size:1.2rem; color:var(--accent); font-weight:bold; font-family:'Noto Serif JP', serif;">${db}</div></div>
-                <div class="viewer-stat-box"><b style="font-family:'Noto Serif JP', serif;">アイデア</b><div style="font-size:1.2rem; color:var(--accent); font-weight:bold; font-family:'Noto Serif JP', serif;">${ide}</div></div>
-                <div class="viewer-stat-box"><b style="font-family:'Noto Serif JP', serif;">知識</b><div style="font-size:1.2rem; color:var(--accent); font-weight:bold; font-family:'Noto Serif JP', serif;">${know}</div></div>
-                <div class="viewer-stat-box"><b style="font-family:'Noto Serif JP', serif;">幸運</b><div style="font-size:1.2rem; color:var(--accent); font-weight:bold; font-family:'Noto Serif JP', serif;">${c.calcStats.luck}</div></div>
-            </div><div style="margin-top:25px;"><button onclick="editChar(${i})" class="btn-action">筆記用具を取り出す（編集）</button></div>`;
-        let skillHtml = '<span class="section-label">習得技能</span><div class="viewer-skill-list">';
+        left.innerHTML = '<div style="text-align:center;"><img src="' + (c.img || '') + '" class="char-icon" style="width:180px; height:180px; margin-bottom:20px;"></div><div class="name-area"><h2 class="char-name-ruby"><ruby>' + c.name + '<rt>' + (c.kana || '') + '</rt></ruby></h2><span class="reg-tag ' + (c.regulation === '7th' ? 'tag-7th' : 'tag-6th') + '">' + (c.regulation === '7th' ? '7th Ed.' : '6th Ed.') + '</span></div><div style="font-size:0.9rem; margin-bottom:20px;"><b>' + (c.job || '無職') + '</b> / ' + (c.sex || '-') + ' / ' + (c.age || '-') + ' / ' + (c.height || '-') + 'cm</div><div class="viewer-stat-grid">' + ["str","con","pow","dex","app","siz","int","edu","san"].map(k => '<div class="viewer-stat-box"><b>' + k.toUpperCase() + '</b><span>' + (c.stats[k] || '-') + '</span></div>').join('') + '</div><div style="margin-top:25px; border-top:1px solid var(--border); padding-top:20px; display:grid; grid-template-columns:repeat(3,1fr); gap:12px;"><div class="viewer-stat-box"><b>HP</b><div style="font-size:1.2rem; color:var(--accent); font-weight:bold; font-family:\'Noto Serif JP\', serif;">' + hp + '</div></div><div class="viewer-stat-box"><b>MP</b><div style="font-size:1.2rem; color:var(--accent); font-weight:bold; font-family:\'Noto Serif JP\', serif;">' + mp + '</div></div><div class="viewer-stat-box"><b>DB</b><div style="font-size:1.2rem; color:var(--accent); font-weight:bold; font-family:\'Noto Serif JP\', serif;">' + db + '</div></div><div class="viewer-stat-box"><b>アイデア</b><div style="font-size:1.2rem; color:var(--accent); font-weight:bold; font-family:\'Noto Serif JP\', serif;">' + ide + '</div></div><div class="viewer-stat-box"><b>知識</b><div style="font-size:1.2rem; color:var(--accent); font-weight:bold; font-family:\'Noto Serif JP\', serif;">' + know + '</div></div><div class="viewer-stat-box"><b>幸運</b><div style="font-size:1.2rem; color:var(--accent); font-weight:bold; font-family:\'Noto Serif JP\', serif;">' + (c.calcStats?.luck || 0) + '</div></div></div>';
+        let rightHtml = ''; let skillHtml = '<span class="section-label">習得技能</span><div class="viewer-skill-list">';
         ["戦闘", "探索", "行動", "交渉", "知識"].forEach(g => {
-            const gs = c.skills.filter(s => getGenre(s.n) === g && s.n);
+            const gs = c.skills.filter(s => (s.gr || getGenre(s.n)) === g && (Number(s.j)>0 || Number(s.i)>0 || Number(s.g)>0 || Number(s.o)>0));
             if(gs.length > 0) {
-                skillHtml += `<div style="break-inside:avoid; margin-bottom:10px;"><b style="font-size:0.7rem; color:var(--accent); display:block; border-bottom:1px solid var(--border); margin-bottom:5px; font-family:'Noto Serif JP', serif;">■ ${g}技能</b>`;
-                gs.forEach(s => { skillHtml += `<div class="viewer-skill-item"><span>${s.n}</span><b>${s.t}%</b></div>`; });
-                skillHtml += `</div>`;
+                skillHtml += '<div style="break-inside:avoid; margin-bottom:10px;"><b style="font-size:0.7rem; color:var(--accent); display:block; border-bottom:1px solid var(--border); margin-bottom:5px; font-family:\'Noto Serif JP\', serif;">■ ' + g + '技能</b>';
+                gs.forEach(s => { const dispName = s.sub ? s.n + '(' + s.sub + ')' : s.n; skillHtml += '<div class="viewer-skill-item"><span>' + dispName + '</span><b>' + s.t + '%</b></div>'; });
+                skillHtml += '</div>';
             }
         });
-        skillHtml += '</div>';
-        let profHtml = '<span class="section-label">通過記録 / 手記</span>';
-        if(c.scns && c.scns.length > 0) profHtml += `<div style="margin-bottom:20px;"><b style="color:var(--important); display:block; margin-bottom:5px; font-family:'Noto Serif JP', serif;">■ 通過シナリオ</b><div style="font-size:0.9rem; line-height:1.7; color:var(--text-main); font-family:'Noto Serif JP', serif; white-space:pre-wrap;">${c.scns.join('　/　')}</div></div>`;
-        if(c.profs) c.profs.forEach(p => { if(p.t || p.x) profHtml += `<div style="margin-bottom:20px;"><b style="color:var(--important); display:block; margin-bottom:5px; font-family:'Noto Serif JP', serif;">■ ${p.t}</b><div style="font-size:0.9rem; line-height:1.6; white-space:pre-wrap; font-family:'Noto Serif JP', serif;">${p.x}</div></div>`; });
-        right.innerHTML = skillHtml + profHtml; document.getElementById('viewer-overlay').style.display = 'flex';
+        skillHtml += '</div>'; rightHtml += skillHtml;
+        let scnHtml = '<span class="section-label">通過シナリオの記録</span>'; if(c.scns && c.scns.length > 0) scnHtml += '<div style="margin-bottom:20px;"><div style="font-size:0.9rem; line-height:1.7; color:var(--text-main); font-family:\'Noto Serif JP\', serif; white-space:pre-wrap;">' + c.scns.join('　/　') + '</div></div>';
+        rightHtml += scnHtml;
+        let profHtml = '<span class="section-label">手記（プロフィール / メモ）</span>'; if(c.profs) c.profs.forEach(p => { if(p.t || p.x) profHtml += `<div style="margin-bottom:20px;"><b style="color:var(--important); display:block; margin-bottom:5px; font-family:\'Noto Serif JP\', serif;">■ ${p.t}</b><div style="font-size:0.9rem; line-height:1.6; white-space:pre-wrap; font-family:\'Noto Serif JP\', serif;">${p.x}</div></div>`; });
+        rightHtml += profHtml; right.innerHTML = rightHtml;
+        editContainer.innerHTML = '<button onclick="editChar(' + i + ')" class="btn-action" style="font-size:0.9rem; padding:8px 20px;">編集</button>';
+        document.getElementById('viewer-overlay').style.display = 'flex';
     }
-
-    function saveData(mode) {
-        const c = document.getElementById(mode === 'new' ? 'form-container-new' : 'form-container-edit'); const f = (cl) => c.querySelector('.'+cl);
-        if(!f('in-name').value) return alert("名前を記入してください");
-        const sks = Array.from(c.querySelectorAll('.sk-row')).map(r => ({ n: r.querySelector('.sk-name').value, b: r.querySelector('.sk-b').value, j: r.querySelector('.sk-j').value, i: r.querySelector('.sk-i').value, g: r.querySelector('.sk-g').value, o: r.querySelector('.sk-o').value, t: r.querySelector('.sk-total').value })).filter(s => Number(s.j)||Number(s.i)||Number(s.g)||Number(s.o)||s.n==="クトゥルフ神話");
-        const d = { regulation: c.querySelector('input[type="radio"]:checked').value, name: f('in-name').value, kana: f('in-kana').value, job: f('in-job').value, sex: f('in-sex').value, age: f('in-age').value, height: f('in-height').value, img: f('in-img-data').value, stats: { str: f('in-str').value, con: f('in-con').value, pow: f('in-pow').value, dex: f('in-dex').value, app: f('in-app').value, siz: f('in-siz').value, int: f('in-int').value, edu: f('in-edu').value, san: f('in-san').value }, calcStats: { luck: f('val-luck').value }, ptPattern: f('pt-job-pattern').value, ptManual: f('pt-job-manual').value, skills: sks, scns: Array.from(c.querySelectorAll('.scn-in')).map(i => i.value).filter(v => v), profs: Array.from(c.querySelectorAll('.prof-list > div')).map(p => ({ t: p.querySelector('.prof-t').value, x: p.querySelector('.prof-x').value })) };
-        if(mode === 'new') { chars.push(d); cancelAdd(); } else { chars[currentEditIdx] = d; closeEditor(); }
-        localStorage.setItem(KEY, JSON.stringify(chars)); renderChars();
-    }
-
-    function renderChars() {
-        const ui = document.getElementById('char-list-ui'); ui.innerHTML = '';
-        if(!chars.length) { ui.innerHTML = '<div style="text-align:center; padding:50px; color:var(--text-sub);">—— 名簿は白紙です ——</div>'; return; }
-        chars.forEach((c, i) => {
-            let scnDisplay = (c.scns && c.scns.length) ? c.scns[0] + (c.scns.length > 1 ? `<span class="scn-count">+${c.scns.length - 1}</span>` : '') : '—— 未通過 ——';
-            ui.innerHTML += `<div class="char-card" onclick="openViewer(${i})"><img src="${c.img || ''}" class="char-icon" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIGZpbGw9IiNlMGUwZTAiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzlhOWE5YSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIEltZzwvdGV4dD48L3N2Zz4='"><div style="flex:1"><div style="position:absolute; top:20px; right:20px; display:flex; gap:8px;"><button onclick="event.stopPropagation(); editChar(${i})" class="btn-action">編集</button><button onclick="event.stopPropagation(); deleteChar(${i})" class="btn-action del">抹消</button></div><div class="name-area" style="margin-bottom:12px;"><h3 class="char-name-ruby"><ruby>${c.name}<rt>${c.kana || ''}</rt></ruby></h3><span class="reg-tag ${c.regulation === '7th' ? 'tag-7th' : 'tag-6th'}">${c.regulation === '7th' ? '7th Ed.' : '6th Ed.'}</span></div><div class="basic-info-row"><div class="info-item"><span class="info-label-inline">職業：</span>${c.job || '-'}</div><span class="info-sep">/</span><div class="info-item"><span class="info-label-inline">性別：</span>${c.sex || '-'}</div><span class="info-sep">/</span><div class="info-item"><span class="info-label-inline">年齢：</span>${c.age || '-'}</div><span class="info-sep">/</span><div class="info-item"><span class="info-label-inline">身長：</span>${c.height || '-'}cm</div><div class="info-item" style="width:100%; margin-top:2px;"><span class="info-label-inline">通過シナリオ：</span>${scnDisplay}</div></div><div style="display:grid; grid-template-columns: repeat(9, 1fr); gap:4px;">${['str','con','pow','dex','app','siz','int','edu'].map(k => `<div style="text-align:center; background:var(--panel-header-bg); border-radius:4px; padding:4px 0;"><div style="font-size:0.55rem; color:var(--text-sub); font-weight:bold;">${k.toUpperCase()}</div><div style="font-size:0.9rem; font-weight:bold; font-family:'Noto Serif JP', serif;">${c.stats[k] || '-'}</div></div>`).join('')}<div style="text-align:center; background:var(--san-bg); border:1px solid var(--san-border); border-radius:4px; padding:3px 0;"><div style="font-size:0.55rem; color:var(--accent); font-weight:bold;">SAN</div><div style="font-size:0.9rem; font-weight:bold; color:var(--accent); font-family:'Noto Serif JP', serif;">${c.stats.san || '-'}</div></div></div></div></div>`;
-        });
-    }
-
-    function initCrop(e) { if(!e.target.files[0]) return; const r = new FileReader(); r.onload = (ev) => { imgObj.src = ev.target.result; const p = e.target.closest('.panel-content, .editor-page'); p.querySelector('.crop-img-el').src = ev.target.result; crop.activeEl = p.querySelector('.crop-img-el'); }; r.readAsDataURL(e.target.files[0]); }
+    function editChar(i) { currentEditIdx = i; closeViewer(); const c = chars[i]; const container = document.getElementById('form-container-edit'); container.innerHTML = ''; container.appendChild(createFormNode('edit')); const f = (cls) => container.querySelector('.'+cls); const listIn = container.querySelector('.skill-list-in'); f('in-name').value = c.name; f('in-kana').value = c.kana; f('in-job').value = c.job; f('in-sex').value = c.sex; f('in-age').value = c.age; f('in-height').value = c.height; f('in-img-data').value = c.img; f('crop-img-el').src = c.img; ["str","con","pow","dex","app","siz","int","edu","san"].forEach(k => { f('in-'+k).value = c.stats[k]; }); container.querySelector('input[name="reg_edit"][value="' + (c.regulation || '6th') + '"]').checked = true; updatePatternOptions(container, c.regulation || '6th'); f('pt-job-pattern').value = c.ptPattern || 'edu_only'; if(f('pt-job-manual')) f('pt-job-manual').value = c.ptManual || 0; ["戦闘", "探索", "行動", "交渉", "知識"].forEach(g => { const header = document.createElement('div'); header.className = 'skill-genre-header'; header.innerText = g + "技能"; listIn.appendChild(header); listIn.appendChild(createHeaderRow()); const group = document.createElement('div'); group.className = 'genre-group'; listIn.appendChild(group); c.skills.filter(s => (s.gr || getGenre(s.n)) === g).forEach(s => addSkillFieldToContainer(group, s.n, s.b, s.j, s.i, s.g, s.o, s.sub || "", g)); const presets = (c.regulation === '7th' ? SKILLS_7TH : SKILLS_6TH); presets.filter(p => getGenre(p[0]) === g).forEach(p => { if(!c.skills.some(s => s.n === p[0])) addSkillFieldToContainer(group, p[0], p[1], 0, 0, 0, 0, p[2] || "", g); }); const addBtn = document.createElement('button'); addBtn.className = 'btn-sub'; addBtn.innerText = '＋ ' + g + '技能を追加'; addBtn.onclick = () => addSkillFieldToContainer(group, "", 0, 0, 0, 0, 0, "", g); listIn.appendChild(addBtn); }); recalc(f('in-str')); f('val-luck').value = (c.calcStats && c.calcStats.luck) ? c.calcStats.luck : 0; c.scns?.forEach(v => addScnField(container, v)); c.profs?.forEach(p => addProfField(container, p.t, p.x)); document.getElementById('btn-save-edit').onclick = () => saveData('edit'); document.getElementById('editor-overlay').style.display = 'flex'; }
+    function saveData(mode) { const c = document.getElementById(mode === 'new' ? 'form-container-new' : 'form-container-edit'); const f = (cl) => c.querySelector('.'+cl); if(!f('in-name').value) return alert("名前を記入してください"); const sks = Array.from(c.querySelectorAll('.sk-row')).map(r => { return { n: r.querySelector('.sk-name').value, b: r.querySelector('.sk-b').value, j: r.querySelector('.sk-j').value, i: r.querySelector('.sk-i').value, g: r.querySelector('.sk-g').value, o: r.querySelector('.sk-o').value, t: r.querySelector('.sk-total').value, sub: r.querySelector('.sk-sub')?.value || "", gr: r.querySelector('.sk-g-fix').value }; }).filter(s => Number(s.j)||Number(s.i)||Number(s.g)||Number(s.o)); const d = { regulation: c.querySelector('input[type="radio"]:checked').value, name: f('in-name').value, kana: f('in-kana').value, job: f('in-job').value, sex: f('in-sex').value, age: f('in-age').value, height: f('in-height').value, img: f('in-img-data').value, stats: { str: f('in-str').value, con: f('in-con').value, pow: f('in-pow').value, dex: f('in-dex').value, app: f('in-app').value, siz: f('in-siz').value, int: f('in-int').value, edu: f('in-edu').value, san: f('in-san').value }, calcStats: { luck: f('val-luck').value }, ptPattern: f('pt-job-pattern').value, ptManual: f('pt-job-manual')?.value || 0, skills: sks, scns: Array.from(c.querySelectorAll('.scn-in')).map(i => i.value).filter(v => v), profs: Array.from(c.querySelectorAll('.prof-list > div')).map(p => ({ t: p.querySelector('.prof-t').value, x: p.querySelector('.prof-x').value })) }; if(mode === 'new') { chars.push(d); cancelAdd(); } else { chars[currentEditIdx] = d; closeEditor(); } localStorage.setItem(KEY, JSON.stringify(chars)); renderChars(); updateScheduleFormSelect(); }
+    function deleteChar(i) { if(confirm("名簿から削除しますか？")) { chars.splice(i, 1); localStorage.setItem(KEY, JSON.stringify(chars)); renderChars(); updateScheduleFormSelect(); } }
+    function closeViewer() { document.getElementById('viewer-overlay').style.display = 'none'; }
+    function closeEditor() { document.getElementById('editor-overlay').style.display = 'none'; }
+    function cancelAdd() { togglePanel('add-form', false); initNewForm(); }
+    function togglePanel(id, f) { const c = document.getElementById(id); if(f !== undefined) { if(f) c.classList.add('open'); else c.classList.remove('open'); } else { c.classList.toggle('open'); } }
+    function toggleTheme() { const n = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'; document.documentElement.setAttribute('data-theme', n); localStorage.setItem('trpg_theme', n); }
+    function exportData() { const blob = new Blob([JSON.stringify({chars, schedules})], { type: 'application/json' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "trpg_archive_all.json"; a.click(); }
+    function importData() { document.getElementById('import-file').click(); }
+    function handleImport(input) { const reader = new FileReader(); reader.onload = () => { const d = JSON.parse(reader.result); if(d.chars) { chars = d.chars; schedules = d.schedules || []; } else { chars = d; } localStorage.setItem(KEY, JSON.stringify(chars)); localStorage.setItem(KEY_SCH, JSON.stringify(schedules)); renderChars(); renderScheduleView(); alert('大書庫の記録を復元しました。'); }; reader.readAsText(input.files[0]); }
+    function addScnField(p, v="") { const root = p instanceof HTMLElement ? p.closest('.panel-content, .editor-page') : p; const container = root.querySelector('.scn-list'); const d = document.createElement('div'); d.style.display="flex"; d.style.marginBottom="5px"; d.innerHTML = '<input type="text" class="scn-in" value="' + v + '" style="flex:1"><button type="button" onclick="this.parentElement.remove()" class="btn-action">✕</button>'; container.appendChild(d); }
+    function addProfField(p, t="項目名", txt="") { const root = p instanceof HTMLElement ? p.closest('.panel-content, .editor-page') : p; const container = root.querySelector('.prof-list'); const d = document.createElement('div'); d.style.border="1px dashed var(--border)"; d.style.padding="10px"; d.style.marginBottom="10px"; d.style.borderRadius="6px"; d.innerHTML = '<input type="text" class="prof-t" value="' + t + '" style="font-weight:bold; border:none; background:transparent; color:var(--important); margin-bottom:5px;"><textarea class="prof-x" rows="3">' + txt + '</textarea><div style="text-align:right; margin-top:5px;"><button type="button" onclick="this.parentElement.parentElement.remove()" class="btn-action">削除</button></div>'; container.appendChild(d); }
+    function initCrop(e) { if(!e.target.files[0]) return; const reader = new FileReader(); reader.onload = (ev) => { imgObj = new Image(); imgObj.crossOrigin = "anonymous"; imgObj.src = ev.target.result; const p = e.target.closest('.panel-content, .editor-page'); p.querySelector('.crop-img-el').src = ev.target.result; crop.activeEl = p.querySelector('.crop-img-el'); }; reader.readAsDataURL(e.target.files[0]); }
     function startDrag(e) { crop.drag = true; const p = e.target.closest('.panel-content, .editor-page'); if(p) crop.activeEl = p.querySelector('.crop-img-el'); crop.sx = e.clientX - crop.x; crop.sy = e.clientY - crop.y; }
     function doDrag(e) { if(crop.drag) { crop.x = e.clientX - crop.sx; crop.y = e.clientY - crop.sy; applyCrop(); } }
     function stopDrag() { crop.drag = false; }
-    function applyCrop() { if(crop.activeEl) crop.activeEl.style.transform = `translate(${crop.x}px, ${crop.y}px) scale(${crop.z})`; }
+    function applyCrop() { if(crop.activeEl) crop.activeEl.style.transform = 'translate(' + crop.x + 'px, ' + crop.y + 'px) scale(' + crop.z + ')'; }
     function updateZoom(v) { crop.z = parseFloat(v); applyCrop(); }
-    function lockCrop(btn) { const p = btn.closest('.panel-content, .editor-page'); const img = p.querySelector('.crop-img-el'); if(!img.src) return; const cvs = document.createElement('canvas'); cvs.width = 200; cvs.height = 200; const ctx = cvs.getContext('2d'); ctx.save(); ctx.translate(crop.x*(200/180), crop.y*(200/180)); ctx.scale(crop.z*(200/180), crop.z*(200/180)); ctx.drawImage(img,0,0); ctx.restore(); p.querySelector('.in-img-data').value = cvs.toDataURL('image/jpeg', 0.8); alert("肖像を確定しました"); }
+    function lockCrop(btn) { const p = btn.closest('.panel-content, .editor-page'); const img = p.querySelector('.crop-img-el'); if(!img.src) return; const cvs = document.createElement('canvas'); cvs.width = 200; cvs.height = 200; const ctx = cvs.getContext('2d'); ctx.fillStyle = "#e0e0e0"; ctx.fillRect(0, 0, cvs.width, cvs.height); ctx.save(); ctx.translate(crop.x*(200/180), crop.y*(200/180)); ctx.scale(crop.z*(200/180), crop.z*(200/180)); const tempImg = new Image(); tempImg.crossOrigin = "anonymous"; tempImg.onload = () => { ctx.drawImage(tempImg, 0, 0); ctx.restore(); p.querySelector('.in-img-data').value = cvs.toDataURL('image/jpeg', 0.8); alert("肖像を確定しました"); }; tempImg.onerror = () => { ctx.drawImage(img, 0, 0); ctx.restore(); p.querySelector('.in-img-data').value = cvs.toDataURL('image/jpeg', 0.8); alert("肖像を確定しました"); }; tempImg.src = img.src; }
+    function openImportOverlay() { document.getElementById('import-overlay').style.display = 'flex'; }
+    function closeImportOverlay() { document.getElementById('import-overlay').style.display = 'none'; }
+    function parseAndAddChar() {
+        const text = document.getElementById('import-text-area').value;
+        if(!text) return;
+        const reg = text.includes("7版") ? "7th" : "6th";
+        const lines = text.split('\n');
+        const getVal = (regex) => { const m = text.match(regex); if(!m) return ""; return m[1].split(/[\/／]/)[0].trim(); };
+        let pName = "", pKana = "";
+        const nameLine = lines.find(l => l.includes('名前:'));
+        if(nameLine) {
+            const cont = nameLine.split('名前:')[1].trim();
+            const m = cont.match(/^(.+?)\s*[ (（]([^)）]+)[)）]/);
+            if(m) { pName = m[1].trim(); pKana = m[2].trim(); } else { pName = cont; }
+        }
+        const stats = { str: Number(getVal(/STR\s+(\d+)/)), con: Number(getVal(/CON\s+(\d+)/)), pow: Number(getVal(/POW\s+(\d+)/)), dex: Number(getVal(/DEX\s+(\d+)/)), app: Number(getVal(/APP\s+(\d+)/)), siz: Number(getVal(/SIZ\s+(\d+)/)), int: Number(getVal(/INT\s+(\d+)/)), edu: Number(getVal(/EDU\s+(\d+)/)), san: Number(getVal(/現在SAN値\s+(\d+)/) || getVal(/SAN\s+(\d+)/)) };
+        const jobMaxRaw = text.match(/職業ポイント:\s+\d+\s+\/\s+(\d+)/);
+        const jobMax = jobMaxRaw ? Number(jobMaxRaw[1]) : 0;
+        let ptPatt = "edu_only", ptMan = 0;
+        if(jobMax > 0) {
+            const m = reg === "7th" ? 2 : 10;
+            const tot = reg === "7th" ? 4 : 20;
+            const pts = ["str","con","pow","dex","app","siz","int"];
+            const found = pts.find(p => (stats.edu * m) + (stats[p] * m) === jobMax);
+            if(stats.edu * tot === jobMax) ptPatt = "edu_only";
+            else if(found) ptPatt = found;
+            else { ptPatt = "manual"; ptMan = jobMax; }
+        }
 
-    function closeViewer() { document.getElementById('viewer-overlay').style.display = 'none'; }
-    function closeEditor() { document.getElementById('editor-overlay').style.display = 'none'; currentEditIdx = -1; }
-    function cancelAdd() { togglePanel('add-form', false); initNewForm(); }
-    function deleteChar(i) { if(confirm("名簿から抹消しますか？")) { chars.splice(i, 1); localStorage.setItem(KEY, JSON.stringify(chars)); renderChars(); } }
-    function showView(id) { document.querySelectorAll('.view-section').forEach(v => v.classList.remove('active')); document.getElementById(id).classList.add('active'); document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active')); document.getElementById(id === 'v-calendar' ? 'nav-cal' : 'nav-char').classList.add('active'); }
-    function togglePanel(id, f) { const c = document.getElementById(id); if(f !== undefined) { if(f) c.classList.add('open'); else c.classList.remove('open'); } else { c.classList.toggle('open'); } }
-    function toggleTheme() { const n = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'; document.documentElement.setAttribute('data-theme', n); localStorage.setItem('trpg_theme', n); }
-    function exportData() { const blob = new Blob([JSON.stringify(chars)], { type: 'application/json' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "trpg_archive.json"; a.click(); }
-    function importData() { document.getElementById('import-file').click(); }
-    function handleImport(input) { const r = new FileReader(); r.onload = () => { chars = JSON.parse(reader.result); localStorage.setItem(KEY, JSON.stringify(chars)); renderChars(); }; reader.readAsText(input.files[0]); }
-    function addScnField(p, v="") { const c = p.querySelector('.scn-list'); const d = document.createElement('div'); d.style.display="flex"; d.style.marginBottom="5px"; d.innerHTML = `<input type="text" class="scn-in" value="${v}" style="flex:1"><button type="button" onclick="this.parentElement.remove()" class="btn-action">✕</button>`; c.appendChild(d); }
-    function addProfField(p, t="項目名", txt="") { const c = p.querySelector('.prof-list'); const d = document.createElement('div'); d.style.border="1px dashed var(--border)"; d.style.padding="10px"; d.style.marginBottom="10px"; d.style.borderRadius="6px"; d.innerHTML = `<input type="text" class="prof-t" value="${t}" style="font-weight:bold; border:none; background:transparent; color:var(--important); margin-bottom:5px;"><textarea class="prof-x" rows="3">${txt}</textarea><div style="text-align:right; margin-top:5px;"><button type="button" onclick="this.parentElement.remove()" class="btn-action del">削除</button></div>`; c.appendChild(d); }
+        const parsedSkillsMap = new Map();
+        let capturing = false;
+        lines.forEach(l => {
+            if(l.includes('『')) capturing = true;
+            if(capturing && /^\S+\s+\d+/.test(l.trim()) && !l.includes('技能名')) {
+                const parts = l.trim().split(/\s+/);
+                let n = parts[0]; let sub = "";
+                if(n === "かぎあけ") n = "鍵開け";
+                if(n.includes("近接戦闘") || n.includes("射撃") || n.includes("科学")) {
+                    const m = n.match(/(近接戦闘|射撃|科学)[\(（](.+)[\)）]/) || n.match(/(近接戦闘|射撃|科学)[:：]\s*(.+)/);
+                    if(m) { n = m[1]; sub = m[2]; }
+                }
+                parsedSkillsMap.set(n + (sub ? '|'+sub : ''), { n, b:parts[2], j:parts[3]||0, i:parts[4]||0, g:parts[5]||0, o:parts[6]||0, t:parts[1], sub });
+            }
+        });
+
+        const orderedSkills = [];
+        const presets = reg === '7th' ? SKILLS_7TH : SKILLS_6TH;
+        presets.forEach(p => {
+            const key = p[0] + (p[2] ? '|'+p[2] : '');
+            if(parsedSkillsMap.has(key)) {
+                const s = parsedSkillsMap.get(key);
+                orderedSkills.push({ n: s.n, b: s.b, j: s.j, i: s.i, g: s.g, o: s.o, t: s.t, sub: s.sub, gr: getGenre(s.n) });
+                parsedSkillsMap.delete(key);
+            } else {
+                let bVal = p[1];
+                if(p[0] === "回避") bVal = reg === '7th' ? Math.floor(stats.dex/2) : stats.dex*2;
+                if(p[0] === "母国語") bVal = reg === '7th' ? stats.edu : stats.edu*5;
+                orderedSkills.push({ n: p[0], b: bVal, j: 0, i: 0, g: 0, o: 0, t: bVal, sub: p[2]||"", gr: getGenre(p[0]) });
+            }
+        });
+        parsedSkillsMap.forEach((s) => {
+            if (Number(s.j)>0 || Number(s.i)>0 || Number(s.g)>0 || Number(s.o)>0) {
+                orderedSkills.push({ n: s.n, b: s.b, j: s.j, i: s.i, g: s.g, o: s.o, t: s.t, sub: s.sub, gr: getGenre(s.n) });
+            }
+        });
+        const data = { regulation: reg, name: pName, kana: pKana, job: getVal(/職業:\s*(.+)/), sex: getVal(/性別:\s*(.+)/), age: getVal(/年齢:\s*(.+)/), height: getVal(/身長:\s*(.+)/), img: getVal(/https:\/\/image\.iaproject\.app\/([^\s]+)/) ? "https://image.iaproject.app/" + getVal(/https:\/\/image\.iaproject\.app\/([^\s]+)/) : "", stats: stats, calcStats: { luck: getVal(/幸運\s+(\d+)/) }, ptPattern: ptPatt, ptManual: ptMan, skills: orderedSkills, scns: (lines.find(l => l.includes('タグ:')) ? lines.find(l => l.includes('タグ:')).split('タグ:')[1].split(/[,，\s]+/).filter(s => s.trim()) : []), profs: [] };
+        const memoIdx = text.indexOf('【メモ】'); if(memoIdx !== -1) data.profs.push({ t: "写記された手記", x: text.substring(memoIdx + 4).trim() });
+        chars.push(data); localStorage.setItem(KEY, JSON.stringify(chars)); renderChars(); closeImportOverlay(); alert(data.name + ' の記録を大書庫の秩序に従って写記しました。'); updateScheduleFormSelect();
+    }
+
+    /* --- 活動予定表ロジック (v8.2.15 安定構築・自動追跡) --- */
+    function renderScheduleView() { schedules = schedules.map(s => { if (!s.dates && s.date) s.dates = [s.date]; if (!s.dates) s.dates = []; return s; }); autoUpdateStatus(); renderCalendar(); renderChronicle(); updateScheduleFormSelect(); }
+    
+    function autoUpdateStatus() {
+        const now = new Date(); let changed = false;
+        schedules.forEach(s => {
+            if (!s.dates || s.dates.length === 0) return;
+            const dObjs = s.dates.map(d => new Date(d)).sort((a,b) => a - b);
+            const start = dObjs[0]; const end = dObjs[dObjs.length - 1];
+            
+            const oldStatus = s.status;
+            if (s.status === '待機中' && now >= start) s.status = '進行中';
+            else if (s.status === '進行中' && now > end) s.status = '完走';
+            
+            if (oldStatus !== s.status) {
+                changed = true;
+                // ステータスが「完走」に自動変化した場合に同期
+                if (s.status === '完走') syncScenarioToChar(s.charName, s.title);
+            }
+        });
+        if (changed) localStorage.setItem(KEY_SCH, JSON.stringify(schedules));
+    }
+
+    function updateScheduleFormSelect() { document.querySelectorAll('.sch-char-select-el').forEach(sel => { const current = sel.value; sel.innerHTML = '<option value="">選択しない</option>'; chars.forEach(c => { sel.innerHTML += '<option value="' + c.name + '">' + c.name + '</option>'; }); sel.value = current; }); }
+    function addSchDateField(btn, val="") { const root = btn.closest('.panel-content, .editor-page'); const container = root.querySelector('.sch-date-list'); const d = document.createElement('div'); d.style.display = "flex"; d.style.gap = "10px"; d.style.marginBottom = "8px"; d.innerHTML = '<input type="datetime-local" class="sch-date-in" value="' + val + '" style="flex:1;"><button type="button" onclick="this.parentElement.remove()" class="btn-action">✕</button>'; container.appendChild(d); }
+    function addPartnerField(btn, category, name="") { const root = btn.closest('.panel-content, .editor-page'); const container = root.querySelector('.partner-list-' + category); const d = document.createElement('div'); d.style.display = "flex"; d.style.gap = "8px"; d.style.marginBottom = "8px"; d.innerHTML = `<input type="text" class="ptn-name" value="${name}" placeholder="名前" style="flex:1;"><button type="button" onclick="this.parentElement.remove()" class="btn-action">✕</button>`; container.appendChild(d); }
+    function handleSchRoleChange(el) { const root = el.closest('.panel-content, .editor-page'); const pcSelect = root.querySelector('.sch-char-select-el'); const role = el.value; if (role === 'キーパー（KP/SKP）') { if(pcSelect) { pcSelect.value = ""; pcSelect.disabled = true; pcSelect.style.opacity = "0.5"; } } else { if(pcSelect) { pcSelect.disabled = false; pcSelect.style.opacity = "1"; } } const kpList = root.querySelector('.partner-list-kp'); const plList = root.querySelector('.partner-list-pl'); if(!kpList || !plList) return; [kpList, plList].forEach(list => { Array.from(list.querySelectorAll('.ptn-name')).forEach(input => { if (input.value === MY_NAME) input.closest('div').remove(); }); }); if (role === 'キーパー（KP/SKP）' || role === 'キーパー（KPC）') { addPartnerField(kpList.parentElement.querySelector('.btn-sub'), 'kp', MY_NAME); } else if (role === 'プレイヤー（PL）') { addPartnerField(plList.parentElement.querySelector('.btn-sub'), 'pl', MY_NAME); } }
+    function renderCalendar() { const grid = document.getElementById('calendar-grid-ui'); const display = document.getElementById('cal-display-month'); grid.innerHTML = ''; const year = currentViewDate.getFullYear(); const month = currentViewDate.getMonth(); display.innerText = year + '年 ' + (month + 1) + '月'; ['日', '月', '火', '水', '木', '金', '土'].forEach(d => { grid.innerHTML += '<div class="cal-day-label">' + d + '</div>'; }); const firstDay = new Date(year, month, 1).getDay(); const lastDate = new Date(year, month + 1, 0).getDate(); const prevLastDate = new Date(year, month, 0).getDate(); for (let i = firstDay; i > 0; i--) { grid.innerHTML += '<div class="cal-cell other-month"><div class="cal-date-num">' + (prevLastDate - i + 1) + '</div></div>'; } for (let i = 1; i <= lastDate; i++) { const today = new Date(); const isToday = i === today.getDate() && month === today.getMonth() && year === today.getFullYear(); let cellContent = ''; const cellDateStr = year + '-' + String(month + 1).padStart(2, '0') + '-' + String(i).padStart(2, '0'); schedules.forEach(s => { if(s.dates && s.dates.some(d => d.startsWith(cellDateStr))) { const stCls = s.status === '調整中' ? 'status-adj' : s.status === '待機中' ? 'status-wait' : s.status === '進行中' ? 'status-ongoing' : 'status-done'; cellContent += `<div class="cal-event-preview ${stCls}" onclick="event.stopPropagation(); openSchViewer(${s.id})">${s.title}</div>`; } }); grid.innerHTML += '<div class="cal-cell ' + (isToday ? 'today' : '') + '" onclick="quickAdd(' + i + ')"><div class="cal-date-num">' + i + '</div>' + cellContent + '</div>'; } }
+    function changeMonth(diff) { currentViewDate.setMonth(currentViewDate.getMonth() + diff); renderCalendar(); }
+    
+    function saveSchedule(mode) {
+        const root = document.getElementById(mode === 'new' ? 'add-sch-form' : 'sch-editor-overlay');
+        const pre = mode === 'new' ? '' : 'edit-';
+        const titleVal = root.querySelector(mode === 'new' ? '#sch-title' : '#edit-sch-title').value;
+        const statusVal = root.querySelector(mode === 'new' ? '#sch-status' : '#edit-sch-status').value;
+        const roleVal = root.querySelector(mode === 'new' ? '#sch-role' : '#edit-sch-role').value;
+        const charVal = (roleVal === 'キーパー（KP/SKP）') ? "" : root.querySelector(mode === 'new' ? '#sch-char-select' : '#edit-sch-char-select').value;
+        const dateInputs = Array.from(root.querySelectorAll('.sch-date-in')).map(input => input.value).filter(v => v);
+        
+        if(dateInputs.length === 0 && statusVal !== '調整中') return alert("日程とタイトルは必須です。");
+        if(!titleVal) return alert("タイトルは必須です。");
+
+        const kpPtns = Array.from(root.querySelectorAll('.partner-list-kp > div')).map(row => ({ name: row.querySelector('.ptn-name').value })).filter(p => p.name);
+        const plPtns = Array.from(root.querySelectorAll('.partner-list-pl > div')).map(row => ({ name: row.querySelector('.ptn-name').value })).filter(p => p.name);
+        
+        const data = { id: mode === 'new' ? Date.now() : currentSchEditId, dates: dateInputs, title: titleVal, status: statusVal, role: roleVal, charName: charVal, partners_kp: kpPtns, partners_pl: plPtns };
+        if(mode === 'new') { schedules.push(data); togglePanel('add-sch-form', false); } else { const idx = schedules.findIndex(s => s.id === currentSchEditId); if(idx !== -1) schedules[idx] = data; closeSchEditor(); }
+        
+        // 手動保存時に「完走」が選ばれた場合、物語を名簿に同期
+        if (statusVal === '完走') syncScenarioToChar(charVal, titleVal);
+
+        schedules.sort((a,b) => (a.dates[0] || "9999") > (b.dates[0] || "9999") ? 1 : -1);
+        localStorage.setItem(KEY_SCH, JSON.stringify(schedules));
+        if(mode === 'new') { root.querySelector('#sch-title').value = ''; root.querySelector('.sch-date-list').innerHTML = ''; root.querySelector('.partner-list-kp').innerHTML = ''; root.querySelector('.partner-list-pl').innerHTML = ''; addSchDateField(root.querySelector('.btn-sub')); }
+        renderScheduleView();
+    }
+
+    function renderChronicle() {
+        const ongoingUI = document.getElementById('chronicle-ongoing-ui');
+        const upcomingUI = document.getElementById('chronicle-upcoming-ui');
+        const adjustingUI = document.getElementById('chronicle-adjusting-ui');
+        ongoingUI.innerHTML = ''; upcomingUI.innerHTML = ''; adjustingUI.innerHTML = '';
+        schedules.forEach(s => {
+            const d = new Date(s.dates && s.dates[0] ? s.dates[0] : Date.now()); const mStr = (d.getMonth()+1) + '月'; const dStr = d.getDate();
+            const dateCount = (s.dates && s.dates.length > 1) ? ' <span style="font-size:0.65rem; color:var(--important);">[全' + s.dates.length + '回]</span>' : '';
+            const stCls = s.status === '調整中' ? 'status-adj' : s.status === '待機中' ? 'status-wait' : s.status === '進行中' ? 'status-ongoing' : 'status-done';
+            const allKp = (s.partners_kp || []).map(p => p.name).join(', ');
+            const allPl = (s.partners_pl || []).map(p => p.name).join(', ');
+            if (s.status === '進行中' || s.status === '待機中') {
+                const pcTag = (s.role !== 'キーパー（KP/SKP）' && s.charName) ? `<div class="chr-info-item">探索者: <b>${s.charName}</b></div>` : '';
+                let ptnHtml = ''; if (allKp) ptnHtml += `<div class="chr-info-item">KP: <b>${allKp}</b></div>`; if (allPl) ptnHtml += `<div class="chr-info-item">PL: <b>${allPl}</b></div>`;
+                if (ptnHtml) ptnHtml = `<div style="width:100%; border-top:1px dotted var(--border); padding-top:8px; margin-top:8px; display:flex; flex-direction:column; gap:4px;">${ptnHtml}</div>`;
+                const cardHtml = `<div class="chr-card" onclick="openSchViewer(${s.id})"><div class="chr-date-sidebar"><span class="chr-month">${mStr}</span><span class="chr-day">${dStr}</span></div><div class="chr-main-content"><h4 class="chr-title">${s.title}${dateCount}</h4><div class="chr-divider"></div><div class="chr-meta-row"><span class="chr-status-pill ${stCls}">${s.status}</span><div class="chr-info-item">ロール: <b>${s.role}</b></div>${pcTag}${ptnHtml}</div></div><div class="card-btn-area"><button class="btn-action" onclick="event.stopPropagation(); editSch(${s.id})">編集</button><button class="btn-action del" onclick="event.stopPropagation(); deleteSchedule(${s.id})">削除</button></div></div>`;
+                if (s.status === '進行中') ongoingUI.innerHTML += cardHtml; else upcomingUI.innerHTML += cardHtml;
+            } else if (s.status === '調整中') {
+                adjustingUI.innerHTML += `<div class="chr-card-simple-row" onclick="openSchViewer(${s.id})"><span class="chr-status-pill ${stCls}">${s.status}</span><h4 class="chr-title-simple-row">${s.title}</h4><span class="chr-meta-simple-row">${allKp ? 'KP: ' + allKp : ''}${allPl ? ' / PL: ' + allPl : ''}</span><div class="card-btn-area-simple"><button class="btn-action" style="font-size:0.6rem;" onclick="event.stopPropagation(); editSch(${s.id})">編集</button><button class="btn-action del" style="font-size:0.6rem;" onclick="event.stopPropagation(); deleteSchedule(${s.id})">削除</button></div></div>`;
+            }
+        });
+        ['ongoing', 'upcoming', 'adjusting'].forEach(id => { const el = document.getElementById('chronicle-'+id+'-ui'); if(!el.innerHTML) el.innerHTML = '<div style="text-align:center; padding:15px; color:var(--text-sub); font-style:italic; font-size:0.8rem;">—— 記録はありません ——</div>'; });
+    }
+    function openSchViewer(id) {
+        const s = schedules.find(ev => ev.id === id); if(!s) return;
+        const left = document.getElementById('sv-page-left'); const right = document.getElementById('sv-page-right'); const editContainer = document.getElementById('sv-edit-btn-container');
+        const stCls = s.status === '調整中' ? 'status-adj' : s.status === '待機中' ? 'status-wait' : s.status === '進行中' ? 'status-ongoing' : 'status-done';
+        let datesHtml = ''; if (s.dates && s.dates.length > 0) { datesHtml = '<div class="sv-section-card"><span class="sv-section-label">予定された刻限</span>'; s.dates.forEach(dateStr => { const d = new Date(dateStr); datesHtml += `<span class="sv-date-badge">${d.getFullYear()}年 ${d.getMonth()+1}月 ${d.getDate()}日 <small>${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}</small></span>`; }); datesHtml += '</div>'; }
+        const charObj = chars.find(c => c.name === s.charName); const charImg = (charObj && charObj.img && s.role !== 'キーパー（KP/SKP）') ? `<div style="text-align:center; margin-bottom:20px;"><img src="${charObj.img}" class="char-icon" style="width:150px; height:150px; border:4px solid var(--card-bg); box-shadow:var(--shadow);"></div>` : '';
+        const pcLabel = (s.role !== 'キーパー（KP/SKP）' && s.charName) ? `<div style="text-align:center;"><span style="font-size:0.7rem; color:var(--text-sub);">探索者</span><p style="font-size:1.3rem; font-family:'Noto Serif JP', serif; font-weight:bold; margin:5px 0;">${s.charName}</p></div>` : '';
+        left.innerHTML = `<div style="padding:10px;"><div style="display:flex; justify-content:center; margin-bottom:30px;"><span class="chr-status-pill ${stCls}">${s.status}</span></div>${datesHtml}<div style="margin-top:40px;">${charImg}${pcLabel}<p style="text-align:center; margin-top:20px; font-weight:bold; color:var(--important); font-size:0.85rem; letter-spacing:2px;">${s.role}</p></div></div>`;
+        let ptnListHtml = ''; if ((s.partners_kp && s.partners_kp.length > 0) || (s.partners_pl && s.partners_pl.length > 0)) { ptnListHtml += '<div class="sv-section-card" style="margin-top:40px;"><span class="sv-section-label">物語に集う列席者</span>'; if (s.partners_kp && s.partners_kp.length > 0) { ptnListHtml += '<div class="sv-partner-group"><span class="sv-partner-label">キーパー（KP/SKP）</span><div class="sv-partner-names">' + s.partners_kp.map(p => p.name).join(' / ') + '</div></div>'; } if (s.partners_pl && s.partners_pl.length > 0) { ptnListHtml += '<div class="sv-partner-group"><span class="sv-partner-label">プレイヤー（PL）</span><div class="sv-partner-names">' + s.partners_pl.map(p => p.name).join(' / ') + '</div></div>'; } ptnListHtml += '</div>'; }
+        right.innerHTML = `<div style="padding:40px 20px; height:100%; display:flex; flex-direction:column; justify-content:center; text-align:center;"><h2 style="font-family:'Noto Serif JP', serif; font-size:2.2rem; line-height:1.4; color:var(--accent); margin-bottom:20px;">${s.title}</h2><div style="width:60px; height:3px; background:var(--accent); margin:0 auto 40px; opacity:0.6;"></div>${ptnListHtml}</div>`;
+        editContainer.innerHTML = '<button onclick="editSch(' + s.id + ')" class="btn-action" style="font-size:0.9rem; padding:8px 20px;">編集</button>';
+        document.getElementById('sch-viewer-overlay').style.display = 'flex';
+    }
+    function editSch(id) { currentSchEditId = id; const s = schedules.find(ev => ev.id === id); if(!s) return; closeSchViewer(); const root = document.getElementById('sch-editor-overlay'); root.querySelector('.sch-date-list').innerHTML = ''; (s.dates || []).forEach(d => addSchDateField(root.querySelector('.btn-sub'), d)); root.querySelector('#edit-sch-status').value = s.status; root.querySelector('#edit-sch-title').value = s.title; root.querySelector('#edit-sch-role').value = s.role; handleSchRoleChange(root.querySelector('#edit-sch-role')); updateScheduleFormSelect(); root.querySelector('#edit-sch-char-select').value = s.charName; root.querySelector('.partner-list-kp').innerHTML = ''; (s.partners_kp || []).forEach(p => addPartnerField(root.querySelector('.partner-list-kp').parentElement.querySelector('.btn-sub'), 'kp', p.name)); root.querySelector('.partner-list-pl').innerHTML = ''; (s.partners_pl || []).forEach(p => addPartnerField(root.querySelector('.partner-list-pl').parentElement.querySelector('.btn-sub'), 'pl', p.name)); root.querySelector('#btn-update-sch').onclick = () => saveSchedule('edit'); root.style.display = 'flex'; }
+    function closeSchViewer() { document.getElementById('sch-viewer-overlay').style.display = 'none'; }
+    function closeSchEditor() { document.getElementById('sch-editor-overlay').style.display = 'none'; currentSchEditId = null; }
+    function deleteSchedule(id) { if(confirm("この物語を大書庫から削除しますか？")) { schedules = schedules.filter(s => s.id !== id); localStorage.setItem(KEY_SCH, JSON.stringify(schedules)); renderScheduleView(); closeSchViewer(); } }
+    function quickAdd(day) { const panel = document.getElementById('add-sch-form'); if(!panel.classList.contains('open')) togglePanel('add-sch-form', true); const dateStr = currentViewDate.getFullYear() + '-' + String(currentViewDate.getMonth()+1).padStart(2,'0') + '-' + String(day).padStart(2,'0') + 'T21:00'; const inputs = document.querySelectorAll('#sch-date-list-new .sch-date-in'); if(inputs.length > 0) inputs[0].value = dateStr; }
 </script>
 </body>
 </html>
