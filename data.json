@@ -2701,23 +2701,23 @@
       "sex": "男",
       "age": "19",
       "height": "168",
-      "img": "https://image.iaproject.app/eb04770f-e797-4db6-b601-b7e737a3273a",
+      "img": "data:image/jpeg;base64,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",
       "stats": {
-        "str": 10,
-        "con": 17,
-        "pow": 11,
-        "dex": 15,
-        "app": 9,
-        "siz": 12,
-        "int": 11,
-        "edu": 13,
-        "san": 3
+        "str": "10",
+        "con": "17",
+        "pow": "11",
+        "dex": "15",
+        "app": "9",
+        "siz": "12",
+        "int": "11",
+        "edu": "13",
+        "san": "3"
       },
       "calcStats": {
         "luck": "55"
       },
       "ptPattern": "dex",
-      "ptManual": 0,
+      "ptManual": "0",
       "skills": [
         {
           "n": "回避",
@@ -2727,127 +2727,6 @@
           "g": "0",
           "o": "0",
           "t": "40",
-          "sub": "",
-          "gr": "戦闘"
-        },
-        {
-          "n": "投擲",
-          "b": "25",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "25",
-          "sub": "",
-          "gr": "戦闘"
-        },
-        {
-          "n": "こぶし/パンチ",
-          "b": 50,
-          "j": 0,
-          "i": 0,
-          "g": 0,
-          "o": 0,
-          "t": 50,
-          "sub": "",
-          "gr": "戦闘"
-        },
-        {
-          "n": "キック",
-          "b": "25",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "25",
-          "sub": "",
-          "gr": "戦闘"
-        },
-        {
-          "n": "組みつき",
-          "b": 25,
-          "j": 0,
-          "i": 0,
-          "g": 0,
-          "o": 0,
-          "t": 25,
-          "sub": "",
-          "gr": "戦闘"
-        },
-        {
-          "n": "頭突き",
-          "b": "10",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "10",
-          "sub": "",
-          "gr": "戦闘"
-        },
-        {
-          "n": "マーシャルアーツ",
-          "b": "1",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "1",
-          "sub": "",
-          "gr": "戦闘"
-        },
-        {
-          "n": "拳銃",
-          "b": "20",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "20",
-          "sub": "",
-          "gr": "戦闘"
-        },
-        {
-          "n": "サブマシンガン",
-          "b": "15",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "15",
-          "sub": "",
-          "gr": "戦闘"
-        },
-        {
-          "n": "ショットガン",
-          "b": "30",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "30",
-          "sub": "",
-          "gr": "戦闘"
-        },
-        {
-          "n": "ライフル",
-          "b": "25",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "25",
-          "sub": "",
-          "gr": "戦闘"
-        },
-        {
-          "n": "弓",
-          "b": 10,
-          "j": 0,
-          "i": 0,
-          "g": 0,
-          "o": 0,
-          "t": 10,
           "sub": "",
           "gr": "戦闘"
         },
@@ -2885,72 +2764,6 @@
           "gr": "探索"
         },
         {
-          "n": "応急手当",
-          "b": "30",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "30",
-          "sub": "",
-          "gr": "探索"
-        },
-        {
-          "n": "精神分析",
-          "b": "1",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "1",
-          "sub": "",
-          "gr": "探索"
-        },
-        {
-          "n": "鍵開け",
-          "b": "1",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "1",
-          "sub": "",
-          "gr": "探索"
-        },
-        {
-          "n": "隠れる",
-          "b": "10",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "10",
-          "sub": "",
-          "gr": "探索"
-        },
-        {
-          "n": "忍び歩き",
-          "b": "10",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "10",
-          "sub": "",
-          "gr": "探索"
-        },
-        {
-          "n": "隠す",
-          "b": "15",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "15",
-          "sub": "",
-          "gr": "探索"
-        },
-        {
           "n": "追跡",
           "b": "10",
           "j": "15",
@@ -2960,160 +2773,6 @@
           "t": "25",
           "sub": "",
           "gr": "探索"
-        },
-        {
-          "n": "登攀",
-          "b": "40",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "40",
-          "sub": "",
-          "gr": "探索"
-        },
-        {
-          "n": "写真術",
-          "b": "10",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "10",
-          "sub": "",
-          "gr": "探索"
-        },
-        {
-          "n": "運転",
-          "b": "20",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "20",
-          "sub": "",
-          "gr": "行動"
-        },
-        {
-          "n": "製作",
-          "b": "5",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "5",
-          "sub": "",
-          "gr": "行動"
-        },
-        {
-          "n": "操縦",
-          "b": "1",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "1",
-          "sub": "",
-          "gr": "行動"
-        },
-        {
-          "n": "跳躍",
-          "b": "25",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "25",
-          "sub": "",
-          "gr": "行動"
-        },
-        {
-          "n": "水泳",
-          "b": "25",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "25",
-          "sub": "",
-          "gr": "行動"
-        },
-        {
-          "n": "乗馬",
-          "b": "5",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "5",
-          "sub": "",
-          "gr": "行動"
-        },
-        {
-          "n": "機械修理",
-          "b": "20",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "20",
-          "sub": "",
-          "gr": "行動"
-        },
-        {
-          "n": "電気修理",
-          "b": "10",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "10",
-          "sub": "",
-          "gr": "行動"
-        },
-        {
-          "n": "重機械操作",
-          "b": "1",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "1",
-          "sub": "",
-          "gr": "行動"
-        },
-        {
-          "n": "変装",
-          "b": "1",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "1",
-          "sub": "",
-          "gr": "行動"
-        },
-        {
-          "n": "ナビゲート",
-          "b": "10",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "10",
-          "sub": "",
-          "gr": "行動"
-        },
-        {
-          "n": "説得",
-          "b": "15",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "15",
-          "sub": "",
-          "gr": "交渉"
         },
         {
           "n": "言いくるめ",
@@ -3127,39 +2786,6 @@
           "gr": "交渉"
         },
         {
-          "n": "信用",
-          "b": "15",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "15",
-          "sub": "",
-          "gr": "交渉"
-        },
-        {
-          "n": "値切り",
-          "b": "5",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "5",
-          "sub": "",
-          "gr": "交渉"
-        },
-        {
-          "n": "クトルフ神話",
-          "b": 0,
-          "j": 0,
-          "i": 0,
-          "g": 0,
-          "o": 0,
-          "t": 0,
-          "sub": "",
-          "gr": "知識"
-        },
-        {
           "n": "心理学",
           "b": "5",
           "j": "65",
@@ -3167,94 +2793,6 @@
           "g": "0",
           "o": "0",
           "t": "80",
-          "sub": "",
-          "gr": "知識"
-        },
-        {
-          "n": "人類学",
-          "b": "1",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "1",
-          "sub": "",
-          "gr": "知識"
-        },
-        {
-          "n": "考古学",
-          "b": "1",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "1",
-          "sub": "",
-          "gr": "知識"
-        },
-        {
-          "n": "医学",
-          "b": "5",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "5",
-          "sub": "",
-          "gr": "知識"
-        },
-        {
-          "n": "天文学",
-          "b": "1",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "1",
-          "sub": "",
-          "gr": "知識"
-        },
-        {
-          "n": "生物学",
-          "b": "1",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "1",
-          "sub": "",
-          "gr": "知識"
-        },
-        {
-          "n": "化学",
-          "b": "1",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "1",
-          "sub": "",
-          "gr": "知識"
-        },
-        {
-          "n": "地質学",
-          "b": "1",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "1",
-          "sub": "",
-          "gr": "知識"
-        },
-        {
-          "n": "物理学",
-          "b": "1",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "1",
           "sub": "",
           "gr": "知識"
         },
@@ -3270,17 +2808,6 @@
           "gr": "知識"
         },
         {
-          "n": "歴史",
-          "b": "20",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "20",
-          "sub": "",
-          "gr": "知識"
-        },
-        {
           "n": "オカルト",
           "b": "5",
           "j": "0",
@@ -3288,83 +2815,6 @@
           "g": "0",
           "o": "0",
           "t": "30",
-          "sub": "",
-          "gr": "知識"
-        },
-        {
-          "n": "博物学",
-          "b": "10",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "10",
-          "sub": "",
-          "gr": "知識"
-        },
-        {
-          "n": "母国語",
-          "b": "65",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "65",
-          "sub": "",
-          "gr": "知識"
-        },
-        {
-          "n": "ほかの言語",
-          "b": 1,
-          "j": 0,
-          "i": 0,
-          "g": 0,
-          "o": 0,
-          "t": 1,
-          "sub": "",
-          "gr": "知識"
-        },
-        {
-          "n": "芸術",
-          "b": 5,
-          "j": 0,
-          "i": 0,
-          "g": 0,
-          "o": 0,
-          "t": 5,
-          "sub": "",
-          "gr": "知識"
-        },
-        {
-          "n": "経理",
-          "b": "10",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "10",
-          "sub": "",
-          "gr": "知識"
-        },
-        {
-          "n": "コンピューター",
-          "b": "1",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "1",
-          "sub": "",
-          "gr": "知識"
-        },
-        {
-          "n": "電子工学",
-          "b": "1",
-          "j": "0",
-          "i": "0",
-          "g": "0",
-          "o": "0",
-          "t": "1",
           "sub": "",
           "gr": "知識"
         },
@@ -3385,11 +2835,28 @@
       ],
       "profs": [
         {
-          "t": "写記された手記",
-          "x": "【所持品】\nスマートフォン、財布、ハンカチ、ティッシュ、煙草、飴、ガム\n================================================================================\n【プロフィール】\n親を失った少年。\n幼い頃（4歳頃）家族を失ってから母方の祖父母の家へと預けられた。\n祖父母とは仲が悪いわけではないが、どこか他人行儀のような距離感が変えられず家を離れた。\n現在は障害年金とバイト代でなんとかやりくりしながら独り暮らしをしている。\n\n高校時代は部活こそ出来なかったが至って普通に生活していた。\n小中学校の時は体質の理解が得られず、困ったこともあったが高校にもなると慣れてくる。\n人とは適度な距離を保つだけでいい。面倒が起きなければそれでいいんだから。\n当たり障りなく、仲良しごっこをするだけで平和に時間は過ぎる。\n顔は広い方だったと思うけど、皆一クラスメイトとしての付き合い程度におさまり、親友と呼べるような人は出来なかった。\n高校を卒業してから連絡を取るような相手もいない。\n「縁月ってさ、なんかやりづらいよね。もっと付き合い良かったらいいのに」\nふと聞いたクラスメイトの一言がずっと頭に残ってる。\nこんな体でなければそうしたよ。\n\n様々な方法を試してみたけど、日が沈むとどうしても眠りに落ちてしまう。\n眠りの時間も伸びて、日に日に活動時間が短くなっていく。\nこのまま独りで、狭い部屋の中、起きることもなくなるのか。\nそんなことを考え、漠然とした不安に駆られる毎日が続く。\nあの事件から十何年と経つが、犯人が捜索されることもなく、世間では忘れられた過去にすぎない。\n自分だけが忘れられず、やるせない焦燥感があってもそれを覆す力はない。\n逆にずっと、眠っていたほうが楽なんじゃないかと思う。\n\nそんな時、道端で倒れている人を見つけた。\n顔を見てすぐに当時を思い出した。月光に照らされた影を。\nもしかしたら、こいつがそうなのかもしれない。\nあの犯人が、今目の前にいるのかもしれないと思うと怒りに似た感情が心の奥底から湧き出てきた。\nこんなに強く感情が湧くのは久しぶりだ。\nこいつが病人面で倒れているのを見ると余計腹が立つ。お前がそんな顔をするな。\nでも、まだわからない。確信がない。\nこれはチャンスだ。十何年と燻ぶった感情を発散させるためのチャンスだ。\n最後になってもいい。このままなにもせずいたら父さんや母さんにも合わせる顔がない。\nそのためにも、まずは仲良くなるフリをして話を聞き出さないと。\nこれが最後の仲良しごっこだ。\n================================================================================\n【RPの方向性】\n「らっしゃっせー。あ、じいちゃんまたショッポ？」\n「うぃーっす、あ、こもさん（小森）、廃棄もらってっていいすか？」\n「パイセン（ソネザキ）、今日こそ撫でさせてもら...あちょ、やめ...アー！！！（引っかかれる）」\n「あれ、大丈夫っすか？............あ、よかった～。死体だったらどうしようかと思った～」\n\nノリは良いが付き合いは悪い。\n色々と器用ではあるが、半ばすべてを諦めているからこそできているだけかも。\n================================================================================\n【家族構成】\n▶祖母：日絣　卯目（ひがすり　うめ）\n▶祖父：日絣　留目（ひがすり　とどめ）\nめちゃくちゃほんわか。普通に良い人達。\n娘夫婦のことはもちろん非常にショックを受けたが、孫の恒見を最優先に色々頑張ってくれた人達。\n唯一定期的に連絡をくれるし家の片づけにも来てくれる。\n善人すぎて逆に居心地が悪く恒見は家を出てしまったが、とても感謝はしている\n「困ったことがあったらいつでも帰ってきなさいね」\n\n▶母：縁月　瞳（ゆづき　ひとみ）　当時28歳\n看護師。めちゃくちゃ軽快ではっきりした性格。元ヤン。\n事件当時は恒見の弟か妹を妊娠していたが、そのまま親子共々亡くなった。\n恒見は母の形見のピアスを付けている。\n「またおやつこぼして！ちゃんとお皿の上で食べなさいっていつも行ってるでしょ！？」\n\n▶父：縁月　眞（ゆづき　まこと）　当時31歳\nサラリーマン。めちゃくちゃ優しい。元ヤン。\n母に怒られて父に慰めてもらうのがいつものパターンだった。\n恒見は父の形見の腕時計を付けている。\n「また母さんに怒られたのかい？」\n\n余談：恒見は両親が元ヤンだったことを祖父母から聞いて知った。\n================================================================================\n2015私立探偵準拠\n合計ステータス94\n\n[秘匿]\n■秘匿HO\n■HO太陽\n秘匿「お前はHO月を殺したい」\n推奨技能：目星・聞き耳\nあったら使うかも：交渉系・図書館\n\n特記事項-\n・年齢18～24歳(高校卒業済)\n・職業：コンビニ店員固定\n※職業技能について\n将来の夢を一つ決定し、それにちなんだ職業から技能を取得すること。将来の夢とは「眠ってしまう体質が治るならやってみたいこと/やってみたかったこと」または「幼いころ抱いていた将来の夢」など。\n・一応、行き倒れている人を見たら心配して声をかける人間であること(導入のため)\n\n★ステータスについて\n・あなたには幼いころの精神的なショックがある。\nPOWの値を＜2D6＞で決定する。\n・しかしたっぷり寝ているためなのかなんなのか、体はなんか元気だ。\nCONの値に+3する(※最大値の18は超えない)\n\n★家族について\n・幼いころ失った家族について、簡単な設定を提出すること(それぞれの名前と家族構成)\n\n＜序幕：これまでのおはなし＞\nお前の家族は吸血鬼によって殺された。\n幼いころ、お前はそれを目撃している。お前の眼前で母親は死んだのだ。首筋に牙をたてられ、血液を吸い上げられて。女の体は見る間に塵になっていった。気づけば、周囲には幾らかの砂山が築かれていた。人型に盛られた砂山が、お前の家族のなれの果てだと気づくのにそう時間はかからなかった。どうしてお前だけが生き残ったのかは定かじゃない。\n-暗転-\n吸血鬼による殺人事件は、単なる失踪事件として片づけられた。当然だ。吸血鬼が犯人だなんて言う幼子の証言が通るはずもなかった。手前で犯人を捜そうにも、月あかりを背に受けていた犯人の面相はあやふやだ。影だまりに沈んだその顔を、どうにも思い出せなかった。\n-暗転-\nそれからお前は夜に嫌われた。\n水平線の彼方に日が沈むころ、決まってお前は眠りに落ちてしまう。\n医者によれば、事件のショックから精神が夜を拒否してしまっているのだろうという話だった。日が沈むと同時に眠り、日が昇ると同時に目が覚める。そんな体質とともに、お前は生きていく羽目になった。\n-暗転-\n眠りの時間は、日に日に伸びた。厳密には、目覚める時間が少しずつ遅くなってきた。最近では昼に目覚めることも珍しくない。その体質のせいで随分孤独な人生を送って来たというのに、このまま改善することがなければやがてお前は二度と目覚めなくなるだろう。なんとも悲しい話だ。\n-暗転-\nそんな体質で、出来る仕事は限られていた。だからコンビニのバイトを始めた。幸いにも融通の利く店舗だ。変な客も、多いが。\n-暗転-\n\n＜第零幕：あらすじ＞\nそんな生活を送っていたある日、お前は道端で倒れていた人物に声をかける。それは単なる親切心だった。しかし運命とは皮肉なもので、そいつは忌むべき吸血鬼だった。\nそいつの顔を見た途端に気が付く。お前は、HO月の顔を、いつかどこかで目撃したことがある、と。\n\n月あかりに照らされたその目が、お前を見つめていた記憶。\nお前の家族を殺したのは、目前にいるその吸血鬼、かもしれない。\nお前の胸中にふつふつと湧いたそれは、怒りだった。殺意と言い換えてもいい。\n\nそうしてお前は密かに復讐を決意する。\nどの道お前はじきに目覚めなくなる。ならば敵を道連れにしたっていいじゃないか。もしかすると、トラウマの元である犯人がいなくなれば、お前に夜は戻るのかもしれないのだし。\n\n＜殺害方法＞\nさて、どうやって殺そうか。\n幸いにも、この吸血鬼はなんか知らんがすごい弱ってる。\nしかし腐っても鯛、弱ってたって吸血鬼だ。\n殺すにも、それなりの知識と準備と道具が必要だろう。\n殺害する準備が整うまでは、仲良くするフリをして油断を誘うのがいい。\n…と、お前はそう考え、これからHO月と仲良しごっこをはじめるという訳だ。\n\n＜目的＞\n・夜を取り戻す\n\n☆NPCについて\n・古森メメ\nお前を雇ったコンビニの店長。お前の体調についても知っている(家族を殺されたことまでは話していない)常に真っ黒なサングラスをかけていてかなり”如何にも”な見目をしているのだが如何せん涙もろい。\n面接の際、体調について軽く話したら思いっきり号泣された。以降随分お前のことを気にかけているようで、「ホントはダメなんだけどね」とかなんとか言いながら廃棄のお弁当を寄越したりする。\n\n・ソネザキさん\n古森の飼い猫。なんか知らんがものすごく嫌われていてよく威嚇される。"
+          "t": "所持品",
+          "x": "スマートフォン、財布、ハンカチ、ティッシュ、煙草、飴、ガム"
+        },
+        {
+          "t": "プロフィール",
+          "x": "親を失った少年。\n幼い頃（4歳頃）家族を失ってから母方の祖父母の家へと預けられた。\n祖父母とは仲が悪いわけではないが、どこか他人行儀のような距離感が変えられず家を離れた。\n現在は障害年金とバイト代でなんとかやりくりしながら独り暮らしをしている。\n\n高校時代は部活こそ出来なかったが至って普通に生活していた。\n小中学校の時は体質の理解が得られず、困ったこともあったが高校にもなると慣れてくる。\n人とは適度な距離を保つだけでいい。面倒が起きなければそれでいいんだから。\n当たり障りなく、仲良しごっこをするだけで平和に時間は過ぎる。\n顔は広い方だったと思うけど、皆一クラスメイトとしての付き合い程度におさまり、親友と呼べるような人は出来なかった。\n高校を卒業してから連絡を取るような相手もいない。\n「縁月ってさ、なんかやりづらいよね。もっと付き合い良かったらいいのに」\nふと聞いたクラスメイトの一言がずっと頭に残ってる。\nこんな体でなければそうしたよ。\n\n様々な方法を試してみたけど、日が沈むとどうしても眠りに落ちてしまう。\n眠りの時間も伸びて、日に日に活動時間が短くなっていく。\nこのまま独りで、狭い部屋の中、起きることもなくなるのか。\nそんなことを考え、漠然とした不安に駆られる毎日が続く。\nあの事件から十何年と経つが、犯人が捜索されることもなく、世間では忘れられた過去にすぎない。\n自分だけが忘れられず、やるせない焦燥感があってもそれを覆す力はない。\n逆にずっと、眠っていたほうが楽なんじゃないかと思う。\n\nそんな時、道端で倒れている人を見つけた。\n顔を見てすぐに当時を思い出した。月光に照らされた影を。\nもしかしたら、こいつがそうなのかもしれない。\nあの犯人が、今目の前にいるのかもしれないと思うと怒りに似た感情が心の奥底から湧き出てきた。\nこんなに強く感情が湧くのは久しぶりだ。\nこいつが病人面で倒れているのを見ると余計腹が立つ。お前がそんな顔をするな。\nでも、まだわからない。確信がない。\nこれはチャンスだ。十何年と燻ぶった感情を発散させるためのチャンスだ。\n最後になってもいい。このままなにもせずいたら父さんや母さんにも合わせる顔がない。\nそのためにも、まずは仲良くなるフリをして話を聞き出さないと。\nこれが最後の仲良しごっこだ。"
+        },
+        {
+          "t": "RPの方向性",
+          "x": "「らっしゃっせー。あ、じいちゃんまたショッポ？」\n「うぃーっす、あ、こもさん（小森）、廃棄もらってっていいすか？」\n「パイセン（ソネザキ）、今日こそ撫でさせてもら...あちょ、やめ...アー！！！（引っかかれる）」\n「あれ、大丈夫っすか？............あ、よかった～。死体だったらどうしようかと思った～」\n\nノリは良いが付き合いは悪い。\n色々と器用ではあるが、半ばすべてを諦めているからこそできているだけかも。"
+        },
+        {
+          "t": "家族構成",
+          "x": "▶祖母：日絣　卯目（ひがすり　うめ）\n▶祖父：日絣　留目（ひがすり　とどめ）\nめちゃくちゃほんわか。普通に良い人達。\n娘夫婦のことはもちろん非常にショックを受けたが、孫の恒見を最優先に色々頑張ってくれた人達。\n唯一定期的に連絡をくれるし家の片づけにも来てくれる。\n善人すぎて逆に居心地が悪く恒見は家を出てしまったが、とても感謝はしている\n「困ったことがあったらいつでも帰ってきなさいね」\n\n▶母：縁月　瞳（ゆづき　ひとみ）　当時28歳\n看護師。めちゃくちゃ軽快ではっきりした性格。元ヤン。\n事件当時は恒見の弟か妹を妊娠していたが、そのまま親子共々亡くなった。\n恒見は母の形見のピアスを付けている。\n「またおやつこぼして！ちゃんとお皿の上で食べなさいっていつも行ってるでしょ！？」\n\n▶父：縁月　眞（ゆづき　まこと）　当時31歳\nサラリーマン。めちゃくちゃ優しい。元ヤン。\n母に怒られて父に慰めてもらうのがいつものパターンだった。\n恒見は父の形見の腕時計を付けている。\n「また母さんに怒られたのかい？」\n\n余談：恒見は両親が元ヤンだったことを祖父母から聞いて知った。"
         }
       ],
-      "secrets": []
+      "secrets": [
+        {
+          "t": "秘匿",
+          "x": "■秘匿HO\n■HO太陽\n秘匿「お前はHO月を殺したい」\n推奨技能：目星・聞き耳\nあったら使うかも：交渉系・図書館\n\n特記事項-\n・年齢18～24歳(高校卒業済)\n・職業：コンビニ店員固定\n※職業技能について\n将来の夢を一つ決定し、それにちなんだ職業から技能を取得すること。将来の夢とは「眠ってしまう体質が治るならやってみたいこと/やってみたかったこと」または「幼いころ抱いていた将来の夢」など。\n・一応、行き倒れている人を見たら心配して声をかける人間であること(導入のため)\n\n★ステータスについて\n・あなたには幼いころの精神的なショックがある。\nPOWの値を＜2D6＞で決定する。\n・しかしたっぷり寝ているためなのかなんなのか、体はなんか元気だ。\nCONの値に+3する(※最大値の18は超えない)\n\n★家族について\n・幼いころ失った家族について、簡単な設定を提出すること(それぞれの名前と家族構成)\n\n＜序幕：これまでのおはなし＞\nお前の家族は吸血鬼によって殺された。\n幼いころ、お前はそれを目撃している。お前の眼前で母親は死んだのだ。首筋に牙をたてられ、血液を吸い上げられて。女の体は見る間に塵になっていった。気づけば、周囲には幾らかの砂山が築かれていた。人型に盛られた砂山が、お前の家族のなれの果てだと気づくのにそう時間はかからなかった。どうしてお前だけが生き残ったのかは定かじゃない。\n-暗転-\n吸血鬼による殺人事件は、単なる失踪事件として片づけられた。当然だ。吸血鬼が犯人だなんて言う幼子の証言が通るはずもなかった。手前で犯人を捜そうにも、月あかりを背に受けていた犯人の面相はあやふやだ。影だまりに沈んだその顔を、どうにも思い出せなかった。\n-暗転-\nそれからお前は夜に嫌われた。\n水平線の彼方に日が沈むころ、決まってお前は眠りに落ちてしまう。\n医者によれば、事件のショックから精神が夜を拒否してしまっているのだろうという話だった。日が沈むと同時に眠り、日が昇ると同時に目が覚める。そんな体質とともに、お前は生きていく羽目になった。\n-暗転-\n眠りの時間は、日に日に伸びた。厳密には、目覚める時間が少しずつ遅くなってきた。最近では昼に目覚めることも珍しくない。その体質のせいで随分孤独な人生を送って来たというのに、このまま改善することがなければやがてお前は二度と目覚めなくなるだろう。なんとも悲しい話だ。\n-暗転-\nそんな体質で、出来る仕事は限られていた。だからコンビニのバイトを始めた。幸いにも融通の利く店舗だ。変な客も、多いが。\n-暗転-\n\n＜第零幕：あらすじ＞\nそんな生活を送っていたある日、お前は道端で倒れていた人物に声をかける。それは単なる親切心だった。しかし運命とは皮肉なもので、そいつは忌むべき吸血鬼だった。\nそいつの顔を見た途端に気が付く。お前は、HO月の顔を、いつかどこかで目撃したことがある、と。\n\n月あかりに照らされたその目が、お前を見つめていた記憶。\nお前の家族を殺したのは、目前にいるその吸血鬼、かもしれない。\nお前の胸中にふつふつと湧いたそれは、怒りだった。殺意と言い換えてもいい。\n\nそうしてお前は密かに復讐を決意する。\nどの道お前はじきに目覚めなくなる。ならば敵を道連れにしたっていいじゃないか。もしかすると、トラウマの元である犯人がいなくなれば、お前に夜は戻るのかもしれないのだし。\n\n＜殺害方法＞\nさて、どうやって殺そうか。\n幸いにも、この吸血鬼はなんか知らんがすごい弱ってる。\nしかし腐っても鯛、弱ってたって吸血鬼だ。\n殺すにも、それなりの知識と準備と道具が必要だろう。\n殺害する準備が整うまでは、仲良くするフリをして油断を誘うのがいい。\n…と、お前はそう考え、これからHO月と仲良しごっこをはじめるという訳だ。\n\n＜目的＞\n・夜を取り戻す\n\n☆NPCについて\n・古森メメ\nお前を雇ったコンビニの店長。お前の体調についても知っている(家族を殺されたことまでは話していない)常に真っ黒なサングラスをかけていてかなり”如何にも”な見目をしているのだが如何せん涙もろい。\n面接の際、体調について軽く話したら思いっきり号泣された。以降随分お前のことを気にかけているようで、「ホントはダメなんだけどね」とかなんとか言いながら廃棄のお弁当を寄越したりする。\n\n・ソネザキさん\n古森の飼い猫。なんか知らんがものすごく嫌われていてよく威嚇される。"
+        }
+      ]
     }
   ],
   "schedules": [
