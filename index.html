@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRPG Archive v9.2.3 - Networked Master</title>
+    <title>TRPG Archive v9.4.5 - Networked Master</title>
     <style>
         /* ============================================================
            v7.9.7 正典スタイル（完全凍結・隔離）
@@ -117,9 +117,8 @@
         .reg-tag { font-size: 0.65rem; padding: 3px 8px; border-radius: 4px; color: white; font-weight: bold; }
         .tag-6th { background-color: var(--tag-6th); } .tag-7th { background-color: var(--tag-7th); }
 
-        .btn-action { border: 1px solid var(--border); background: var(--panel-header-bg); font-size: 0.7rem; cursor: pointer; padding: 5px 12px; border-radius: 4px; color: var(--text-main); z-index: 20; position: relative; }
+        .btn-action { border: 1px solid var(--border); background: var(--panel-header-bg); font-size: 0.7rem; cursor: pointer; padding: 5px 12px; border-radius: 4px; color: var(--text-main); z-index: 20; position: relative; transition: 0.2s; }
         .btn-main { background: var(--accent); color: white; border: none; padding: 15px; cursor: pointer; border-radius: 6px; font-weight: bold; width: 100%; font-family: 'Noto Serif JP', serif; font-size: 1.1rem; letter-spacing: 2px; }
-        .btn-main:disabled { background: #999; cursor: not-allowed; }
         .btn-sub { width: 100%; cursor: pointer; font-size: 0.85rem; padding: 10px; border-radius: 6px; border: 2px dashed var(--border); background:none; color:var(--text-sub); margin-bottom: 15px; transition: 0.2s; }
         
         .crop-container { position: relative; width: 180px; height: 180px; margin: 15px auto; border: 3px solid var(--border); border-radius: 50%; overflow: hidden; background: #e0e0e0; cursor: move; }
@@ -153,7 +152,6 @@
         .cal-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
         .cal-day-label { background: var(--panel-header-bg); padding: 12px; text-align: center; font-size: 0.75rem; font-weight: bold; color: var(--text-sub); }
         .cal-cell { background: var(--card-bg); min-height: 105px; padding: 8px; position: relative; transition: 0.2s; cursor: pointer; z-index: 1; min-width: 0; }
-        
         .cal-cell:hover { background: var(--panel-header-bg); }
         .cal-cell.today { background: var(--san-bg); }
         .cal-cell.today .cal-date-num { color: var(--accent); font-weight: bold; text-decoration: underline; }
@@ -221,7 +219,7 @@
     <div class="nav-items">
         <div class="nav-item active" id="nav-cal" onclick="showView('v-calendar')">活動予定表</div>
         <div class="nav-item" id="nav-char" onclick="showView('v-characters')">探索者名簿</div>
-        <div class="nav-item" id="nav-scn" onclick="showView('v-scenarios')">シナリオ一覧</div> 
+        <div class="nav-item" id="nav-scn" onclick="showView('v-scenarios')">シナリオ目録</div> 
     </div>
 
     <div class="nav-stats">
@@ -245,7 +243,7 @@
     <div class="content-area">
         <div id="v-calendar" class="view-section active">
             <div class="panel admin-only">
-                <button class="panel-trigger" onclick="togglePanel('add-sch-form')">＋ 新しい物語の予定を記帳する</button>
+                <button class="panel-trigger" onclick="togglePanel('add-sch-form')">＋ 新しい予定を記帳する</button>
                 <div id="add-sch-form" class="panel-content">
                     <span class="section-label">刻限と状況</span>
                     <div id="sch-date-list-new" class="sch-date-list"></div>
@@ -265,7 +263,7 @@
                     <span style="font-size:0.65rem; color:var(--text-sub); font-weight:bold;">プレイヤー（PL）</span>
                     <div id="sch-ptn-list-pl-new" class="partner-list-pl"></div>
                     <button class="btn-sub admin-only" onclick="addPartnerField(this, 'pl')">＋ プレイヤーを追加</button>
-                    <button class="btn-main" onclick="saveSchedule('new')" style="margin-top:30px;">予定表に書き加える</button>
+                    <button class="btn-main" onclick="saveSchedule('new')" style="margin-top:30px;">予定表に記帳する</button>
                 </div>
             </div>
             
@@ -279,7 +277,7 @@
             <div style="margin-top:60px;">
                 <span class="section-label">進行中の物語</span>
                 <div id="chronicle-ongoing-ui"></div>
-                <span class="section-label" style="margin-top:40px;">控えている物語</span>
+                <span class="section-label" style="margin-top:40px;">待機中の物語</span>
                 <div id="chronicle-upcoming-ui"></div>
                 <span class="section-label" style="margin-top:40px;">調整中の物語</span>
                 <div id="chronicle-adjusting-ui"></div>
@@ -306,7 +304,7 @@
 
         <div id="v-scenarios" class="view-section">
             <div class="panel admin-only">
-                <button class="panel-trigger" onclick="togglePanel('add-scn-form')">＋ 新しいシナリオを目録に記帳する</button>
+                <button class="panel-trigger" onclick="togglePanel('add-scn-form')">＋ 新しいシナリオを記帳する</button>
                 <div id="add-scn-form" class="panel-content">
                     <span class="section-label">目録の情報</span>
                     <div class="form-group"><label>シナリオ題名</label><input type="text" id="scn-in-title" placeholder="物語のタイトルを記入"></div>
@@ -432,7 +430,7 @@
     <div class="secret-list"></div><button class="btn-sub admin-only" onclick="addSecretField(this)">＋ 秘匿項目を追加</button>
 </template>
 
-<div id="viewer-overlay" onclick="closeViewer()"><div class="viewer-book" onclick="event.stopPropagation()"><div class="close-btn" onclick="closeViewer()">×</div><div class="viewer-page left" id="v-page-left"></div><div class="viewer-page" id="v-page-right"></div><div class="viewer-edit-btn-area admin-only" id="v-edit-btn-container"></div></div></div>
+<div id="viewer-overlay" onclick="closeViewer()"><div class="viewer-book" onclick="event.stopPropagation()"><div class="close-btn" onclick="closeViewer()">×</div><div class="viewer-page left" id="v-page-left"></div><div class="viewer-page" id="v-page-right"></div><div class="viewer-edit-btn-area" id="v-edit-btn-container"></div></div></div>
 <div id="editor-overlay"><div class="editor-book"><div class="close-btn" onclick="closeEditor()">×</div><div class="editor-page" id="editor-page-inner"><h2 style="font-family:'Noto Serif JP',serif; border-bottom:1px solid var(--accent); padding-bottom:10px;">探索者の手記を改変する</h2><div id="form-container-edit"></div><button class="btn-main admin-only" id="btn-save-edit" style="margin-top:30px;">変更を名簿に上書きする</button></div></div></div>
 <div id="import-overlay"><div class="import-book"><div class="close-btn" onclick="closeImportOverlay()">×</div><div class="import-page"><h2 style="font-family:'Noto Serif JP',serif; border-bottom:1px solid var(--accent); padding-bottom:10px;">「いあきゃら」テキストから写記する</h2><textarea id="import-text-area" style="height:350px; font-family:monospace; font-size:0.8rem;" placeholder="ここにテキストをペースト..."></textarea><button class="btn-main admin-only" style="margin-top:20px;" onclick="parseAndAddChar()">大書庫へ記帳する</button></div></div></div>
 <div id="sch-viewer-overlay" onclick="closeSchViewer()"><div class="viewer-book" onclick="event.stopPropagation()"><div class="close-btn" onclick="closeSchViewer()">×</div><div class="viewer-page left" id="sv-page-left"></div><div class="viewer-page" id="sv-page-right"></div><div class="viewer-edit-btn-area admin-only" id="sv-edit-btn-container"></div></div></div>
@@ -443,7 +441,7 @@
         <span class="section-label">刻限と状況</span>
         <div id="sch-date-list-edit" class="sch-date-list"></div>
         <button class="btn-sub admin-only" onclick="addSchDateField(this)">＋ 日程を追加</button>
-        <div class="form-group" style="margin-top:15px;"><label>進行状況</label><select id="edit-sch-status"><option value="調整中">調整中</option><option value="待機中">待機中</option><option value="進行中">進行中</option><option value="完走">完走</option></select></div>
+        <div class="form-group" style="margin-top:15px;"><label>進行状況</label><select id="edit-sch-status"><option value="調整中">調整中</option><option value="待機中">待機中</option><option value="進行中">進行中</option><option value="完走"></option></select></div>
         <span class="section-label">物語の題名</span>
         <div class="form-group" style="margin-bottom:15px;"><input type="text" id="edit-sch-title"></div>
         <span class="section-label">役割</span>
@@ -514,7 +512,7 @@
 
 <script>
     /* ============================================================
-       v9.2.3 絶対不凍・堅牢化モジュール（認証テスト機能搭載）
+       v9.4.5 自動共有展開モジュール（共有URL機能搭載＋カード右上にボタン追加）
        ============================================================ */
     const KEY = 'trpg_archive_v74';
     const KEY_SCH = 'trpg_archive_schedules';
@@ -546,36 +544,13 @@
     const SKILLS_6TH = [ ["回避",0],["投擲",25],["こぶし/パンチ",50],["キック",25],["組みつき",25],["頭突き",10],["マーシャルアーツ",1],["拳銃",20],["サブマシンガン",15],["ショットガン",30],["ライフル",25],["弓",10],["目星",25],["聞き耳",25],["図書館",25],["応急手当",30],["精神分析",1],["鍵開け",1],["隠れる",10],["忍び歩き",10],["隠す",15],["追跡",10],["登攀",40],["写真術",10],["運転",20],["製作",5],["操縦",1],["跳躍",25],["水泳",25],["乗馬",5],["機械修理",10],["電気修理",10],["重機械操作",1],["変装",1],["ナビゲート",10],["説得",15],["言いくるめ",5],["信用",15],["値切り",5],["クトルフ神話",0],["心理学",5],["人類学",1],["考古学",1],["医学",5],["天文学",1],["生物学",1],["化学",1],["地質学",1],["物理学",1],["法律",5],["歴史",20],["オカルト",5],["博物学",10],["母国語",0],["ほかの言語",1],["芸術",5],["経理",10],["コンピューター",1],["電子工学",1] ];
     const SKILLS_7TH = [ ["回避",0],["投擲",20],["近接戦闘",25,"格闘"],["射撃",20,"拳銃"],["目星",25],["聞き耳",20],["図書館",20],["応急手当",30],["精神分析",1],["鍵開け",1],["隠密",20],["追跡",10],["登攀",20],["手さばき",10],["鑑定",5],["運転",20],["操縦",1],["跳躍",20],["水泳",20],["乗馬",5],["機械修理",10],["電気修理",10],["重機械操作",1],["変装",5],["ナビゲート",10],["製作",5],["説得",10],["言いくるめ",5],["威圧",15],["魅了",15],["信用",0],["値切り",5],["クトルフ神話",0],["心理学",10],["人類学",1],["考古学",1],["サバイバル",10],["医学",1],["歴史",5],["法律",5],["オカルト",5],["自然",10],["母国語",0],["ほかの言語",1],["芸術",5],["経理",5],["コンピューター",5],["電子工学",1],["科学",1,"数学"] ];
 
-    function safeUTF8ToBase64(str) {
-        const utf8Bytes = new TextEncoder().encode(str);
-        let binaryString = "";
-        for (let i = 0; i < utf8Bytes.length; i++) {
-            binaryString += String.fromCharCode(utf8Bytes[i]);
-        }
-        return window.btoa(binaryString);
-    }
-
-    function safeBase64ToUTF8(base64) {
-        const binaryString = window.atob(base64.replace(/\s/g, ''));
-        const bytes = new Uint8Array(binaryString.length);
-        for (let i = 0; i < binaryString.length; i++) {
-            bytes[i] = binaryString.charCodeAt(i);
-        }
-        return new TextDecoder().decode(bytes);
-    }
-
-    function getGenre(n) { 
-        const cleaned = n.split(/[(\（]/)[0]; 
-        for (const [g, l] of Object.entries(GENRE_MAP)) { 
-            if (l.some(s => cleaned.includes(s))) return g; 
-        } 
-        return "知識"; 
-    }
+    function safeUTF8ToBase64(str) { const utf8Bytes = new TextEncoder().encode(str); let binaryString = ""; for (let i = 0; i < utf8Bytes.length; i++) { binaryString += String.fromCharCode(utf8Bytes[i]); } return window.btoa(binaryString); }
+    function safeBase64ToUTF8(base64) { const binaryString = window.atob(base64.replace(/\s/g, '')); const bytes = new Uint8Array(binaryString.length); for (let i = 0; i < binaryString.length; i++) { bytes[i] = binaryString.charCodeAt(i); } return new TextDecoder().decode(bytes); }
+    function getGenre(n) { const cleaned = n.split(/[(\（]/)[0]; for (const [g, l] of Object.entries(GENRE_MAP)) { if (l.some(s => cleaned.includes(s))) return g; } return "知識"; }
 
     window.onload = async () => { 
         try {
             if(localStorage.getItem('trpg_theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); 
-            
             if (window.location.hostname.includes('github.io') && !syncConfig.owner) {
                 syncConfig.owner = window.location.hostname.split('.')[0];
                 syncConfig.repo = window.location.pathname.split('/')[1] || '';
@@ -585,7 +560,22 @@
             initNewForm(); 
             renderAll();
             
-            showView('v-calendar'); 
+            // ★ v9.4.4 URLパラメータのチェック（共有URLから飛んできた場合の処理）
+            const urlParams = new URLSearchParams(window.location.search);
+            const sharedCharName = urlParams.get('char');
+            if (sharedCharName) {
+                showView('v-characters');
+                const targetIdx = chars.findIndex(c => c.name === sharedCharName);
+                if (targetIdx !== -1) {
+                    openViewer(targetIdx);
+                } else {
+                    alert("指定された探索者の記録が見つかりませんでした。");
+                    showView('v-calendar'); 
+                }
+            } else {
+                showView('v-calendar'); 
+            }
+            
         } catch(e) {
             console.error("起動時致命的エラー", e);
             document.getElementById('app-mode-disp').innerText = "⚠ 起動エラー(復旧試行)";
@@ -616,50 +606,33 @@
                     syncConfig.sha = data.sha;
                     const decoded = safeBase64ToUTF8(data.content);
                     const parsed = JSON.parse(decoded);
-                    chars = parsed.chars || [];
-                    schedules = parsed.schedules || [];
-                    scnLib = parsed.scnLib || [];
-                    
-                    localStorage.setItem(KEY, JSON.stringify(chars));
-                    localStorage.setItem(KEY_SCH, JSON.stringify(schedules));
-                    localStorage.setItem(KEY_SCN_LIB, JSON.stringify(scnLib));
-                    localStorage.setItem(KEY_SYNC, JSON.stringify(syncConfig));
+                    chars = parsed.chars || []; schedules = parsed.schedules || []; scnLib = parsed.scnLib || [];
+                    localStorage.setItem(KEY, JSON.stringify(chars)); localStorage.setItem(KEY_SCH, JSON.stringify(schedules)); localStorage.setItem(KEY_SCN_LIB, JSON.stringify(scnLib)); localStorage.setItem(KEY_SYNC, JSON.stringify(syncConfig));
                     fetchedFromRemote = true;
                 }
-            } catch (e) {
-                console.warn("通信読込エラー。ローカルデータを表示します。", e);
-            }
+            } catch (e) { console.warn("通信読込エラー。ローカルデータを表示します。", e); }
         }
-        
         if (!fetchedFromRemote) {
             try { chars = JSON.parse(localStorage.getItem(KEY)) || []; } catch(e){ chars = []; }
             try { schedules = JSON.parse(localStorage.getItem(KEY_SCH)) || []; } catch(e){ schedules = []; }
             try { scnLib = JSON.parse(localStorage.getItem(KEY_SCN_LIB)) || []; } catch(e){ scnLib = []; }
         }
-        
         schedules = schedules.map(s => { if (!s.dates && s.date) s.dates = [s.date]; if (!s.dates) s.dates = []; return s; }); 
     }
 
     async function pushData() {
         if (!isEditMode || !syncConfig.owner || !syncConfig.repo || !syncConfig.token) return;
-        
         const disp = document.getElementById('app-mode-disp');
-        disp.innerText = "🔄 通信中...";
-        disp.className = "sync-status status-syncing";
-
+        disp.innerText = "🔄 通信中..."; disp.className = "sync-status status-syncing";
         try {
             const payload = { chars, schedules, scnLib };
             const jsonStr = JSON.stringify(payload, null, 2);
             const encoded = safeUTF8ToBase64(jsonStr);
-            
             let body = { message: "TRPG Archive Auto-Sync", content: encoded, branch: "main" };
             if (syncConfig.sha) body.sha = syncConfig.sha;
-
             const url = `https://api.github.com/repos/${syncConfig.owner}/${syncConfig.repo}/contents/${syncConfig.path}`;
             const headers = { 'Authorization': `token ${syncConfig.token}`, 'Content-Type': 'application/json' };
-
             let res = await fetch(url, { method: 'PUT', headers, body: JSON.stringify(body) });
-            
             if (res.status === 409 || res.status === 422) {
                 const getRes = await fetch(url + '?ref=main', { headers });
                 if (getRes.ok) {
@@ -669,20 +642,15 @@
                     res = await fetch(url, { method: 'PUT', headers, body: JSON.stringify(body) });
                 }
             }
-
             if (res.ok) {
                 const data = await res.json();
                 syncConfig.sha = data.content.sha;
                 localStorage.setItem(KEY_SYNC, JSON.stringify(syncConfig));
-                disp.innerText = "✓ 同期完了";
-                disp.className = "sync-status status-admin";
-            } else {
-                throw new Error(`API Error: ${res.status}`);
-            }
+                disp.innerText = "✓ 同期完了"; disp.className = "sync-status status-admin";
+            } else { throw new Error(`API Error: ${res.status}`); }
         } catch (e) { 
             console.error("同期エラー:", e); 
-            disp.innerText = "⚠ 通信エラー";
-            disp.className = "sync-status status-error";
+            disp.innerText = "⚠ 通信エラー"; disp.className = "sync-status status-error";
             setTimeout(() => { if(isEditMode) applyAppMode(); }, 3000);
         }
     }
@@ -694,99 +662,43 @@
         try { renderScenarioLibrary(); } catch(e){ console.error(e); }
     }
 
-    // --- 同期設定画面の制御 ---
-    function openSyncSettings() {
-        document.getElementById('sync-owner').value = syncConfig.owner;
-        document.getElementById('sync-repo').value = syncConfig.repo;
-        document.getElementById('sync-token').value = syncConfig.token;
-        document.getElementById('sync-overlay').style.display = 'flex';
-    }
+    function openSyncSettings() { document.getElementById('sync-owner').value = syncConfig.owner; document.getElementById('sync-repo').value = syncConfig.repo; document.getElementById('sync-token').value = syncConfig.token; document.getElementById('sync-overlay').style.display = 'flex'; }
     function closeSyncSettings() { document.getElementById('sync-overlay').style.display = 'none'; }
-    
-    // ★ v9.2.3: 認証テスト付きの保存処理
     async function saveSyncSettings() {
         const ownerVal = document.getElementById('sync-owner').value.trim();
         const repoVal = document.getElementById('sync-repo').value.trim();
         const tokenVal = document.getElementById('sync-token').value.trim();
-        
-        if (!tokenVal) {
-            clearSyncSettings();
-            return;
-        }
-
-        const btn = document.querySelector('#sync-overlay .btn-main');
-        const origText = btn.innerText;
-        btn.innerText = "認証テスト中...";
-        btn.disabled = true;
-
+        if (!tokenVal) { clearSyncSettings(); return; }
+        const btn = document.querySelector('#sync-overlay .btn-main'); const origText = btn.innerText; btn.innerText = "認証テスト中..."; btn.disabled = true;
         try {
-            // GitHub APIでリポジトリへのアクセス権限をテスト
-            const res = await fetch(`https://api.github.com/repos/${ownerVal}/${repoVal}`, {
-                headers: { 'Authorization': `token ${tokenVal}` }
-            });
-
+            const res = await fetch(`https://api.github.com/repos/${ownerVal}/${repoVal}`, { headers: { 'Authorization': `token ${tokenVal}` } });
             if (res.ok) {
-                // 認証成功時のみ保存してモード移行
-                syncConfig.owner = ownerVal;
-                syncConfig.repo = repoVal;
-                syncConfig.token = tokenVal;
+                syncConfig.owner = ownerVal; syncConfig.repo = repoVal; syncConfig.token = tokenVal;
                 localStorage.setItem(KEY_SYNC, JSON.stringify(syncConfig));
-                isEditMode = true;
-                applyAppMode();
-                closeSyncSettings();
-                pushData(); // 同期開始
-            } else {
-                alert("認証に失敗しました。トークンやリポジトリ名が正しいか確認してください。\n（エラー: " + res.status + "）");
-            }
-        } catch (e) {
-            alert("通信エラーが発生しました。ネットワーク状況を確認してください。");
-        } finally {
-            btn.innerText = origText;
-            btn.disabled = false;
-        }
+                isEditMode = true; applyAppMode(); closeSyncSettings(); pushData(); 
+            } else { alert("認証に失敗しました。トークンやリポジトリ名が正しいか確認してください。\n（エラー: " + res.status + "）"); }
+        } catch (e) { alert("通信エラーが発生しました。ネットワーク状況を確認してください。"); } finally { btn.innerText = origText; btn.disabled = false; }
     }
-    
-    function clearSyncSettings() {
-        syncConfig.token = '';
-        localStorage.setItem(KEY_SYNC, JSON.stringify(syncConfig));
-        isEditMode = false;
-        applyAppMode();
-        closeSyncSettings();
-    }
+    function clearSyncSettings() { syncConfig.token = ''; localStorage.setItem(KEY_SYNC, JSON.stringify(syncConfig)); isEditMode = false; applyAppMode(); closeSyncSettings(); }
 
     function updateStats() {
-        let plCount = 0;
-        let kpCountTotal = 0;
-        let pCounts = {};
-
+        let plCount = 0; let kpCountTotal = 0; let pCounts = {};
         scnLib.forEach(s => {
             if (s.genre === 'passed') plCount++;
             if (s.kpCount) kpCountTotal += Number(s.kpCount);
-
             if (s.genre === 'passed') {
                 const addPtn = (arr) => {
-                    if(!arr) return;
-                    let list = Array.isArray(arr) ? arr : arr.split(/[\/／,、]/);
-                    list.forEach(name => {
-                        let n = name.trim();
-                        if(n && n !== MY_NAME && n !== '-') { pCounts[n] = (pCounts[n] || 0) + 1; }
-                    });
+                    if(!arr) return; let list = Array.isArray(arr) ? arr : arr.split(/[\/／,、]/);
+                    list.forEach(name => { let n = name.trim(); if(n && n !== MY_NAME && n !== '-') { pCounts[n] = (pCounts[n] || 0) + 1; } });
                 };
                 addPtn(s.kp); addPtn(s.pl); if(s.partners) addPtn(s.partners); 
             }
         });
-
-        document.getElementById('stat-pl').innerText = plCount;
-        document.getElementById('stat-kp').innerText = kpCountTotal;
-
+        document.getElementById('stat-pl').innerText = plCount; document.getElementById('stat-kp').innerText = kpCountTotal;
         let sortedP = Object.entries(pCounts).sort((a, b) => b[1] - a[1]).slice(0, 3);
-        let pArea = document.getElementById('stat-partners');
-        pArea.innerHTML = '';
-        if (sortedP.length === 0) {
-            pArea.innerHTML = '<div style="color:rgba(255,255,255,0.3); font-style:italic; font-size:0.7rem; text-align:center;">記録がありません</div>';
-        } else {
-            sortedP.forEach(p => { pArea.innerHTML += `<div class="stat-partner-row"><span class="stat-partner-name" title="${p[0]}">${p[0]}</span><span class="stat-partner-count">${p[1]}回</span></div>`; });
-        }
+        let pArea = document.getElementById('stat-partners'); pArea.innerHTML = '';
+        if (sortedP.length === 0) { pArea.innerHTML = '<div style="color:rgba(255,255,255,0.3); font-style:italic; font-size:0.7rem; text-align:center;">記録がありません</div>'; } 
+        else { sortedP.forEach(p => { pArea.innerHTML += `<div class="stat-partner-row"><span class="stat-partner-name" title="${p[0]}">${p[0]}</span><span class="stat-partner-count">${p[1]}回</span></div>`; }); }
     }
     
     function syncScenarioToChar(charName, scenarioTitle) {
@@ -794,11 +706,7 @@
         const charIdx = chars.findIndex(c => c.name === charName);
         if (charIdx !== -1) {
             if (!chars[charIdx].scns) chars[charIdx].scns = [];
-            if (!chars[charIdx].scns.includes(scenarioTitle)) {
-                chars[charIdx].scns.push(scenarioTitle);
-                localStorage.setItem(KEY, JSON.stringify(chars));
-                renderChars(); pushData();
-            }
+            if (!chars[charIdx].scns.includes(scenarioTitle)) { chars[charIdx].scns.push(scenarioTitle); localStorage.setItem(KEY, JSON.stringify(chars)); renderChars(); pushData(); }
         }
     }
 
@@ -806,18 +714,98 @@
         if (s.role === 'プレイヤー（PL）') {
             const exists = scnLib.some(scn => scn.title === s.title && scn.genre === 'passed');
             if (!exists) {
-                const kpArr = (s.partners_kp || []).map(p => p.name);
-                const plArr = (s.partners_pl || []).map(p => p.name);
-                let passDate = "";
-                if (s.dates && s.dates.length > 0) {
-                    const sortedDates = [...s.dates].sort();
-                    passDate = sortedDates[sortedDates.length - 1].split('T')[0];
-                }
+                const kpArr = (s.partners_kp || []).map(p => p.name); const plArr = (s.partners_pl || []).map(p => p.name);
+                let passDate = ""; if (s.dates && s.dates.length > 0) { const sortedDates = [...s.dates].sort(); passDate = sortedDates[sortedDates.length - 1].split('T')[0]; }
                 scnLib.push({ id: Date.now() + Math.floor(Math.random()*1000), title: s.title, genre: 'passed', date: passDate, pc: s.charName || "", kp: kpArr, pl: plArr, kpCount: 0 });
-                localStorage.setItem(KEY_SCN_LIB, JSON.stringify(scnLib));
-                renderScenarioLibrary(); pushData();
+                localStorage.setItem(KEY_SCN_LIB, JSON.stringify(scnLib)); renderScenarioLibrary(); pushData();
             }
         }
+    }
+
+    // ★ v9.4.5 共有URLコピー機能
+    function copyShareUrl(idx, btn) {
+        const c = chars[idx];
+        if (!c || !c.name) return;
+        // 現在のURL（?以降を除いたクリーンなURL）を取得し、パラメータを付与
+        const baseUrl = window.location.origin + window.location.pathname;
+        const shareUrl = baseUrl + '?char=' + encodeURIComponent(c.name);
+        
+        navigator.clipboard.writeText(shareUrl).then(() => {
+            const orig = btn.innerText;
+            btn.innerText = "URL出力完了！";
+            btn.style.background = "var(--important)";
+            btn.style.color = "white";
+            setTimeout(() => { 
+                btn.innerText = orig; 
+                btn.style.background = "transparent"; 
+                btn.style.color = "var(--important)"; 
+            }, 2000);
+        }).catch(err => {
+            console.error(err);
+            alert("URLのコピーに失敗しました。");
+        });
+    }
+
+    function copyToCcfolia(idx, btn) {
+        const c = chars[idx];
+        const str = Number(c.stats.str) || 0; const con = Number(c.stats.con) || 0; const pow = Number(c.stats.pow) || 0; const dex = Number(c.stats.dex) || 0; const app = Number(c.stats.app) || 0; const siz = Number(c.stats.siz) || 0; const int = Number(c.stats.int) || 0; const edu = Number(c.stats.edu) || 0; const san = Number(c.stats.san) || 0;
+        const luck = (c.calcStats && c.calcStats.luck) ? c.calcStats.luck : 0;
+        const hp = Math.ceil((con+siz)/(c.regulation === '7th' ? 10 : 2));
+        const mp = c.regulation === '7th' ? Math.floor(pow/5) : pow;
+        const ide = c.regulation === '7th' ? int : int*5;
+        const know = c.regulation === '7th' ? edu : edu*5;
+        
+        const s_val = str + siz;
+        let db; 
+        if(c.regulation === '6th') db = (s_val<=12)?"-1d6":(s_val<=16)?"-1d4":(s_val<=24)?"0":(s_val<=32)?"+1d4":"+1d6"; 
+        else db = (s_val<65)?"-2":(s_val<85)?"-1":(s_val<125)?"0":(s_val<165)?"+1d4":"+1d6";
+
+        let cc = c.regulation === '7th' ? "CC" : "CCB";
+        let commands = `${cc}<={SAN} 【SAN値チェック】\n${cc}<=${luck} 【幸運】\n${cc}<=${ide} 【アイデア】\n${cc}<=${know} 【知識】\n\n`;
+
+        const statKeys = [ { key: "str", label: "STR" }, { key: "con", label: "CON" }, { key: "pow", label: "POW" }, { key: "dex", label: "DEX" }, { key: "app", label: "APP" }, { key: "siz", label: "SIZ" }, { key: "int", label: "INT" }, { key: "edu", label: "EDU" } ];
+        statKeys.forEach(st => {
+            let val = Number(c.stats[st.key]) || 0;
+            if (c.regulation === '6th') commands += `${cc}<=${val * 5} 【${st.label}×5】\n`;
+            else commands += `${cc}<=${val} 【${st.label}】\n`;
+        });
+        commands += `\n`;
+
+        let dbForCmd = db === "0" ? "" : db;
+        commands += `1d3${dbForCmd} 【ダメージ1d3】\n1d6${dbForCmd} 【ダメージ1d6】\n1d8${dbForCmd} 【ダメージ1d8】\n1d10${dbForCmd} 【ダメージ1d10】\n\n`;
+
+        (c.skills || []).forEach(s => {
+            if(Number(s.t) > 0) {
+                let n = s.sub ? `${s.n}(${s.sub})` : s.n;
+                commands += `${cc}<=${s.t} 【${n}】\n`;
+            }
+        });
+
+        const statusArray = [ { label: "HP", value: hp, max: hp }, { label: "MP", value: mp, max: mp }, { label: "SAN", value: san, max: san } ];
+        if (c.regulation === '7th') { statusArray.push({ label: "幸運", value: luck, max: 99 }); }
+
+        let validIconUrl = (c.img && c.img.startsWith('http')) ? c.img : "";
+
+        const ccfoliaData = {
+            kind: "character",
+            data: {
+                name: c.name || "名無し",
+                memo: `${c.job || '無職'} / ${c.age || '?'}歳 / ${c.height || '?'}cm\nレギュレーション: ${c.regulation === '7th' ? '7版' : '6版'}`,
+                initiative: dex, externalUrl: window.location.origin + window.location.pathname + '?char=' + encodeURIComponent(c.name || ''), status: statusArray,
+                params: [ { label: "STR", value: String(str) }, { label: "CON", value: String(con) }, { label: "POW", value: String(pow) }, { label: "DEX", value: String(dex) }, { label: "APP", value: String(app) }, { label: "SIZ", value: String(siz) }, { label: "INT", value: String(int) }, { label: "EDU", value: String(edu) }, { label: "DB", value: db } ],
+                iconUrl: validIconUrl, faces: [], x: 0, y: 0, angle: 0, width: 4, height: 4, active: true, secret: false, invisible: false, hideStatus: false, color: "", commands: commands
+            }
+        };
+
+        navigator.clipboard.writeText(JSON.stringify(ccfoliaData)).then(() => {
+            const orig = btn.innerText;
+            btn.innerText = "コピー完了！";
+            btn.style.background = "var(--important)";
+            setTimeout(() => { btn.innerText = orig; btn.style.background = "var(--accent)"; }, 2000);
+        }).catch(err => {
+            console.error(err);
+            alert("クリップボードへのコピーに失敗しました。");
+        });
     }
 
     function showView(id) { document.querySelectorAll('.view-section').forEach(v => v.classList.remove('active')); document.getElementById(id).classList.add('active'); document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active')); const navMap = { 'v-calendar': 'nav-cal', 'v-characters': 'nav-char', 'v-scenarios': 'nav-scn' }; if(navMap[id]) document.getElementById(navMap[id]).classList.add('active'); if(id === 'v-calendar') renderScheduleView(); if(id === 'v-scenarios') renderScenarioLibrary(); }
@@ -833,7 +821,59 @@
     function applySkillFilter(checkbox) { const p = checkbox.closest('.panel-content, .editor-page'); const rows = p.querySelectorAll('.sk-row'); rows.forEach(row => { const j=Number(row.querySelector('.sk-j').value)||0, i=Number(row.querySelector('.sk-i').value)||0, g=Number(row.querySelector('.sk-g').value)||0, o=Number(row.querySelector('.sk-o').value)||0; const isAcq = (j+i+g+o)>0; row.style.setProperty('display', (checkbox.checked && !isAcq) ? 'none' : 'grid', 'important'); }); }
     function recalc(el) { const p = el.closest('.panel-content, .editor-page'); if(!p) return; const r = p.querySelector('input[type="radio"]:checked').value; const g = (c) => Number(p.querySelector('.'+c).value) || 0; const str=g('in-str'), con=g('in-con'), pow=g('in-pow'), dex=g('in-dex'), app=g('in-app'), siz=g('in-siz'), int=g('in-int'), edu=g('in-edu'); let hp, mp, ide, know, db; if(r === '6th') { hp = Math.ceil((con + siz) / 2); mp = pow; ide = int * 5; know = edu * 5; const s = str + siz; db = (s<=12)?"-1d6":(s<=16)?"-1d4":(s<=24)?"0":(s<=32)?"+1d4":"+1d6"; } else { hp = Math.floor((con + siz) / 10); mp = Math.floor(pow / 5); ide = int; know = edu; const s = str + siz; db = (s<65)?"-2":(s<85)?"-1":(s<125)?"0":(s<165)?"+1d4":"+1d6"; } p.querySelector('.val-hp').innerText = hp; p.querySelector('.val-mp').innerText = mp; p.querySelector('.val-db').innerText = db; p.querySelector('.val-ide').innerText = ide; p.querySelector('.val-know').innerText = know; const pattern = p.querySelector('.pt-job-pattern').value; const manualInput = p.querySelector('.pt-job-manual'); const extraRow = p.querySelector('.pt-extra-row'); let jobMax = 0; const m = r === '7th' ? 2 : 10; const total_m = r === '7th' ? 4 : 20; if(pattern === 'manual') { if(extraRow) extraRow.classList.add('open'); jobMax = Number(manualInput?.value) || 0; } else { if(extraRow) extraRow.classList.remove('open'); if(pattern === 'edu_only') jobMax = edu * total_m; else jobMax = (edu * m) + (g('in-' + pattern) * m); } const intMax = r === '7th' ? int * 2 : int * 10; let jUsed = 0, iUsed = 0; p.querySelectorAll('.sk-row').forEach(row => { jUsed += Number(row.querySelector('.sk-j').value) || 0; iUsed += Number(row.querySelector('.sk-i').value) || 0; }); const upd = (u, max, pre) => { const uEl=p.querySelector('.pt-' + pre + '-used'), mEl=p.querySelector('.pt-' + pre + '-max'), rEl=p.querySelector('.pt-' + pre + '-remain'); uEl.innerText = u; mEl.innerText = max; const rem = max - u; if(rEl) rEl.innerText = '残り: ' + rem; const color = rem < 0 ? 'var(--san-border)' : rem === 0 ? 'var(--important)' : 'var(--accent)'; uEl.style.color = color; if(rEl) rEl.style.color = color; }; upd(jUsed, jobMax, 'job'); upd(iUsed, intMax, 'int'); }
     
-    function renderChars() { const ui = document.getElementById('char-list-ui'); ui.innerHTML = ''; const sortVal = document.getElementById('sort-order').value; const filterVal = document.getElementById('filter-reg').value; let dList = [...chars]; if(filterVal !== 'all') dList = dList.filter(c => c.regulation === filterVal); if(sortVal === 'new') dList.reverse(); else if(sortVal === 'name') dList.sort((a,b) => (a.kana || a.name).localeCompare(b.kana || b.name, 'ja')); else if(sortVal === 'san_desc') dList.sort((a,b) => Number(b.stats.san) - Number(a.stats.san)); else if(sortVal === 'san_asc') dList.sort((a,b) => Number(a.stats.san) - Number(b.stats.san)); document.getElementById('char-count-disp').innerText = dList.length; dList.forEach((c) => { const i = chars.indexOf(c); let scnDisp = (c.scns && c.scns.length) ? c.scns[0] + (c.scns.length > 1 ? '<span class="scn-count">+' + (c.scns.length - 1) + '</span>' : '') : '—— 未通過 ——'; ui.innerHTML += '<div class="char-card" onclick="openViewer(' + i + ')"><img src="' + (c.img || '') + '" class="char-icon" onerror="this.src=\'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIGZpbGw9IiNlMGUwZTAiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzlhOWE5YSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIEltZzwvdGV4dD48L3N2Zz4=\'"><div style="flex:1"><div style="position:absolute; top:20px; right:20px; display:flex; gap:8px;" class="admin-only"><button onclick="event.stopPropagation(); editChar(' + i + ')" class="btn-action">編集</button><button onclick="event.stopPropagation(); deleteChar(' + i + ')" class="btn-action del">削除</button></div><div class="name-area" style="margin-bottom:12px;"><h3 class="char-name-ruby"><ruby>' + c.name + '<rt>' + (c.kana || '') + '</rt></ruby></h3><span class="reg-tag ' + (c.regulation === '7th' ? 'tag-7th' : 'tag-6th') + '">' + (c.regulation === '7th' ? '7th Ed.' : '6th Ed.') + '</span></div><div class="basic-info-row"><div class="info-item"><span class="info-label-inline">職業：</span>' + (c.job || '-') + '</div><span class="info-sep">/</span><div class="info-item"><span class="info-label-inline">性別：</span>' + (c.sex || '-') + '</div><span class="info-sep">/</span><div class="info-item"><span class="info-label-inline">年齢：</span>' + (c.age || '-') + '</div><span class="info-sep">/</span><div class="info-item"><span class="info-label-inline">身長：</span>' + (c.height || '-') + '</div><div class="info-item" style="width:100%; margin-top:2px;"><span class="info-label-inline">通過シナリオ：</span>' + scnDisp + '</div></div><div style="display:grid; grid-template-columns: repeat(9, 1fr); gap:4px;">' + ['str','con','pow','dex','app','siz','int','edu'].map(k => '<div style="text-align:center; background:var(--panel-header-bg); border-radius:4px; padding:4px 0;"><div style="font-size:0.55rem; color:var(--text-sub); font-weight:bold;">' + k.toUpperCase() + '</div><div style="font-size:0.9rem; font-weight:bold; font-family:\'Noto Serif JP\', serif;">' + (c.stats[k] || '-') + '</div></div>').join('') + '<div style="text-align:center; background:var(--san-bg); border:1px solid var(--san-border); border-radius:4px; padding:3px 0;"><div style="font-size:0.55rem; color:var(--accent); font-weight:bold;">SAN</div><div style="font-size:0.9rem; font-weight:bold; color:var(--accent); font-family:\'Noto Serif JP\', serif;">' + (c.stats.san || '-') + '</div></div></div></div></div>'; }); }
+    // ★ ここにURL共有ボタンを追加
+    function renderChars() { 
+        const ui = document.getElementById('char-list-ui'); ui.innerHTML = ''; 
+        const sortVal = document.getElementById('sort-order').value; const filterVal = document.getElementById('filter-reg').value; 
+        let dList = [...chars]; 
+        if(filterVal !== 'all') dList = dList.filter(c => c.regulation === filterVal); 
+        if(sortVal === 'new') dList.reverse(); 
+        else if(sortVal === 'name') dList.sort((a,b) => (a.kana || a.name).localeCompare(b.kana || b.name, 'ja')); 
+        else if(sortVal === 'san_desc') dList.sort((a,b) => Number(b.stats.san) - Number(a.stats.san)); 
+        else if(sortVal === 'san_asc') dList.sort((a,b) => Number(a.stats.san) - Number(b.stats.san)); 
+        document.getElementById('char-count-disp').innerText = dList.length; 
+        
+        dList.forEach((c) => { 
+            const i = chars.indexOf(c); 
+            let scnDisp = (c.scns && c.scns.length) ? c.scns[0] + (c.scns.length > 1 ? `<span class="scn-count">+${c.scns.length - 1}</span>` : '') : '—— 未通過 ——'; 
+            
+            ui.innerHTML += `
+                <div class="char-card" onclick="openViewer(${i})">
+                    <img src="${c.img || ''}" class="char-icon" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIGZpbGw9IiNlMGUwZTAiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzlhOWE5YSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIEltZzwvdGV4dD48L3N2Zz4='">
+                    <div style="flex:1">
+                        <div style="position:absolute; top:20px; right:20px; display:flex; gap:8px;">
+                            <button onclick="event.stopPropagation(); copyShareUrl(${i}, this)" class="btn-action" style="border-color:var(--important); color:var(--important); background:transparent; padding:4px 10px;">URL出力</button>
+                            <button onclick="event.stopPropagation(); copyToCcfolia(${i}, this)" class="btn-action" style="background:var(--accent); color:white; border:none; padding:4px 10px;">駒出力</button>
+                            <button onclick="event.stopPropagation(); editChar(${i})" class="btn-action admin-only">編集</button>
+                            <button onclick="event.stopPropagation(); deleteChar(${i})" class="btn-action del admin-only">削除</button>
+                        </div>
+                        <div class="name-area" style="margin-bottom:12px;">
+                            <h3 class="char-name-ruby"><ruby>${c.name}<rt>${c.kana || ''}</rt></ruby></h3>
+                            <span class="reg-tag ${c.regulation === '7th' ? 'tag-7th' : 'tag-6th'}">${c.regulation === '7th' ? '7th Ed.' : '6th Ed.'}</span>
+                        </div>
+                        <div class="basic-info-row">
+                            <div class="info-item"><span class="info-label-inline">職業：</span>${c.job || '-'}</div><span class="info-sep">/</span>
+                            <div class="info-item"><span class="info-label-inline">性別：</span>${c.sex || '-'}</div><span class="info-sep">/</span>
+                            <div class="info-item"><span class="info-label-inline">年齢：</span>${c.age || '-'}</div><span class="info-sep">/</span>
+                            <div class="info-item"><span class="info-label-inline">身長：</span>${c.height || '-'}</div>
+                            <div class="info-item" style="width:100%; margin-top:2px;"><span class="info-label-inline">通過シナリオ：</span>${scnDisp}</div>
+                        </div>
+                        <div style="display:grid; grid-template-columns: repeat(9, 1fr); gap:4px;">
+                            ${['str','con','pow','dex','app','siz','int','edu'].map(k => `
+                                <div style="text-align:center; background:var(--panel-header-bg); border-radius:4px; padding:4px 0;">
+                                    <div style="font-size:0.55rem; color:var(--text-sub); font-weight:bold;">${k.toUpperCase()}</div>
+                                    <div style="font-size:0.9rem; font-weight:bold; font-family:'Noto Serif JP', serif;">${c.stats[k] || '-'}</div>
+                                </div>
+                            `).join('')}
+                            <div style="text-align:center; background:var(--san-bg); border:1px solid var(--san-border); border-radius:4px; padding:3px 0;">
+                                <div style="font-size:0.55rem; color:var(--accent); font-weight:bold;">SAN</div>
+                                <div style="font-size:0.9rem; font-weight:bold; color:var(--accent); font-family:'Noto Serif JP', serif;">${c.stats.san || '-'}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`; 
+        }); 
+    }
     
     function openViewer(i) {
         const c = chars[i]; const left = document.getElementById('v-page-left'); const right = document.getElementById('v-page-right'); const editContainer = document.getElementById('v-edit-btn-container');
@@ -884,11 +924,18 @@
         
         right.innerHTML = rightHtml;
         
-        editContainer.innerHTML = '<div style="display:flex; gap:10px;"><button onclick="editChar(' + i + ')" class="btn-action admin-only" style="font-size:0.9rem; padding:8px 20px;">編集</button><button onclick="deleteCharFromViewer(' + i + ')" class="btn-action del admin-only" style="font-size:0.9rem; padding:8px 20px;">削除</button></div>';
+        editContainer.innerHTML = `
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <button onclick="copyShareUrl(${i}, this)" class="btn-action" style="font-size:0.9rem; padding:8px 20px; border-color:var(--important); color:var(--important); background:transparent;">URL出力</button>
+                <button onclick="copyToCcfolia(${i}, this)" class="btn-action" style="font-size:0.9rem; padding:8px 20px; background:var(--accent); color:white; border:none;">駒出力</button>
+                <button onclick="editChar(${i})" class="btn-action admin-only" style="font-size:0.9rem; padding:8px 20px;">編集</button>
+                <button onclick="deleteCharFromViewer(${i})" class="btn-action del admin-only" style="font-size:0.9rem; padding:8px 20px;">削除</button>
+            </div>
+        `;
         
         document.getElementById('viewer-overlay').style.display = 'flex';
     }
-    
+
     function deleteCharFromViewer(i) {
         if(confirm("名簿から削除しますか？")) {
             chars.splice(i, 1);
@@ -909,7 +956,7 @@
 
         const container = document.getElementById('form-container-edit'); container.innerHTML = ''; container.appendChild(createFormNode('edit')); const f = (cls) => container.querySelector('.'+cls); const listIn = container.querySelector('.skill-list-in'); f('in-name').value = c.name; f('in-kana').value = c.kana; f('in-job').value = c.job; f('in-sex').value = c.sex; f('in-age').value = c.age; f('in-height').value = c.height; f('in-img-data').value = c.img; f('crop-img-el').src = c.img; ["str","con","pow","dex","app","siz","int","edu","san"].forEach(k => { f('in-'+k).value = c.stats[k]; }); container.querySelector('input[name="reg_edit"][value="' + (c.regulation || '6th') + '"]').checked = true; updatePatternOptions(container, c.regulation || '6th'); f('pt-job-pattern').value = c.ptPattern || 'edu_only'; if(f('pt-job-manual')) f('pt-job-manual').value = c.ptManual || 0; ["戦闘", "探索", "行動", "交渉", "知識"].forEach(g => { const header = document.createElement('div'); header.className = 'skill-genre-header'; header.innerText = g + "技能"; listIn.appendChild(header); listIn.appendChild(createHeaderRow()); const group = document.createElement('div'); group.className = 'genre-group'; listIn.appendChild(group); c.skills.filter(s => (s.gr || getGenre(s.n)) === g).forEach(s => addSkillFieldToContainer(group, s.n, s.b, s.j, s.i, s.g, s.o, s.sub || "", g)); const presets = (c.regulation === '7th' ? SKILLS_7TH : SKILLS_6TH); presets.filter(p => getGenre(p[0]) === g).forEach(p => { if(!c.skills.some(s => s.n === p[0])) addSkillFieldToContainer(group, p[0], p[1], 0, 0, 0, 0, p[2] || "", g); }); const addBtn = document.createElement('button'); addBtn.className = 'btn-sub admin-only'; addBtn.innerText = '＋ ' + g + '技能を追加'; addBtn.onclick = () => addSkillFieldToContainer(group, "", 0, 0, 0, 0, 0, "", g); listIn.appendChild(addBtn); }); recalc(f('in-str')); f('val-luck').value = (c.calcStats && c.calcStats.luck) ? c.calcStats.luck : 0; c.scns?.forEach(v => addScnField(container, v)); c.profs?.forEach(p => addProfField(container, p.t, p.x)); c.secrets?.forEach(p => addSecretField(container, p.t, p.x)); document.getElementById('btn-save-edit').onclick = () => saveData('edit'); document.getElementById('editor-overlay').style.display = 'flex'; 
     }
-    
+
     function saveData(mode) { const c = document.getElementById(mode === 'new' ? 'form-container-new' : 'form-container-edit'); const f = (cl) => c.querySelector('.'+cl); if(!f('in-name').value) return alert("名前を記入してください"); const sks = Array.from(c.querySelectorAll('.sk-row')).map(r => { return { n: r.querySelector('.sk-name').value, b: r.querySelector('.sk-b').value, j: r.querySelector('.sk-j').value, i: r.querySelector('.sk-i').value, g: r.querySelector('.sk-g').value, o: r.querySelector('.sk-o').value, t: r.querySelector('.sk-total').value, sub: r.querySelector('.sk-sub')?.value || "", gr: r.querySelector('.sk-g-fix').value }; }).filter(s => Number(s.j)||Number(s.i)||Number(s.g)||Number(s.o)); const d = { regulation: c.querySelector('input[type="radio"]:checked').value, name: f('in-name').value, kana: f('in-kana').value, job: f('in-job').value, sex: f('in-sex').value, age: f('in-age').value, height: f('in-height').value, img: f('in-img-data').value, stats: { str: f('in-str').value, con: f('in-con').value, pow: f('in-pow').value, dex: f('in-dex').value, app: f('in-app').value, siz: f('in-siz').value, int: f('in-int').value, edu: f('in-edu').value, san: f('in-san').value }, calcStats: { luck: f('val-luck').value }, ptPattern: f('pt-job-pattern').value, ptManual: f('pt-job-manual')?.value || 0, skills: sks, scns: Array.from(c.querySelectorAll('.scn-in')).map(i => i.value).filter(v => v), profs: Array.from(c.querySelectorAll('.prof-list > div')).map(p => ({ t: p.querySelector('.prof-t').value, x: p.querySelector('.prof-x').value })), secrets: Array.from(c.querySelectorAll('.secret-list > div')).map(p => ({ t: p.querySelector('.secret-t').value, x: p.querySelector('.secret-x').value })) }; if(mode === 'new') { chars.push(d); cancelAdd(); } else { chars[currentEditIdx] = d; closeEditor(); } localStorage.setItem(KEY, JSON.stringify(chars)); renderChars(); updateScheduleFormSelect(); pushData(); }
     function deleteChar(i) { if(confirm("名簿から削除しますか？")) { chars.splice(i, 1); localStorage.setItem(KEY, JSON.stringify(chars)); renderChars(); updateScheduleFormSelect(); pushData(); } }
     function closeViewer() { document.getElementById('viewer-overlay').style.display = 'none'; }
@@ -945,15 +992,27 @@
     }
     
     function addScnField(p, v="") { const root = p instanceof HTMLElement ? p.closest('.panel-content, .editor-page') : p; const container = root.querySelector('.scn-list'); const d = document.createElement('div'); d.style.display="flex"; d.style.marginBottom="5px"; d.innerHTML = '<input type="text" class="scn-in" value="' + v + '" style="flex:1"><button type="button" onclick="this.parentElement.remove()" class="btn-action admin-only">✕</button>'; container.appendChild(d); }
-    function addProfField(p, t="項目名", txt="") { const root = p instanceof HTMLElement ? p.closest('.panel-content, .editor-page') : p; const container = root.querySelector('.prof-list'); const d = document.createElement('div'); d.style.border="1px dashed var(--border)"; d.style.padding="10px"; d.style.marginBottom="10px"; d.style.borderRadius="6px"; d.innerHTML = '<input type="text" class="prof-t" value="' + t + '" style="font-weight:bold; border:none; background:transparent; color:var(--important); margin-bottom:5px;"><textarea class="prof-x" rows="3">' + txt + '</textarea><div style="text-align:right; margin-top:5px;"><button type="button" onclick="this.parentElement.parentElement.remove()" class="btn-action admin-only">削除</button></div>'; container.appendChild(d); }
+    
+    function addProfField(p, t="項目名", txt="") { 
+        const root = p instanceof HTMLElement ? p.closest('.panel-content, .editor-page') : p; 
+        const container = root.querySelector('.prof-list'); 
+        const d = document.createElement('div'); 
+        d.style.border="1px dashed var(--border)"; d.style.padding="10px"; d.style.marginBottom="10px"; d.style.borderRadius="6px"; 
+        d.innerHTML = '<input type="text" class="prof-t" value="' + t + '" style="font-weight:bold; border:none; background:transparent; color:var(--important); margin-bottom:5px;"><textarea class="prof-x" rows="3" style="resize:none; overflow:hidden;" oninput="this.style.height=\'auto\'; this.style.height=this.scrollHeight+\'px\';">' + txt + '</textarea><div style="text-align:right; margin-top:5px;"><button type="button" onclick="this.parentElement.parentElement.remove()" class="btn-action admin-only">削除</button></div>'; 
+        container.appendChild(d); 
+        const ta = d.querySelector('.prof-x');
+        setTimeout(() => { ta.style.height = 'auto'; ta.style.height = ta.scrollHeight + 'px'; }, 10);
+    }
     
     function addSecretField(p, t="項目名", txt="") { 
         const root = p instanceof HTMLElement ? p.closest('.panel-content, .editor-page') : p; 
         const container = root.querySelector('.secret-list'); 
         const d = document.createElement('div'); 
         d.style.border="1px dashed var(--border)"; d.style.padding="10px"; d.style.marginBottom="10px"; d.style.borderRadius="6px"; 
-        d.innerHTML = '<input type="text" class="secret-t" value="' + t + '" style="font-weight:bold; border:none; background:transparent; color:var(--important); margin-bottom:5px;"><textarea class="secret-x" rows="3">' + txt + '</textarea><div style="text-align:right; margin-top:5px;"><button type="button" onclick="this.parentElement.parentElement.remove()" class="btn-action admin-only">削除</button></div>'; 
+        d.innerHTML = '<input type="text" class="secret-t" value="' + t + '" style="font-weight:bold; border:none; background:transparent; color:var(--important); margin-bottom:5px;"><textarea class="secret-x" rows="3" style="resize:none; overflow:hidden;" oninput="this.style.height=\'auto\'; this.style.height=this.scrollHeight+\'px\';">' + txt + '</textarea><div style="text-align:right; margin-top:5px;"><button type="button" onclick="this.parentElement.parentElement.remove()" class="btn-action admin-only">削除</button></div>'; 
         container.appendChild(d); 
+        const ta = d.querySelector('.secret-x');
+        setTimeout(() => { ta.style.height = 'auto'; ta.style.height = ta.scrollHeight + 'px'; }, 10);
     }
 
     function initCrop(e) { if(!e.target.files[0]) return; const reader = new FileReader(); reader.onload = (ev) => { imgObj = new Image(); imgObj.crossOrigin = "anonymous"; imgObj.src = ev.target.result; const p = e.target.closest('.panel-content, .editor-page'); p.querySelector('.crop-img-el').src = ev.target.result; crop.activeEl = p.querySelector('.crop-img-el'); }; reader.readAsDataURL(e.target.files[0]); }
