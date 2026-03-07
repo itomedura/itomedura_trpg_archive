@@ -404,17 +404,20 @@
     <div class="form-row"><div class="form-group"><label>名前</label><input type="text" class="in-name"></div><div class="form-group"><label>ふりがな</label><input type="text" class="in-kana"></div></div>
     <div class="form-row"><div class="form-group"><label>職業</label><input type="text" class="in-job"></div><div class="form-group"><label>性別</label><input type="text" class="in-sex"></div></div>
     <div class="form-row"><div class="form-group"><label>年齢</label><input type="text" class="in-age"></div><div class="form-group"><label>身長</label><input type="text" class="in-height"></div></div>
-    <span class="section-label">能力値</span>
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:12px;">
+        <span class="section-label" style="margin:0;">能力値</span>
+        <button type="button" class="btn-action admin-only" onclick="rollAllStats(this)" style="font-weight:bold; color:var(--important); border-color:var(--important); background:transparent; padding:6px 15px;">🎲 一括で振る</button>
+    </div>
     <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px;">
-        <div class="viewer-stat-box"><label>STR</label><input type="number" class="in-str" oninput="recalc(this)"></div>
-        <div class="viewer-stat-box"><label>CON</label><input type="number" class="in-con" oninput="recalc(this)"></div>
-        <div class="viewer-stat-box"><label>POW</label><input type="number" class="in-pow" oninput="recalc(this)"></div>
-        <div class="viewer-stat-box"><label>DEX</label><input type="number" class="in-dex" oninput="recalc(this)"></div>
-        <div class="viewer-stat-box"><label>APP</label><input type="number" class="in-app" oninput="recalc(this)"></div>
-        <div class="viewer-stat-box"><label>SIZ</label><input type="number" class="in-siz" oninput="recalc(this)"></div>
-        <div class="viewer-stat-box"><label>INT</label><input type="number" class="in-int" oninput="recalc(this)"></div>
-        <div class="viewer-stat-box"><label>EDU</label><input type="number" class="in-edu" oninput="recalc(this)"></div>
-        <div class="viewer-stat-box" style="background:var(--san-bg); border:1px solid var(--san-border) !important;"><label>SAN</label><input type="number" class="in-san" style="color:var(--accent); border:none; background:transparent;"></div>
+        <div class="viewer-stat-box" style="position:relative;"><label>STR</label><input type="number" class="in-str" oninput="recalc(this)"><span style="position:absolute; top:6px; right:8px; cursor:pointer; font-size:0.9rem; opacity:0.5; transition:0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5" onclick="rollSingleStat(this, 'str')" title="STRを振る">🎲</span></div>
+        <div class="viewer-stat-box" style="position:relative;"><label>CON</label><input type="number" class="in-con" oninput="recalc(this)"><span style="position:absolute; top:6px; right:8px; cursor:pointer; font-size:0.9rem; opacity:0.5; transition:0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5" onclick="rollSingleStat(this, 'con')" title="CONを振る">🎲</span></div>
+        <div class="viewer-stat-box" style="position:relative;"><label>POW</label><input type="number" class="in-pow" oninput="recalc(this)"><span style="position:absolute; top:6px; right:8px; cursor:pointer; font-size:0.9rem; opacity:0.5; transition:0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5" onclick="rollSingleStat(this, 'pow')" title="POWを振る">🎲</span></div>
+        <div class="viewer-stat-box" style="position:relative;"><label>DEX</label><input type="number" class="in-dex" oninput="recalc(this)"><span style="position:absolute; top:6px; right:8px; cursor:pointer; font-size:0.9rem; opacity:0.5; transition:0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5" onclick="rollSingleStat(this, 'dex')" title="DEXを振る">🎲</span></div>
+        <div class="viewer-stat-box" style="position:relative;"><label>APP</label><input type="number" class="in-app" oninput="recalc(this)"><span style="position:absolute; top:6px; right:8px; cursor:pointer; font-size:0.9rem; opacity:0.5; transition:0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5" onclick="rollSingleStat(this, 'app')" title="APPを振る">🎲</span></div>
+        <div class="viewer-stat-box" style="position:relative;"><label>SIZ</label><input type="number" class="in-siz" oninput="recalc(this)"><span style="position:absolute; top:6px; right:8px; cursor:pointer; font-size:0.9rem; opacity:0.5; transition:0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5" onclick="rollSingleStat(this, 'siz')" title="SIZを振る">🎲</span></div>
+        <div class="viewer-stat-box" style="position:relative;"><label>INT</label><input type="number" class="in-int" oninput="recalc(this)"><span style="position:absolute; top:6px; right:8px; cursor:pointer; font-size:0.9rem; opacity:0.5; transition:0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5" onclick="rollSingleStat(this, 'int')" title="INTを振る">🎲</span></div>
+        <div class="viewer-stat-box" style="position:relative;"><label>EDU</label><input type="number" class="in-edu" oninput="recalc(this)"><span style="position:absolute; top:6px; right:8px; cursor:pointer; font-size:0.9rem; opacity:0.5; transition:0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5" onclick="rollSingleStat(this, 'edu')" title="EDUを振る">🎲</span></div>
+        <div class="viewer-stat-box" style="background:var(--san-bg); border:1px solid var(--san-border) !important; position:relative;"><label>SAN</label><input type="number" class="in-san" style="color:var(--accent); border:none; background:transparent;"></div>
     </div>
     <span class="section-label">算出ステータス</span>
     <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:15px; background:var(--panel-header-bg); padding:15px; border-radius:8px;">
@@ -889,19 +892,30 @@
         (c.skills || []).forEach(s => { jUsed += Number(s.j)||0; iUsed += Number(s.i)||0; });
 
         let html = `
-            <div style="display:flex; gap:30px; align-items:center; margin-bottom:30px; padding-bottom:20px; border-bottom:2px dashed var(--border); flex-wrap:wrap;">
+            <div style="display:flex; gap:30px; align-items:center; margin-bottom:40px; flex-wrap:wrap;">
                 <img src="${c.img || ''}" class="char-icon" style="width:160px; height:160px; box-shadow:var(--shadow);" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIGZpbGw9IiNlMGUwZTAiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzlhOWE5YSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIEltZzwvdGV4dD48L3N2Zz4='">
                 <div style="flex:1; min-width:250px;">
-                    <div style="display:flex; align-items:center; gap:15px; margin-bottom:10px; flex-wrap:wrap;">
+                    <div style="display:flex; align-items:center; gap:15px; margin-bottom:12px; flex-wrap:wrap;">
                         <h2 style="font-family:'Noto Serif JP',serif; font-size:2.2rem; margin:0; font-weight:700; color:var(--text-main); word-break:keep-all; line-height:1.2;"><ruby>${c.name || '名無し'}<rt>${c.kana || ''}</rt></ruby></h2>
                         <span class="reg-tag ${c.regulation === '7th' ? 'tag-7th' : 'tag-6th'}" style="box-shadow: 0 2px 5px rgba(0,0,0,0.1); font-size: 0.8rem; padding: 6px 14px; white-space:nowrap; position:relative; top:4px;">${c.regulation === '7th' ? '7th Ed.' : '6th Ed.'}</span>
                     </div>
-                    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:5px;">
-    <div style="background:var(--panel-header-bg); padding:6px 12px; border-radius:6px; border:1px solid var(--border); font-size:1rem; color:var(--text-main);"><span style="font-size:0.7rem; color:var(--text-sub); font-weight:bold; margin-right:6px;">職業</span>${c.job || '無職'}</div>
-    <div style="background:var(--panel-header-bg); padding:6px 12px; border-radius:6px; border:1px solid var(--border); font-size:1rem; color:var(--text-main);"><span style="font-size:0.7rem; color:var(--text-sub); font-weight:bold; margin-right:6px;">性別</span>${c.sex || '-'}</div>
-    <div style="background:var(--panel-header-bg); padding:6px 12px; border-radius:6px; border:1px solid var(--border); font-size:1rem; color:var(--text-main);"><span style="font-size:0.7rem; color:var(--text-sub); font-weight:bold; margin-right:6px;">年齢</span>${c.age || '-'}</div>
-    <div style="background:var(--panel-header-bg); padding:6px 12px; border-radius:6px; border:1px solid var(--border); font-size:1rem; color:var(--text-main);"><span style="font-size:0.7rem; color:var(--text-sub); font-weight:bold; margin-right:6px;">身長</span>${c.height ? c.height + 'cm' : '-'}</div>
-</div>
+                    
+                    <div style="width:100%; height:1px; background:var(--border); margin:15px 0; opacity:0.6;"></div>
+                    
+                    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                        <div style="display:flex; align-items:center; background:var(--panel-header-bg); padding:4px 14px 4px 6px; border-radius:20px; border:1px solid var(--border); font-size:0.95rem; color:var(--text-main); font-family:'Noto Serif JP',serif; font-weight:bold;">
+                            <span style="background:var(--card-bg); border-radius:15px; padding:2px 8px; font-size:0.65rem; color:var(--text-sub); font-family:'Noto Sans JP',sans-serif; margin-right:8px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">職業</span>${c.job || '無職'}
+                        </div>
+                        <div style="display:flex; align-items:center; background:var(--panel-header-bg); padding:4px 14px 4px 6px; border-radius:20px; border:1px solid var(--border); font-size:0.95rem; color:var(--text-main); font-family:'Noto Serif JP',serif; font-weight:bold;">
+                            <span style="background:var(--card-bg); border-radius:15px; padding:2px 8px; font-size:0.65rem; color:var(--text-sub); font-family:'Noto Sans JP',sans-serif; margin-right:8px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">性別</span>${c.sex || '-'}
+                        </div>
+                        <div style="display:flex; align-items:center; background:var(--panel-header-bg); padding:4px 14px 4px 6px; border-radius:20px; border:1px solid var(--border); font-size:0.95rem; color:var(--text-main); font-family:'Noto Serif JP',serif; font-weight:bold;">
+                            <span style="background:var(--card-bg); border-radius:15px; padding:2px 8px; font-size:0.65rem; color:var(--text-sub); font-family:'Noto Sans JP',sans-serif; margin-right:8px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">年齢</span>${c.age || '-'}
+                        </div>
+                        <div style="display:flex; align-items:center; background:var(--panel-header-bg); padding:4px 14px 4px 6px; border-radius:20px; border:1px solid var(--border); font-size:0.95rem; color:var(--text-main); font-family:'Noto Serif JP',serif; font-weight:bold;">
+                            <span style="background:var(--card-bg); border-radius:15px; padding:2px 8px; font-size:0.65rem; color:var(--text-sub); font-family:'Noto Sans JP',sans-serif; margin-right:8px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">身長</span>${c.height ? c.height + 'cm' : '-'}
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1064,6 +1078,54 @@
     function updateSkillTotal(el) { const p = el.parentElement; const total = Number(p.querySelector('.sk-b').value) + Number(p.querySelector('.sk-j').value) + Number(p.querySelector('.sk-i').value) + Number(p.querySelector('.sk-g').value) + Number(p.querySelector('.sk-o').value); p.querySelector('.sk-total').value = total; recalc(el); }
     function applySkillFilter(checkbox) { const p = checkbox.closest('.panel-content, .editor-page'); const rows = p.querySelectorAll('.sk-row'); rows.forEach(row => { const j=Number(row.querySelector('.sk-j').value)||0, i=Number(row.querySelector('.sk-i').value)||0, g=Number(row.querySelector('.sk-g').value)||0, o=Number(row.querySelector('.sk-o').value)||0; const isAcq = (j+i+g+o)>0; row.style.setProperty('display', (checkbox.checked && !isAcq) ? 'none' : 'grid', 'important'); }); }
     function recalc(el) { const p = el.closest('.panel-content, .editor-page'); if(!p) return; const r = p.querySelector('input[type="radio"]:checked').value; const g = (c) => Number(p.querySelector('.'+c).value) || 0; const str=g('in-str'), con=g('in-con'), pow=g('in-pow'), dex=g('in-dex'), app=g('in-app'), siz=g('in-siz'), int=g('in-int'), edu=g('in-edu'); let hp, mp, ide, know, db; if(r === '6th') { hp = Math.ceil((con + siz) / 2); mp = pow; ide = int * 5; know = edu * 5; const s = str + siz; db = (s<=12)?"-1d6":(s<=16)?"-1d4":(s<=24)?"0":(s<=32)?"+1d4":"+1d6"; } else { hp = Math.floor((con + siz) / 10); mp = Math.floor(pow / 5); ide = int; know = edu; const s = str + siz; db = (s<65)?"-2":(s<85)?"-1":(s<125)?"0":(s<165)?"+1d4":"+1d6"; } p.querySelector('.val-hp').innerText = hp; p.querySelector('.val-mp').innerText = mp; p.querySelector('.val-db').innerText = db; p.querySelector('.val-ide').innerText = ide; p.querySelector('.val-know').innerText = know; const pattern = p.querySelector('.pt-job-pattern').value; const manualInput = p.querySelector('.pt-job-manual'); const extraRow = p.querySelector('.pt-extra-row'); let jobMax = 0; const m = r === '7th' ? 2 : 10; const total_m = r === '7th' ? 4 : 20; if(pattern === 'manual') { if(extraRow) extraRow.classList.add('open'); jobMax = Number(manualInput?.value) || 0; } else { if(extraRow) extraRow.classList.remove('open'); if(pattern === 'edu_only') jobMax = edu * total_m; else jobMax = (edu * m) + (g('in-' + pattern) * m); } const intMax = r === '7th' ? int * 2 : int * 10; let jUsed = 0, iUsed = 0; p.querySelectorAll('.sk-row').forEach(row => { jUsed += Number(row.querySelector('.sk-j').value) || 0; iUsed += Number(row.querySelector('.sk-i').value) || 0; }); const upd = (u, max, pre) => { const uEl=p.querySelector('.pt-' + pre + '-used'), mEl=p.querySelector('.pt-' + pre + '-max'), rEl=p.querySelector('.pt-' + pre + '-remain'); uEl.innerText = u; mEl.innerText = max; const rem = max - u; if(rEl) rEl.innerText = '残り: ' + rem; const color = rem < 0 ? 'var(--san-border)' : rem === 0 ? 'var(--important)' : 'var(--accent)'; uEl.style.color = color; if(rEl) rEl.style.color = color; }; upd(jUsed, jobMax, 'job'); upd(iUsed, intMax, 'int'); }
+
+    // --- 🎲 ダイスローラー機能 ---
+    function rollDice(count, faces) { let total = 0; for(let i=0; i<count; i++) total += Math.floor(Math.random() * faces) + 1; return total; }
+    function rollAllStats(btn) {
+        if(!confirm("現在の能力値を上書きしてダイスを振りますか？")) return;
+        const p = btn.closest('.panel-content, .editor-page');
+        const reg = p.querySelector('input[type="radio"]:checked').value;
+        const m = reg === '7th' ? 5 : 1;
+        p.querySelector('.in-str').value = rollDice(3, 6) * m;
+        p.querySelector('.in-con').value = rollDice(3, 6) * m;
+        p.querySelector('.in-pow').value = rollDice(3, 6) * m;
+        p.querySelector('.in-dex').value = rollDice(3, 6) * m;
+        p.querySelector('.in-app').value = rollDice(3, 6) * m;
+        p.querySelector('.in-siz').value = (rollDice(2, 6) + 6) * m;
+        p.querySelector('.in-int').value = (rollDice(2, 6) + 6) * m;
+        p.querySelector('.in-edu').value = reg === '7th' ? (rollDice(2, 6) + 6) * 5 : rollDice(3, 6) + 3;
+        
+        const powVal = Number(p.querySelector('.in-pow').value);
+        p.querySelector('.in-san').value = reg === '7th' ? powVal : powVal * 5;
+        const luckInput = p.querySelector('.val-luck');
+        if (luckInput) luckInput.value = reg === '7th' ? rollDice(3, 6) * 5 : powVal * 5;
+        
+        recalc(p.querySelector('.in-str'));
+    }
+
+    function rollSingleStat(btn, stat) {
+        const p = btn.closest('.panel-content, .editor-page');
+        const reg = p.querySelector('input[type="radio"]:checked').value;
+        const m = reg === '7th' ? 5 : 1;
+        let val = 0;
+        
+        if(['str','con','pow','dex','app'].includes(stat)) val = rollDice(3, 6) * m;
+        else if(['siz','int'].includes(stat)) val = (rollDice(2, 6) + 6) * m;
+        else if(stat === 'edu') val = reg === '7th' ? (rollDice(2, 6) + 6) * 5 : rollDice(3, 6) + 3;
+        
+        p.querySelector('.in-' + stat).value = val;
+        
+        // POWを振り直した時は、初期SAN値（と6版の幸運）も自動で連動させる
+        if(stat === 'pow') {
+            p.querySelector('.in-san').value = reg === '7th' ? val : val * 5;
+            if(reg === '6th') {
+                const lk = p.querySelector('.val-luck');
+                if(lk) lk.value = val * 5;
+            }
+        }
+        recalc(p.querySelector('.in-' + stat));
+    }
+    // ----------------------------
 
     function deleteCharFromViewer(i) {
         if(confirm("名簿から削除しますか？")) {
@@ -1313,12 +1375,13 @@
 
         // 1 & 2: タイトルと進行状況 (名簿画面風ヘッダー)
         let html = `
-            <div style="display:flex; gap:30px; align-items:center; margin-bottom:30px; padding-bottom:20px; border-bottom:2px dashed var(--border); flex-wrap:wrap;">
+            <div style="display:flex; gap:30px; align-items:center; margin-bottom:40px; flex-wrap:wrap;">
                 <div style="flex:1; min-width:250px;">
-                    <div style="display:flex; align-items:center; gap:15px; margin-bottom:10px; flex-wrap:wrap;">
+                    <div style="display:flex; align-items:center; gap:15px; margin-bottom:12px; flex-wrap:wrap;">
                         <h2 style="font-family:'Noto Serif JP',serif; font-size:2.2rem; margin:0; font-weight:700; color:var(--text-main); word-break:keep-all; line-height:1.2;">${s.title}</h2>
                         <span class="chr-status-pill ${stCls}" style="box-shadow: 0 2px 5px rgba(0,0,0,0.1); font-size: 0.8rem; padding: 6px 14px; white-space:nowrap; position:relative; top:4px;">${s.status}</span>
                     </div>
+                    <div style="width:100%; height:1px; background:var(--border); margin:15px 0; opacity:0.6;"></div>
                 </div>
             </div>`;
 
