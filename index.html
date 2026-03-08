@@ -8,24 +8,26 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@400;700&display=swap');
         
+        /* ★ 第1フェーズ：カラーパレットのコントラストと高級感アップ */
         :root {
-            --bg: #f4f1ea; --sidebar: #2c2c2c; --sidebar-text: #d9cec1; --accent: #800000;
-            --accent-hover: #a00000; --important: #b87333; --card-bg: #fdfcf9;
-            --text-main: #333333; --text-sub: #7e7569; --border: #dcd3c1;
+            --bg: #f4f1ea; --sidebar: #252525; --sidebar-text: #e0d6c8; --accent: #8b0000;
+            --accent-hover: #b30000; --important: #b87333; --card-bg: #ffffff;
+            --text-main: #2c2c2c; --text-sub: #645c50; --border: #d2c8b4;
             --san-bg: #fff1f0; --san-border: #ffa39e; --tag-6th: #6c757d; --tag-7th: #4e7ba7;
-            --input-bg: #fdfcf9; --input-border: #dcd3c1; --panel-header-bg: #eae4d3;
-            --shadow: 0 4px 15px rgba(130, 120, 100, 0.15);
+            --input-bg: #ffffff; --input-border: #c8bca7; --panel-header-bg: #e8dfcc;
+            --shadow: 0 6px 18px rgba(110, 100, 80, 0.12);
         }
 
         [data-theme="dark"] {
-            --bg: #1a1c20; --sidebar: #121417; --sidebar-text: #a09586; --accent: #a31636;
-            --accent-hover: #c41e42; --important: #cd7f32; --card-bg: #24272c;
-            --text-main: #d9cec1; --text-sub: #8e8476; --border: #3f454f;
-            --san-bg: #450a0a; --san-border: #991b1b; --tag-6th: #495057; --tag-7th: #345678;
-            --input-bg: #1a1c20; --input-border: #3f454f; --panel-header-bg: #2c3036;
+            --bg: #16181b; --sidebar: #0f1113; --sidebar-text: #b0a595; --accent: #b91c3d;
+            --accent-hover: #db224a; --important: #cd7f32; --card-bg: #1e2125;
+            --text-main: #e8ddd0; --text-sub: #a39889; --border: #353a43;
+            --san-bg: #3b0808; --san-border: #991b1b; --tag-6th: #495057; --tag-7th: #345678;
+            --input-bg: #16181b; --input-border: #353a43; --panel-header-bg: #25282d;
+            --shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
         }
 
-        body { font-family: 'Noto Sans JP', sans-serif; background-color: var(--bg); color: var(--text-main); margin: 0; display: flex; height: 100vh; overflow: hidden; }
+        body { font-family: 'Noto Sans JP', sans-serif; background-color: var(--bg); color: var(--text-main); margin: 0; display: flex; height: 100vh; overflow: hidden; line-height: 1.6; letter-spacing: 0.3px; }
         body.view-mode .admin-only { display: none !important; }
 
         nav { width: 210px; background-color: var(--sidebar); color: var(--sidebar-text); flex-shrink: 0; display: flex; flex-direction: column; z-index: 10; }
@@ -58,23 +60,35 @@
         @keyframes pulse { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
 
         main { flex: 1; overflow-y: auto; padding: 30px; position: relative; }
-        .content-area { max-width: 850px; margin: 0 auto; padding-bottom: 100px; }
+        .content-area { max-width: 1100px; margin: 0 auto; padding-bottom: 100px; }
         .view-section { display: none; }
         .view-section.active { display: block; }
 
-        .panel { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 25px; box-shadow: var(--shadow); }
-        .panel-trigger { width: 100%; padding: 18px 25px; background: var(--panel-header-bg); border: none; border-radius: 8px 8px 0 0; font-family: 'Noto Serif JP', serif; font-size: 1rem; font-weight: bold; cursor: pointer; color: var(--text-main); text-align: left; border-bottom: 1px solid var(--border); }
-        .panel-content { display: none; padding: 25px; }
+        /* ★ 第2フェーズ：クラシック・レガシー装飾（パネル・見出し・入力枠） */
+        .panel { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 25px; box-shadow: var(--shadow); overflow: hidden; }
+        .panel-trigger { width: 100%; padding: 18px 25px; background: linear-gradient(to bottom, var(--panel-header-bg), var(--bg)); border: none; font-family: 'Noto Serif JP', serif; font-size: 1rem; font-weight: bold; cursor: pointer; color: var(--text-main); text-align: left; border-bottom: 2px solid var(--border); text-shadow: 1px 1px 0 rgba(255,255,255,0.4); transition: 0.2s; }
+        [data-theme="dark"] .panel-trigger { text-shadow: 1px 1px 0 rgba(0,0,0,0.5); }
+        .panel-trigger:hover { filter: brightness(0.95); }
+        .panel-content { display: none; padding: 25px; background: var(--bg); box-shadow: inset 0 10px 20px rgba(0,0,0,0.02); }
         .panel-content.open { display: block; }
 
-        .section-label { font-family: 'Noto Serif JP', serif; font-size: 0.85rem; font-weight: 700; color: var(--accent); margin: 30px 0 15px; display: block; border-left: 3px solid var(--accent); padding-left: 12px; }
-        .skill-genre-header { grid-column: 1 / -1; font-family: 'Noto Serif JP', serif; font-size: 0.75rem; font-weight: bold; color: var(--important); border-bottom: 1px solid var(--border); padding: 5px 0; margin: 15px 0 2px; position: relative; }
-        .skill-genre-header::before { content: '■'; font-size: 0.6rem; margin-right: 6px; }
+        /* ★ セクションごとのエリア分けを明確に */
+        .section-label { font-family: 'Noto Serif JP', serif; font-size: 1.05rem; font-weight: 700; color: var(--accent); margin: 45px 0 20px; display: flex; align-items: center; gap: 8px; letter-spacing: 2px; background: linear-gradient(to right, rgba(139, 0, 0, 0.04), transparent); padding: 8px 15px; border-left: 4px solid var(--accent); border-radius: 4px; }
+        [data-theme="dark"] .section-label { background: linear-gradient(to right, rgba(255, 255, 255, 0.03), transparent); }
+        .section-label::before { content: '❖'; font-size: 0.9rem; color: var(--important); }
+        .section-label::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, var(--important), transparent); opacity: 0.4; }
+        
+        .skill-genre-header { grid-column: 1 / -1; font-family: 'Noto Serif JP', serif; font-size: 0.8rem; font-weight: bold; color: var(--important); border-bottom: 1px dashed var(--border); padding: 5px 0; margin: 15px 0 5px; position: relative; display: flex; align-items: center; gap: 6px; }
+        .skill-genre-header::before { content: '⚜'; font-size: 0.9rem; }
 
-        input, textarea, select { width: 100%; padding: 10px 15px; border: 1px solid var(--input-border); border-radius: 4px; font-family: inherit; font-size: 0.95rem; box-sizing: border-box; background: var(--input-bg); color: var(--text-main); text-align: left; }
+        /* ★ 入力フォームの視認性・立体感アップ */
+        input, textarea, select { width: 100%; padding: 12px 15px; border: 1px solid var(--border); border-bottom: 2px solid var(--border); border-radius: 6px; font-family: inherit; font-size: 0.95rem; box-sizing: border-box; background: rgba(130, 120, 100, 0.08); color: var(--text-main); text-align: left; box-shadow: inset 0 3px 6px rgba(0,0,0,0.04); transition: 0.2s; }
+        [data-theme="dark"] input, [data-theme="dark"] textarea, [data-theme="dark"] select { background: rgba(0, 0, 0, 0.3); box-shadow: inset 0 3px 6px rgba(0,0,0,0.2); }
+        input:focus, textarea:focus, select:focus { outline: none; background: var(--card-bg); border-color: var(--accent); border-bottom-color: var(--accent); box-shadow: 0 4px 12px rgba(0,0,0,0.05), 0 0 0 3px rgba(139, 0, 0, 0.15); transform: translateY(-1px); }
         input[type="number"] { font-family: 'Noto Serif JP', serif; font-weight: 700; text-align: center; font-size: 1.1rem; }
         input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-        input[type="radio"], input[type="checkbox"] { width: auto; margin: 0; cursor: pointer; }
+        input[type="radio"], input[type="checkbox"] { width: auto; margin: 0; cursor: pointer; box-shadow: none; transform: none; background: transparent; }
+        input[type="radio"]:focus, input[type="checkbox"]:focus { transform: none; box-shadow: none; background: transparent; }
 
         .sk-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1.2fr 30px; gap: 4px; margin-bottom: 5px; align-items: center; border-radius: 4px; }
         .sk-row:nth-of-type(even) { background-color: rgba(130, 120, 100, 0.04); }
@@ -88,9 +102,10 @@
         .calc-box label { font-size: 0.6rem; color: var(--text-sub); font-weight: bold; margin-bottom: 4px; }
         .calc-val { font-family: 'Noto Serif JP', serif; font-size: 1.2rem; font-weight: bold; color: var(--important); line-height: 1.2; }
 
-        .char-card { background: var(--card-bg); border: 1px solid var(--border); padding: 25px 30px; border-radius: 12px; display: flex; gap: 25px; align-items: flex-start; margin-bottom: 20px; position: relative; box-shadow: var(--shadow); cursor: pointer; transition: transform 0.2s; }
-        .char-card:hover { transform: translateY(-3px); }
-        .char-icon { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 4px solid var(--card-bg); box-shadow: 0 4px 12px rgba(0,0,0,0.2); flex-shrink: 0; background: #e0e0e0; }
+        /* ★ 名簿カードのクラシック装飾アップデート */
+        .char-card { background: var(--card-bg); border: 1px solid var(--border); padding: 25px 30px; border-radius: 12px; display: flex; gap: 25px; align-items: flex-start; margin-bottom: 20px; position: relative; box-shadow: var(--shadow); cursor: pointer; transition: 0.2s; overflow: hidden; }
+        .char-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .char-icon { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 3px solid var(--card-bg); box-shadow: 0 4px 12px rgba(0,0,0,0.15); flex-shrink: 0; background: #e0e0e0; position: relative; z-index: 2; }
 
         /* ★ 縦長1カラム・レスポンシブ ビューア */
         #viewer-overlay, #editor-overlay, #import-overlay, #sch-viewer-overlay, #sch-editor-overlay, #scn-editor-overlay, #sync-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
@@ -115,22 +130,28 @@
         .viewer-stat-box b { display: block; font-size: 0.65rem; color: var(--text-sub); font-family: 'Noto Serif JP', serif; }
         .viewer-stat-box span { font-family: 'Noto Serif JP', serif; font-size: 1.2rem; font-weight: bold; color: var(--text-main); }
         
-        .name-area { display: flex; align-items: center; gap: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 15px; }
-        .char-name-ruby { font-family: 'Noto Serif JP', serif; font-size: 1.5rem; margin: 0; font-weight: 700; color: var(--text-main); }
-        .reg-tag { font-size: 0.65rem; padding: 3px 8px; border-radius: 4px; color: white; font-weight: bold; }
+        .name-area { display: flex; align-items: center; gap: 15px; margin-bottom: 12px; position: relative; z-index: 2; }
+        .char-name-ruby { font-family: 'Noto Serif JP', serif; font-size: 1.6rem; margin: 0; font-weight: 700; color: var(--text-main); }
+        .reg-tag { font-size: 0.7rem; padding: 4px 12px; border-radius: 4px; color: white; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.1); letter-spacing: 1px; }
         .tag-6th { background-color: var(--tag-6th); } .tag-7th { background-color: var(--tag-7th); }
 
-        .btn-action { border: 1px solid var(--border); background: var(--panel-header-bg); font-size: 0.7rem; cursor: pointer; padding: 5px 12px; border-radius: 4px; color: var(--text-main); z-index: 20; position: relative; transition: 0.2s; }
-        .btn-main { background: var(--accent); color: white; border: none; padding: 15px; cursor: pointer; border-radius: 6px; font-weight: bold; width: 100%; font-family: 'Noto Serif JP', serif; font-size: 1.1rem; letter-spacing: 2px; }
-        .btn-sub { width: 100%; cursor: pointer; font-size: 0.85rem; padding: 10px; border-radius: 6px; border: 2px dashed var(--border); background:none; color:var(--text-sub); margin-bottom: 15px; transition: 0.2s; }
+        /* ★ 第2フェーズ：クラシック・レガシー装飾（各種ボタン） */
+        .btn-action { border: 1px solid var(--border); border-bottom: 2px solid var(--border); background: linear-gradient(to bottom, var(--card-bg), var(--panel-header-bg)); font-size: 0.75rem; cursor: pointer; padding: 6px 14px; border-radius: 4px; color: var(--text-main); z-index: 20; position: relative; transition: 0.1s; font-weight: bold; }
+        .btn-action:active { transform: translateY(1px); border-bottom-width: 1px; margin-bottom: 1px; }
+        
+        .btn-main { background: linear-gradient(135deg, var(--accent), var(--accent-hover)); color: white; border: none; border-bottom: 3px solid #5a0000; padding: 15px; cursor: pointer; border-radius: 6px; font-weight: bold; width: 100%; font-family: 'Noto Serif JP', serif; font-size: 1.1rem; letter-spacing: 2px; box-shadow: 0 4px 10px rgba(139, 0, 0, 0.3); transition: 0.1s; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+        [data-theme="dark"] .btn-main { border-bottom: 3px solid #300000; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); }
+        .btn-main:active { transform: translateY(2px); border-bottom-width: 1px; margin-bottom: 2px; box-shadow: 0 2px 5px rgba(139, 0, 0, 0.3); }
+        
+        .btn-sub { width: 100%; cursor: pointer; font-size: 0.85rem; padding: 12px; border-radius: 6px; border: 2px dashed var(--border); background: rgba(130, 120, 100, 0.02); color:var(--text-sub); margin-bottom: 15px; transition: 0.2s; font-weight: bold; letter-spacing: 1px; }
+        .btn-sub:hover { border-color: var(--important); color: var(--important); background: rgba(184, 115, 51, 0.05); }
         
         .crop-container { position: relative; width: 180px; height: 180px; margin: 15px auto; border: 3px solid var(--border); border-radius: 50%; overflow: hidden; background: #e0e0e0; cursor: move; }
         .crop-img-el { position: absolute; top: 0; left: 0; transform-origin: 0 0; pointer-events: none; }
         
-        .basic-info-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
-        .info-item { display: inline-flex; align-items: baseline; gap: 4px; font-size: 0.85rem; color: var(--text-main); }
-        .info-label-inline { font-size: 0.6rem; color: var(--text-sub); font-weight: bold; margin-bottom: 2px; position: relative; top: -1px; }
-        .info-sep { color: var(--border); margin: 0 2px; }
+        .basic-info-row { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 18px; position: relative; z-index: 2; }
+        .info-pill { display: flex; align-items: center; background: var(--panel-header-bg); padding: 3px 12px 3px 5px; border-radius: 20px; border: 1px solid var(--border); font-size: 0.85rem; color: var(--text-main); font-family: 'Noto Serif JP', serif; font-weight: bold; }
+        .info-pill-label { background: var(--card-bg); border-radius: 12px; padding: 1px 8px; font-size: 0.65rem; color: var(--text-sub); font-family: 'Noto Sans JP', sans-serif; margin-right: 6px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
         .scn-count { color: var(--important); font-weight: bold; margin-left: 6px; font-size: 0.8rem; }
         
         .pt-mgmt-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; background: var(--panel-header-bg); padding: 18px; border-radius: 8px; margin-top: 10px; border: 1px solid var(--border); }
@@ -138,6 +159,7 @@
         .pt-box label { font-size: 0.7rem; color: var(--text-sub); font-weight: bold; display: block; margin-bottom: 10px; letter-spacing: 1px; }
         .pt-formula-box { background: var(--input-bg); border: 1px solid var(--input-border); border-radius: 4px; height: 42px; display: flex; align-items: center; justify-content: center; width: 100%; margin-bottom: 10px; box-sizing: border-box; overflow: hidden; }
         .pt-formula-box select { border: none !important; background: transparent !important; text-align: center !important; font-weight: bold; width: 100%; padding: 0 10px; cursor: pointer; color: var(--text-main); }
+        .pt-formula-box select option { background: var(--card-bg); color: var(--text-main); }
         .pt-formula-text { font-size: 0.85rem; color: var(--text-sub); font-weight: 700; letter-spacing: 1px; }
         .pt-extra-row { display: none; width: 100%; margin-bottom: 10px; }
         .pt-extra-row.open { display: block; }
@@ -149,17 +171,19 @@
         .control-group select { width: auto; padding: 5px 10px; font-size: 0.8rem; background: var(--panel-header-bg); border-color: var(--border); }
         .skill-filter-toggle { display: flex; align-items: center; gap: 8px; margin: 10px 0 20px; font-size: 0.8rem; font-weight: bold; color: var(--accent); background: var(--panel-header-bg); width: fit-content; padding: 8px 15px; border-radius: 20px; border: 1px solid var(--border); cursor: pointer; }
 
-        .cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; font-family: 'Noto Serif JP', serif; }
-        .cal-title { font-size: 1.5rem; font-weight: bold; color: var(--accent); letter-spacing: 2px; }
+        /* ★ 第3フェーズ：カレンダーのクラシック手帳化 */
+        .cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; font-family: 'Noto Serif JP', serif; border-bottom: 2px solid var(--border); padding-bottom: 15px; }
+        .cal-title { font-size: 1.6rem; font-weight: bold; color: var(--accent); letter-spacing: 3px; text-shadow: 1px 1px 0 rgba(255,255,255,0.6); }
+        [data-theme="dark"] .cal-title { text-shadow: 1px 1px 0 rgba(0,0,0,0.8); }
         
-        .cal-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
-        .cal-day-label { background: var(--panel-header-bg); padding: 12px; text-align: center; font-size: 0.75rem; font-weight: bold; color: var(--text-sub); }
+        .cal-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 1px; background: var(--border); border: 2px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+        .cal-day-label { background: linear-gradient(to bottom, var(--panel-header-bg), var(--bg)); padding: 12px; text-align: center; font-size: 0.8rem; font-weight: bold; color: var(--text-sub); letter-spacing: 1px; border-bottom: 1px solid var(--border); }
         .cal-cell { background: var(--card-bg); min-height: 105px; padding: 8px; position: relative; transition: 0.2s; cursor: pointer; z-index: 1; min-width: 0; }
-        .cal-cell:hover { background: var(--panel-header-bg); }
-        .cal-cell.today { background: var(--san-bg); }
+        .cal-cell:hover { background: var(--panel-header-bg); box-shadow: inset 0 0 10px rgba(0,0,0,0.05); }
+        .cal-cell.today { background: var(--san-bg); box-shadow: inset 0 0 0 2px var(--san-border); }
         .cal-cell.today .cal-date-num { color: var(--accent); font-weight: bold; text-decoration: underline; }
-        .cal-cell.other-month { opacity: 0.35; background: #eee; }
-        .cal-date-num { font-family: 'Noto Serif JP', serif; font-size: 0.95rem; color: var(--text-sub); margin-bottom: 8px; display: block; }
+        .cal-cell.other-month { opacity: 0.4; background: rgba(0,0,0,0.02); }
+        .cal-date-num { font-family: 'Noto Serif JP', serif; font-size: 1rem; color: var(--text-sub); margin-bottom: 8px; display: block; font-weight: bold; }
         
         .cal-event-preview { font-size: 0.65rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.7; font-family: 'Noto Serif JP', serif; border-left: 4px solid var(--accent); padding: 1px 6px; margin-bottom: 4px; font-weight: bold; box-shadow: 1px 1px 3px rgba(0,0,0,0.08); border-radius: 0 4px 4px 0; transition: 0.2s; position: relative; z-index: 5; display: block; }
         .cal-event-preview:hover { filter: brightness(1.1); transform: translateX(2px); }
@@ -213,25 +237,83 @@
         details.secret-details summary { font-family: 'Noto Serif JP', serif; font-weight: bold; color: var(--important); cursor: pointer; outline: none; }
         details.secret-details summary:hover { opacity: 0.8; }
         details.secret-details > div { margin-top: 15px; padding-top: 15px; border-top: 1px dashed var(--border); }
-/* ★ v9.8.0 追従ボタン＆技能バッジ用CSS */
-        .viewer-book.single-column, .editor-book.single-column { flex-direction: column; width: 95%; max-width: 850px; height: 95vh; overflow-y: auto; background: var(--bg); display: flex; border-radius: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); position: relative; scrollbar-width: none; margin: 0 auto; }
-        .viewer-book.single-column::-webkit-scrollbar, .editor-book.single-column::-webkit-scrollbar { display: none; }
-        .viewer-book.single-column .viewer-page, .editor-book.single-column .editor-page { width: 100%; box-sizing: border-box; padding: 40px; padding-bottom: 120px; }
+
+        /* ★ アコーディオン用スタイル（目録＆KP記録） */
+        details.scn-section-details > summary.scn-summary-btn { background: var(--panel-header-bg); border: 1px solid var(--border); border-radius: 6px; padding: 12px 20px; cursor: pointer; font-family: 'Noto Serif JP', serif; font-size: 0.95rem; font-weight: bold; color: var(--text-main); display: flex; justify-content: space-between; align-items: center; list-style: none; outline: none; user-select: none; transition: 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        details.scn-section-details > summary.scn-summary-btn:hover { filter: brightness(0.95); transform: translateY(-1px); box-shadow: 0 4px 8px rgba(0,0,0,0.05); }
+        details.scn-section-details > summary.scn-summary-btn::-webkit-details-marker { display: none; }
+        details.scn-section-details > summary.scn-summary-btn::after { content: '▼ 開く'; font-size: 0.8rem; color: var(--accent); font-family: 'Noto Sans JP', sans-serif; font-weight: bold; }
+        details.scn-section-details[open] > summary.scn-summary-btn::after { content: '▲ 閉じる'; color: var(--text-sub); }
+        .scn-count-badge { background: var(--card-bg); color: var(--important); padding: 2px 10px; border-radius: 12px; border: 1px solid var(--border); font-size: 0.85rem; margin-right: 8px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); }
         
+        details.run-details { margin-top: 12px; background: var(--panel-header-bg); border: 1px solid var(--border); border-radius: 6px; padding: 10px 15px; }
+        details.run-details > summary { cursor: pointer; font-size: 0.85rem; font-weight: bold; color: var(--accent); list-style: none; outline: none; display: flex; align-items: center; justify-content: space-between; font-family: 'Noto Serif JP', serif; user-select: none; }
+        details.run-details > summary::-webkit-details-marker { display: none; }
+        details.run-details > summary::after { content: '▼'; font-size: 0.7rem; transition: transform 0.2s; color: var(--text-sub); }
+        details.run-details[open] > summary::after { transform: rotate(180deg); }
+/* ★ 第3フェーズ：ウインドウ（洋書風）のクラシック化 */
+        .viewer-book.single-column, .editor-book.single-column { flex-direction: column; width: 95%; max-width: 1100px; height: 95vh; overflow-y: auto; background: var(--bg); display: flex; border-radius: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); position: relative; scrollbar-width: none; margin: 0 auto; border: 1px solid var(--border); }
+        .viewer-book.single-column::-webkit-scrollbar, .editor-book.single-column::-webkit-scrollbar { display: none; }
+        .viewer-book.single-column .viewer-page, .editor-book.single-column .editor-page { width: 100%; box-sizing: border-box; padding: 40px; padding-bottom: 120px; position: relative; z-index: 1; }        
         .sticky-footer { position: sticky; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center; gap: 15px; padding: 15px 20px; box-sizing: border-box; z-index: 120; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
         .sticky-footer .btn-action { font-size: 0.95rem; padding: 10px 25px; border-radius: 30px; border: none; font-weight: bold; cursor: pointer; transition: 0.2s; }
         .sticky-footer .btn-action:hover { opacity: 0.8; transform: translateY(-2px); }
         .sticky-footer .btn-action.outline { background: transparent; border: 1px solid rgba(255,255,255,0.5); color: white; }
         .sticky-footer .btn-action.del-outline { background: transparent; border: 1px solid rgba(255,77,79,0.5); color: #ff4d4f; }
 
+        /* ★ ページ共通ヘッダー装飾 */
+        .page-header-title { text-align:center; padding: 18px 20px; margin-bottom: 25px; background: linear-gradient(to bottom, var(--panel-header-bg), var(--bg)); border-radius: 8px; border: 1px solid var(--border); border-bottom: 2px solid var(--accent); position: relative; box-shadow: var(--shadow); }
+        .page-header-inner { position:absolute; top:6px; bottom:6px; left:6px; right:6px; border: 1px dashed var(--border); border-radius: 4px; opacity: 0.4; pointer-events: none; }
+        .page-header-sub { font-size:0.75rem; color:var(--important); font-weight:bold; letter-spacing:4px; display:block; margin-bottom:4px; font-family:'Noto Serif JP',serif; position: relative; z-index: 1; }
+        .page-header-main { font-family:'Noto Serif JP',serif; font-size:1.6rem; margin:0; color:var(--text-main); letter-spacing:3px; position: relative; z-index: 1; text-shadow: 1px 1px 0 rgba(255,255,255,0.4); }
+        [data-theme="dark"] .page-header-main { text-shadow: 1px 1px 0 rgba(0,0,0,0.6); }
+
         /* 技能バッジ用スタイル（等幅で揃える） */
-        .skill-badge { display: inline-block; width: 45px; text-align: center; border-radius: 4px; padding: 3px 0; font-size: 0.65rem; font-family: 'Noto Sans JP', sans-serif; font-weight: bold; letter-spacing: 0.5px; box-sizing: border-box; margin-right: 4px; vertical-align: middle; }
+        .skill-badge { display: inline-block; width: 65px; text-align: center; border-radius: 4px; padding: 4px 0; font-size: 0.7rem; font-family: 'Noto Sans JP', sans-serif; font-weight: bold; letter-spacing: 1px; box-sizing: border-box; margin-right: 6px; vertical-align: middle; }
         .badge-empty { border: 1px solid rgba(130,120,100,0.2); color: rgba(130,120,100,0.4); background: transparent; }
         .badge-b { border: 1px solid rgba(130,120,100,0.5); color: var(--text-sub); background: rgba(0,0,0,0.03); }
         .badge-j { border: 1px solid rgba(74,111,165,0.8); color: white; background: #4a6fa5; }
         .badge-i { border: 1px solid rgba(88,129,87,0.8); color: white; background: #588157; }
         .badge-g { border: 1px solid rgba(184,115,51,0.8); color: white; background: var(--important); }
         .badge-o { border: 1px solid rgba(108,117,125,0.8); color: white; background: #6c757d; }
+
+        /* ★ v10.2.0 ホーム画面用スタイル（スリム・1画面収束版） */
+        .dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 10px; }
+        @media (max-width: 850px) { .dashboard-grid { grid-template-columns: 1fr; } }
+        .dash-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 15px 20px; box-shadow: var(--shadow); }
+        .dash-card-title { font-family: 'Noto Serif JP', serif; font-size: 1rem; font-weight: bold; color: var(--text-main); margin-top: 0; margin-bottom: 12px; border-bottom: 1px solid var(--border); padding-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+        .dash-stat-row { display: flex; justify-content: space-around; text-align: center; margin-bottom: 12px; }
+        .dash-stat-box { display: flex; flex-direction: column; gap: 2px; }
+        .dash-stat-label { font-size: 0.7rem; color: var(--text-sub); font-weight: bold; }
+        .dash-stat-value { font-family: 'Noto Serif JP', serif; font-size: 1.8rem; font-weight: bold; color: var(--accent); line-height: 1; }
+        
+        .dash-next-sch { background: var(--bg); border: 1px solid var(--border); padding: 10px 15px; border-radius: 8px; cursor: pointer; transition: 0.2s; position: relative; overflow: hidden; }
+        .dash-next-sch:hover { transform: translateX(3px); box-shadow: var(--shadow); background: var(--panel-header-bg); }
+        .dash-next-date { font-family: 'Noto Serif JP', serif; font-size: 1rem; color: var(--accent); font-weight: bold; margin-bottom: 2px; line-height: 1.2;}
+        .dash-next-title { font-size: 0.9rem; font-weight: bold; color: var(--text-main); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-family: 'Noto Serif JP', serif; }
+        
+        .dash-recent-chars { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px; scrollbar-width: none; }
+        .dash-recent-chars::-webkit-scrollbar { display: none; }
+        .dash-char-item { text-align: center; width: 65px; flex-shrink: 0; cursor: pointer; transition: 0.2s; }
+        .dash-char-item:hover { transform: translateY(-3px); }
+        .dash-char-icon { width: 55px; height: 55px; border-radius: 50%; object-fit: cover; border: 3px solid var(--card-bg); box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 5px; background: #e0e0e0; }
+        .dash-char-name { font-size: 0.7rem; font-weight: bold; color: var(--text-main); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        
+        .dash-recent-scns { display: flex; flex-direction: column; gap: 6px; }
+        .dash-scn-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; transition: 0.2s; cursor: pointer; }
+        .dash-scn-item:hover { background: var(--panel-header-bg); transform: translateX(3px); }
+
+        .dash-progress-wrap { background: var(--border); border-radius: 10px; height: 8px; width: 100%; overflow: hidden; display: flex; margin-bottom: 5px; }
+        .dash-progress-pl { background: var(--accent); height: 100%; }
+        .dash-progress-kp { background: var(--important); height: 100%; }
+        
+        .dash-stat-bar-wrap { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; font-size: 0.75rem; }
+        .dash-stat-bar-label { width: 35px; font-family: 'Noto Serif JP', serif; font-weight: bold; color: var(--text-sub); }
+        .dash-stat-bar-bg { flex: 1; background: var(--border); border-radius: 4px; height: 8px; overflow: hidden; position: relative; }
+        .dash-stat-bar-fill { height: 100%; border-radius: 4px; transition: width 1s ease-out; }
+        .dash-stat-bar-val { width: 25px; text-align: right; font-weight: bold; font-family: 'Noto Serif JP', serif; color: var(--text-main); }
+        .dash-partners-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(5, auto); grid-auto-flow: column; gap: 6px; }
+        .dash-task-list { display: flex; flex-direction: column; gap: 8px; }
     </style>
 </head>
 <body class="view-mode"> 
@@ -239,7 +321,8 @@
 <nav>
     <h1 onclick="openSyncSettings()" title="管理者設定を開く">TRPG ARCHIVE</h1>
     <div class="nav-items">
-        <div class="nav-item active" id="nav-cal" onclick="showView('v-calendar')">活動予定表</div>
+        <div class="nav-item active" id="nav-home" onclick="showView('v-home')">ホーム</div>
+        <div class="nav-item" id="nav-cal" onclick="showView('v-calendar')">活動予定表</div>
         <div class="nav-item" id="nav-char" onclick="showView('v-characters')">探索者名簿</div>
         <div class="nav-item" id="nav-scn" onclick="showView('v-scenarios')">シナリオ目録</div> 
     </div>
@@ -248,8 +331,6 @@
         <div class="stat-title">司書の軌跡</div>
         <div class="stat-item">PL通過 <span id="stat-pl">0</span></div>
         <div class="stat-item">KP回数 <span id="stat-kp">0</span></div>
-        <div class="stat-subtitle">よく同卓する人</div>
-        <div id="stat-partners"></div>
     </div>
 
     <div class="nav-footer">
@@ -263,7 +344,28 @@
 
 <main>
     <div class="content-area">
-        <div id="v-calendar" class="view-section active">
+        <div id="v-home" class="view-section active">
+            <div style="text-align:center; padding: 45px 20px; margin-bottom: 40px; background: linear-gradient(to bottom, var(--panel-header-bg), var(--bg)); border-radius: 12px; border: 1px solid var(--border); border-bottom: 3px solid var(--accent); box-shadow: 0 10px 30px rgba(0,0,0,0.05); position: relative;">
+                <div style="position:absolute; top:12px; bottom:12px; left:12px; right:12px; border: 1px dashed var(--border); border-radius: 8px; opacity: 0.6; pointer-events: none;"></div>
+                <div style="position:relative; z-index:1;">
+                    <span style="font-size:0.9rem; color:var(--important); font-weight:bold; letter-spacing:6px; display:block; margin-bottom:12px; font-family:'Noto Serif JP',serif;">TRPG ARCHIVE HOME</span>
+                    <h2 style="font-family:'Noto Serif JP',serif; font-size:2.8rem; margin:0; color:var(--text-main); letter-spacing:4px; text-shadow: 1px 1px 0px var(--bg), 3px 3px 0px rgba(130,120,100,0.1);">TRPG ARCHIVE</h2>
+                    <div style="display:flex; justify-content:center; align-items:center; gap:15px; margin-top:20px;">
+                        <div style="width:60px; height:1px; background:var(--border);"></div>
+                        <span style="font-size:1.2rem; color:var(--accent);">✧</span>
+                        <div style="width:60px; height:1px; background:var(--border);"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="home-dashboard-ui"></div>
+        </div>
+
+        <div id="v-calendar" class="view-section">
+            <div class="page-header-title">
+                <div class="page-header-inner"></div>
+                <span class="page-header-sub">SCHEDULE</span>
+                <h2 class="page-header-main">活動予定表</h2>
+            </div>
             <div class="panel admin-only">
                 <button class="panel-trigger" onclick="togglePanel('add-sch-form')">＋ 新しい予定を記帳する</button>
                 <div id="add-sch-form" class="panel-content">
@@ -271,8 +373,8 @@
                     <div id="sch-date-list-new" class="sch-date-list"></div>
                     <button class="btn-sub admin-only" onclick="addSchDateField(this)">＋ 日程を追加</button>
                     <div class="form-group" style="margin-top:15px;"><label>進行状況</label><select id="sch-status"><option value="調整中">調整中</option><option value="待機中" selected>待機中</option><option value="進行中">進行中</option><option value="完走">完走</option></select></div>
-                    <span class="section-label">物語の題名</span>
-                    <div class="form-group" style="margin-bottom:15px;"><input type="text" id="sch-title" placeholder="挑むシナリオの題名を記入"></div>
+                    <span class="section-label">シナリオ名</span>
+                    <div class="form-group" style="margin-bottom:15px;"><input type="text" id="sch-title" placeholder="タイトルを記入"></div>
                     <span class="section-label">役割</span>
                     <div class="form-row">
                         <div class="form-group"><label>ロール</label><select id="sch-role" onchange="handleSchRoleChange(this)"><option value="プレイヤー（PL）">プレイヤー（PL）</option><option value="キーパー（KP/SKP）">キーパー（KP/SKP）</option><option value="キーパー（KPC）">キーパー（KPC）</option></select></div>
@@ -307,6 +409,11 @@
         </div>
 
         <div id="v-characters" class="view-section">
+            <div class="page-header-title">
+                <div class="page-header-inner"></div>
+                <span class="page-header-sub">CHARACTERS</span>
+                <h2 class="page-header-main">探索者名簿</h2>
+            </div>
             <div class="panel admin-only">
                 <button class="panel-trigger" onclick="togglePanel('add-form')">＋ 新しい探索者を記帳する</button>
                 <div id="add-form" class="panel-content">
@@ -325,11 +432,16 @@
         </div>
 
         <div id="v-scenarios" class="view-section">
+            <div class="page-header-title">
+                <div class="page-header-inner"></div>
+                <span class="page-header-sub">SCENARIOS</span>
+                <h2 class="page-header-main">シナリオ目録</h2>
+            </div>
             <div class="panel admin-only">
                 <button class="panel-trigger" onclick="togglePanel('add-scn-form')">＋ 新しいシナリオを目録に記帳する</button>
                 <div id="add-scn-form" class="panel-content">
                     <span class="section-label">目録の情報</span>
-                    <div class="form-group"><label>シナリオ題名</label><input type="text" id="scn-in-title" placeholder="物語のタイトルを記入"></div>
+                    <div class="form-group"><label>シナリオ名</label><input type="text" id="scn-in-title" placeholder="タイトルを記入"></div>
                     <div class="form-group" style="margin-top:15px;">
                         <label>ジャンル</label>
                         <select id="scn-in-genre" onchange="toggleScnFormFields(this.value, 'new')">
@@ -358,8 +470,9 @@
                     </div>
 
                     <div id="scn-ext-kp" style="display:none;">
-                        <span class="section-label">司書の練度</span>
-                        <div class="form-group"><label>KP回数</label><input type="number" id="scn-in-kp-count" value="0"></div>
+                        <span class="section-label">開催の記録</span>
+                        <div id="scn-run-list-new"></div>
+                        <button class="btn-sub admin-only" onclick="addScnRunField('new')">＋ 開催記録を追加</button>
                     </div>
 
                     <button class="btn-main" id="btn-save-scn" onclick="addScenarioToLibrary()" style="margin-top:30px;">目録に記帳する</button>
@@ -380,9 +493,23 @@
                 <div style="flex:1"></div><div class="control-group" style="font-style:italic;"><span id="scn-count-disp">0</span> 編の記録</div>
             </div>
 
-            <span class="section-label">通過済みの物語</span><div id="scn-list-passed"></div>
-            <span class="section-label" style="margin-top:40px;">視聴済みの物語</span><div id="scn-list-watched"></div>
-            <span class="section-label" style="margin-top:40px;">KP可能な物語</span><div id="scn-list-kp"></div>
+            <span class="section-label">通過済みの物語</span>
+            <details class="scn-section-details">
+                <summary class="scn-summary-btn"><div style="display:flex; align-items:center;"><span class="scn-count-badge" id="count-passed">0編</span> の記録</div></summary>
+                <div id="scn-list-passed" style="margin-top:15px;"></div>
+            </details>
+
+            <span class="section-label" style="margin-top:40px;">視聴済みの物語</span>
+            <details class="scn-section-details">
+                <summary class="scn-summary-btn"><div style="display:flex; align-items:center;"><span class="scn-count-badge" id="count-watched">0編</span> の記録</div></summary>
+                <div id="scn-list-watched" style="margin-top:15px;"></div>
+            </details>
+
+            <span class="section-label" style="margin-top:40px;">KP可能な物語</span>
+            <details class="scn-section-details">
+                <summary class="scn-summary-btn"><div style="display:flex; align-items:center;"><span class="scn-count-badge" id="count-kp">0編</span> の記録</div></summary>
+                <div id="scn-list-kp" style="margin-top:15px;"></div>
+            </details>
         </div>
     </div>
 </main>
@@ -476,71 +603,85 @@
 <div id="import-overlay"><div class="import-book"><div class="close-btn" onclick="closeImportOverlay()">×</div><div class="import-page"><h2 style="font-family:'Noto Serif JP',serif; border-bottom:1px solid var(--accent); padding-bottom:10px;">「いあきゃら」テキストから写記する</h2><textarea id="import-text-area" style="height:350px; font-family:monospace; font-size:0.8rem;" placeholder="ここにテキストをペースト..."></textarea><button class="btn-main admin-only" style="margin-top:20px;" onclick="parseAndAddChar()">写記する</button></div></div></div>
 <div id="sch-viewer-overlay" onclick="closeSchViewer()"><div class="viewer-book single-column" onclick="event.stopPropagation()"><div class="close-btn" onclick="closeSchViewer()">×</div><div class="viewer-page" id="sv-page-content" style="flex: 1 0 auto;"></div><div class="sticky-footer" id="sv-edit-btn-container" style="flex-shrink: 0; margin-top: auto;"></div></div></div>
 
-<div id="sch-editor-overlay"><div class="editor-book"><div class="close-btn" onclick="closeSchEditor()">×</div><div class="editor-page">
-    <h2 style="font-family:'Noto Serif JP',serif; border-bottom:1px solid var(--accent); padding-bottom:10px;">物語の予定を改編する</h2>
-    <div id="sch-edit-form-area">
-        <span class="section-label">刻限と状況</span>
-        <div id="sch-date-list-edit" class="sch-date-list"></div>
-        <button class="btn-sub admin-only" onclick="addSchDateField(this)">＋ 日程を追加</button>
-        <div class="form-group" style="margin-top:15px;"><label>進行状況</label><select id="edit-sch-status"><option value="調整中">調整中</option><option value="待機中">待機中</option><option value="進行中">進行中</option><option value="完走">完走</option></select></div>
-        <span class="section-label">物語の題名</span>
-        <div class="form-group" style="margin-bottom:15px;"><input type="text" id="edit-sch-title"></div>
-        <span class="section-label">役割</span>
-        <div class="form-row">
-            <div class="form-group"><label>ロール</label><select id="edit-sch-role" onchange="handleSchRoleChange(this)"><option value="プレイヤー（PL）">プレイヤー（PL）</option><option value="キーパー（KP/SKP）">キーパー（KP/SKP）</option><option value="キーパー（KPC）">キーパー（KPC）</option></select></div>
-            <div class="form-group"><label>探索者（PC）</label><select id="edit-sch-char-select" class="sch-char-select-el"></select></div>
-        </div>
-        <span class="section-label">同卓者</span>
-        <span style="font-size:0.65rem; color:var(--text-sub); font-weight:bold;">キーパー（KP/SKP）</span>
-        <div id="sch-ptn-list-kp-edit" class="partner-list-kp"></div>
-        <button class="btn-sub admin-only" onclick="addPartnerField(this, 'kp')">＋ キーパーを追加</button>
-        <span style="font-size:0.65rem; color:var(--text-sub); font-weight:bold;">プレイヤー（PL）</span>
-        <div id="sch-ptn-list-pl-edit" class="partner-list-pl"></div>
-        <button class="btn-sub admin-only" onclick="addPartnerField(this, 'pl')">＋ プレイヤーを追加</button>
-    </div>
-    <button class="btn-main admin-only" id="btn-update-sch" style="margin-top:30px;">物語を書き換える</button>
-</div></div></div>
-
-<div id="scn-editor-overlay"><div class="editor-book" style="max-height:80vh; max-width:700px; height:auto; padding-bottom:20px;"><div class="close-btn" onclick="closeScnEditor()">×</div><div class="editor-page" style="padding:40px;">
-    <h2 style="font-family:'Noto Serif JP',serif; border-bottom:1px solid var(--accent); padding-bottom:10px;">目録の記録を改編する</h2>
-    <div id="scn-edit-form-area">
-        <span class="section-label">目録の情報</span>
-        <div class="form-group"><label>シナリオ題名</label><input type="text" id="edit-scn-in-title"></div>
-        <div class="form-group" style="margin-top:15px;">
-            <label>ジャンル</label>
-            <select id="edit-scn-in-genre" onchange="toggleScnFormFields(this.value, 'edit')">
-                <option value="passed">通過済み</option>
-                <option value="watched">視聴済み</option>
-                <option value="kp">KP可能</option>
-            </select>
-        </div>
-        <div id="edit-scn-ext-passed">
-            <span class="section-label">通過の栞</span>
-            <div class="form-row">
-                <div class="form-group"><label>通過日</label><input type="date" id="edit-scn-in-date"></div>
-                <div class="form-group"><label>担当PC</label><select id="edit-scn-in-pc" class="sch-char-select-el"></select></div>
-            </div>
-            <div style="margin-bottom:15px;">
-                <span style="font-size:0.65rem; color:var(--text-sub); font-weight:bold;">KP</span>
-                <div id="scn-ptn-list-kp-edit" class="scn-partner-list-kp"></div>
-                <button class="btn-sub admin-only" onclick="addScnPartnerField(this, 'kp')">＋ KPを追加</button>
-            </div>
-            <div>
-                <span style="font-size:0.65rem; color:var(--text-sub); font-weight:bold;">PL</span>
-                <div id="scn-ptn-list-pl-edit" class="scn-partner-list-pl"></div>
-                <button class="btn-sub admin-only" onclick="addScnPartnerField(this, 'pl')">＋ PLを追加</button>
+<div id="sch-editor-overlay" onclick="closeSchEditor()">
+    <div class="editor-book single-column" onclick="event.stopPropagation()">
+        <div class="close-btn" onclick="closeSchEditor()">×</div>
+        <div class="editor-page">
+            <h2 style="font-family:'Noto Serif JP',serif; border-bottom:1px solid var(--accent); padding-bottom:10px;">物語の予定を改編する</h2>
+            <div id="sch-edit-form-area">
+                <span class="section-label">刻限と状況</span>
+                <div id="sch-date-list-edit" class="sch-date-list"></div>
+                <button class="btn-sub admin-only" onclick="addSchDateField(this)">＋ 日程を追加</button>
+                <div class="form-group" style="margin-top:15px;"><label>進行状況</label><select id="edit-sch-status"><option value="調整中">調整中</option><option value="待機中">待機中</option><option value="進行中">進行中</option><option value="完走">完走</option></select></div>
+                <span class="section-label">シナリオの題名</span>
+                <div class="form-group" style="margin-bottom:15px;"><input type="text" id="edit-sch-title"></div>
+                <span class="section-label">役割</span>
+                <div class="form-row">
+                    <div class="form-group"><label>ロール</label><select id="edit-sch-role" onchange="handleSchRoleChange(this)"><option value="プレイヤー（PL）">プレイヤー（PL）</option><option value="キーパー（KP/SKP）">キーパー（KP/SKP）</option><option value="キーパー（KPC）">キーパー（KPC）</option></select></div>
+                    <div class="form-group"><label>探索者（PC）</label><select id="edit-sch-char-select" class="sch-char-select-el"></select></div>
+                </div>
+                <span class="section-label">同卓者</span>
+                <span style="font-size:0.65rem; color:var(--text-sub); font-weight:bold;">キーパー（KP/SKP）</span>
+                <div id="sch-ptn-list-kp-edit" class="partner-list-kp"></div>
+                <button class="btn-sub admin-only" onclick="addPartnerField(this, 'kp')">＋ キーパーを追加</button>
+                <span style="font-size:0.65rem; color:var(--text-sub); font-weight:bold;">プレイヤー（PL）</span>
+                <div id="sch-ptn-list-pl-edit" class="partner-list-pl"></div>
+                <button class="btn-sub admin-only" onclick="addPartnerField(this, 'pl')">＋ プレイヤーを追加</button>
             </div>
         </div>
-        <div id="edit-scn-ext-kp" style="display:none;">
-            <span class="section-label">司書の練度</span>
-            <div class="form-group"><label>KP回数</label><input type="number" id="edit-scn-in-kp-count" value="0"></div>
+        <div class="sticky-footer">
+            <button class="btn-main admin-only" id="btn-update-sch" style="max-width: 400px; margin: 0 auto; border-radius: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">物語を書き換える</button>
         </div>
     </div>
-    <button class="btn-main admin-only" onclick="updateScenario()" style="margin-top:30px;">目録を書き換える</button>
-</div></div></div>
+</div>
 
+<div id="scn-editor-overlay" onclick="closeScnEditor()">
+    <div class="editor-book single-column" onclick="event.stopPropagation()">
+        <div class="close-btn" onclick="closeScnEditor()">×</div>
+        <div class="editor-page">
+            <h2 style="font-family:'Noto Serif JP',serif; border-bottom:1px solid var(--accent); padding-bottom:10px;">目録の記録を改編する</h2>
+            <div id="scn-edit-form-area">
+                <span class="section-label">目録の情報</span>
+                <div class="form-group"><label>シナリオ題名</label><input type="text" id="edit-scn-in-title"></div>
+                <div class="form-group" style="margin-top:15px;">
+                    <label>ジャンル</label>
+                    <select id="edit-scn-in-genre" onchange="toggleScnFormFields(this.value, 'edit')">
+                        <option value="passed">通過済み</option>
+                        <option value="watched">視聴済み</option>
+                        <option value="kp">KP可能</option>
+                    </select>
+                </div>
+                <div id="edit-scn-ext-passed">
+                    <span class="section-label">通過の栞</span>
+                    <div class="form-row">
+                        <div class="form-group"><label>通過日</label><input type="date" id="edit-scn-in-date"></div>
+                        <div class="form-group"><label>担当PC</label><select id="edit-scn-in-pc" class="sch-char-select-el"></select></div>
+                    </div>
+                    <div style="margin-bottom:15px;">
+                        <span style="font-size:0.65rem; color:var(--text-sub); font-weight:bold;">KP</span>
+                        <div id="scn-ptn-list-kp-edit" class="scn-partner-list-kp"></div>
+                        <button class="btn-sub admin-only" onclick="addScnPartnerField(this, 'kp')">＋ KPを追加</button>
+                    </div>
+                    <div>
+                        <span style="font-size:0.65rem; color:var(--text-sub); font-weight:bold;">PL</span>
+                        <div id="scn-ptn-list-pl-edit" class="scn-partner-list-pl"></div>
+                        <button class="btn-sub admin-only" onclick="addScnPartnerField(this, 'pl')">＋ PLを追加</button>
+                    </div>
+                </div>
+                <div id="edit-scn-ext-kp" style="display:none;">
+                    <span class="section-label">開催の記録</span>
+                    <div id="scn-run-list-edit"></div>
+                    <button class="btn-sub admin-only" onclick="addScnRunField('edit')">＋ 開催記録を追加</button>
+                </div>
+            </div>
+        </div>
+        <div class="sticky-footer">
+            <button class="btn-main admin-only" onclick="updateScenario()" style="max-width: 400px; margin: 0 auto; border-radius: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">目録を書き換える</button>
+        </div>
+    </div>
+</div>
 <div id="sync-overlay"><div class="sync-book"><div class="close-btn" onclick="closeSyncSettings()">×</div><div class="editor-page" style="padding:40px;">
-    <h2 style="font-family:'Noto Serif JP',serif; border-bottom:1px solid var(--accent); padding-bottom:10px;">大書庫の通信設定 (管理者用)</h2>
+    <h2 style="font-family:'Noto Serif JP',serif; border-bottom:1px solid var(--accent); padding-bottom:10px;">通信設定 (管理者用)</h2>
     <p style="font-size:0.8rem; color:var(--text-sub); margin-bottom:20px;">閲覧者の画面ではこの設定は必要ありません。管理者のみが「合鍵（トークン）」を入力することで、自動同期・編集が可能になります。</p>
     <div class="form-group"><label>GitHub Username (Owner)</label><input type="text" id="sync-owner" placeholder="例: itomen"></div>
     <div class="form-group"><label>Repository Name</label><input type="text" id="sync-repo" placeholder="例: trpg-archive"></div>
@@ -608,7 +749,7 @@
                     showView('v-calendar'); 
                 }
             } else {
-                showView('v-calendar'); 
+                showView('v-home'); 
             }
             
         } catch(e) {
@@ -655,8 +796,19 @@
         schedules = schedules.map(s => { if (!s.dates && s.date) s.dates = [s.date]; if (!s.dates) s.dates = []; return s; }); 
     }
 
+    let isPushing = false;
+    let pushQueue = false;
+
     async function pushData() {
         if (!isEditMode || !syncConfig.owner || !syncConfig.repo || !syncConfig.token) return;
+        
+        // ★ 渋滞回避：通信中なら「予約」だけして一旦待機
+        if (isPushing) {
+            pushQueue = true; 
+            return;
+        }
+        
+        isPushing = true;
         const disp = document.getElementById('app-mode-disp');
         disp.innerText = "🔄 通信中..."; disp.className = "sync-status status-syncing";
         try {
@@ -687,6 +839,13 @@
             console.error("同期エラー:", e); 
             disp.innerText = "⚠ 通信エラー"; disp.className = "sync-status status-error";
             setTimeout(() => { if(isEditMode) applyAppMode(); }, 3000);
+        } finally {
+            isPushing = false;
+            // ★ 予約が残っていれば、1秒後に再実行する
+            if (pushQueue) {
+                pushQueue = false;
+                setTimeout(pushData, 1000); 
+            }
         }
     }
 
@@ -695,6 +854,162 @@
         try { renderChars(); } catch(e){ console.error(e); }
         try { renderScheduleView(); } catch(e){ console.error(e); }
         try { renderScenarioLibrary(); } catch(e){ console.error(e); }
+        try { renderHome(); } catch(e){ console.error(e); }
+    }
+
+    function renderHome() {
+        const ui = document.getElementById('home-dashboard-ui');
+        if(!ui) return;
+
+        // 1. 基本統計と同卓トップ10
+        let totalPl = 0; let totalKp = 0; let pCounts = {};
+        scnLib.forEach(s => {
+            if (s.genre === 'passed') totalPl++;
+            let runsCount = (s.runs && Array.isArray(s.runs)) ? s.runs.length : 0;
+            if (s.genre === 'kp') totalKp += (Number(s.kpCount) || 0) + runsCount;
+            else if (s.kpCount) totalKp += Number(s.kpCount);
+
+            const addPtn = (arr) => { if(!arr) return; let list = Array.isArray(arr) ? arr : arr.split(/[\/／,、]/); list.forEach(name => { let n = name.trim(); if(n && n !== MY_NAME && n !== '-') { pCounts[n] = (pCounts[n] || 0) + 1; } }); };
+            
+            if (s.genre === 'passed') {
+                addPtn(s.kp); addPtn(s.pl); if(s.partners) addPtn(s.partners); 
+            } else if (s.genre === 'kp' && s.runs) {
+                s.runs.forEach(r => { addPtn(r.pl); addPtn(r.kp); });
+            }
+        });
+        
+        let topPartners = Object.entries(pCounts).sort((a, b) => b[1] - a[1]).slice(0, 10);
+        let partnerHtml = topPartners.length ? `<div class="dash-partners-grid">` + topPartners.map((p, idx) => {
+            let rank = idx < 3 ? ['🥇','🥈','🥉'][idx] : `<span style="display:inline-block; width:16px; text-align:center; color:var(--text-sub); font-size:0.75rem;">${idx+1}</span>`;
+            return `<div style="display:flex; justify-content:space-between; font-size:0.85rem; border-bottom:1px dashed var(--border); padding-bottom:4px;"><span style="color:var(--text-main); font-weight:bold; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:70%;">${rank} ${p[0]}</span><span style="color:var(--important); font-family:'Noto Serif JP',serif; font-weight:bold;">${p[1]}回</span></div>`;
+        }).join('') + `</div>` : '<div style="color:var(--text-sub); font-size:0.8rem; text-align:center;">記録なし</div>';
+
+        // 2. アクティビティ（今年・今月のセッション数）
+        const now = new Date();
+        const currentYear = String(now.getFullYear());
+        const currentMonth = String(now.getMonth() + 1).padStart(2, '0');
+        const currentYM = `${currentYear}-${currentMonth}`;
+        let thisYearCount = 0; let thisMonthCount = 0;
+        scnLib.forEach(s => {
+            if(s.genre === 'passed' && s.date) {
+                if(s.date.startsWith(currentYear)) thisYearCount++;
+                if(s.date.startsWith(currentYM)) thisMonthCount++;
+            }
+        });
+
+        // 3. ロール比率（PL vs KP）
+        let totalRole = totalPl + totalKp;
+        let plPct = totalRole > 0 ? Math.round((totalPl / totalRole) * 100) : 50;
+        let kpPct = totalRole > 0 ? 100 - plPct : 50;
+
+        // 4. 進行中・待機中のタスクリスト（最大5件）
+        let upcomingSchs = schedules.filter(s => (s.status === '待機中' || s.status === '進行中') && s.dates && s.dates.length > 0).sort((a, b) => new Date(a.dates[0]) - new Date(b.dates[0])).slice(0, 5);
+        let upcomingHtml = '<div style="color:var(--text-sub); font-size:0.85rem; text-align:center; padding:20px 0;">進行中・待機中の予定はありません</div>';
+        if(upcomingSchs.length > 0) {
+            upcomingHtml = `<div class="dash-task-list">` + upcomingSchs.map(sch => {
+                const nd = new Date(sch.dates[0]);
+                const stCls = sch.status === '待機中' ? 'status-wait' : 'status-ongoing';
+                return `
+                    <div class="dash-next-sch" onclick="openSchViewer(${sch.id});">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+                            <div class="dash-next-date" style="margin-bottom:0; display:flex; align-items:center; gap:10px;">
+                                <span style="display:inline-block; width:50px; text-align:left;">${nd.getMonth()+1}/${nd.getDate()}</span>
+                                <span style="font-size:0.8rem; color:var(--text-sub); background:var(--input-bg); border:1px solid var(--border); padding:2px 8px; border-radius:12px; font-family:'Noto Sans JP', sans-serif; box-shadow:inset 0 1px 3px rgba(0,0,0,0.02); line-height:1;">${String(nd.getHours()).padStart(2,'0')}:${String(nd.getMinutes()).padStart(2,'0')}</span>
+                            </div>
+                            <span class="chr-status-pill ${stCls}" style="font-size:0.65rem; padding:3px 8px;">${sch.status}</span>
+                        </div>
+                        <div class="dash-next-title">${sch.title}</div>
+                        <div style="font-size:0.7rem; color:var(--text-sub); font-weight:bold;">${sch.role} ${sch.charName ? ` / PC: ${sch.charName}` : ''}</div>
+                    </div>`;
+            }).join('') + `</div>`;
+        }
+
+        // 5. 探索者の平均能力値（バーグラフ）※7版は÷5、SAN値は除外
+        let avgStatsHtml = '<div style="color:var(--text-sub); font-size:0.8rem; text-align:center;">記録なし</div>';
+        if(chars.length > 0) {
+            let statSums = {str:0, con:0, pow:0, dex:0, app:0, siz:0, int:0, edu:0};
+            let validCounts = {str:0, con:0, pow:0, dex:0, app:0, siz:0, int:0, edu:0};
+            chars.forEach(c => {
+                if(c.stats) {
+                    ['str','con','pow','dex','app','siz','int','edu'].forEach(k => {
+                        let v = Number(c.stats[k]);
+                        if(!isNaN(v) && v > 0) {
+                            // ★ 7版のステータスは6版基準に合わせるため「÷5」する
+                            if (c.regulation === '7th') {
+                                v = v / 5;
+                            }
+                            statSums[k] += v; 
+                            validCounts[k]++; 
+                        }
+                    });
+                }
+            });
+            let bars = ['str','con','pow','dex','app','siz','int','edu'].map(k => { return { k, avg: validCounts[k] > 0 ? Math.round(statSums[k] / validCounts[k]) : 0 }; });
+            let maxAvg = Math.max(...bars.map(b => b.avg), 1);
+            avgStatsHtml = `<div>` + bars.map(b => {
+                let pct = Math.round((b.avg / maxAvg) * 100);
+                return `
+                <div class="dash-stat-bar-wrap">
+                    <div class="dash-stat-bar-label">${b.k.toUpperCase()}</div>
+                    <div class="dash-stat-bar-bg"><div class="dash-stat-bar-fill" style="width:${pct}%; background:var(--accent);"></div></div>
+                    <div class="dash-stat-bar-val">${b.avg}</div>
+                </div>`;
+            }).join('') + `</div>`;
+        }
+
+        // 最近のシナリオ
+        let recentScnsHtml = '<div style="color:var(--text-sub); font-size:0.8rem; text-align:center; padding:10px 0;">記録なし</div>';
+        const passedScns = scnLib.filter(s => s.genre === 'passed').sort((a,b) => (b.date || "").localeCompare(a.date || "")).slice(0, 3);
+        if(passedScns.length > 0) {
+            recentScnsHtml = `<div class="dash-recent-scns">` + passedScns.map(s => `<div class="dash-scn-item"><div style="font-weight:bold; color:var(--text-main); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:70%;">${s.title}</div><div style="font-family:'Noto Serif JP',serif; color:var(--important); font-weight:bold; font-size:0.75rem;">${s.date ? s.date.replace(/-/g, '/') : '-'}</div></div>`).join('') + `</div>`;
+        }
+
+        // HTML描画
+        ui.innerHTML = `
+            <div class="dashboard-grid">
+                <div style="display:flex; flex-direction:column; gap:20px;">
+                    <div class="dash-card">
+                        <h3 class="dash-card-title">📖 司書の軌跡</h3>
+                        <div class="dash-stat-row">
+                            <div class="dash-stat-box"><span class="dash-stat-label">登録探索者</span><span class="dash-stat-value">${chars.length}</span></div>
+                            <div class="dash-stat-box"><span class="dash-stat-label">今年の通過</span><span class="dash-stat-value">${thisYearCount}</span></div>
+                            <div class="dash-stat-box"><span class="dash-stat-label">今月の通過</span><span class="dash-stat-value">${thisMonthCount}</span></div>
+                        </div>
+                        <div style="margin-bottom:20px;">
+                            <div style="display:flex; justify-content:space-between; font-size:0.75rem; font-weight:bold; margin-bottom:5px;">
+                                <span style="color:var(--accent);">PL (${plPct}%)</span>
+                                <span style="color:var(--important);">KP (${kpPct}%)</span>
+                            </div>
+                            <div class="dash-progress-wrap">
+                                <div class="dash-progress-pl" style="width:${plPct}%"></div>
+                                <div class="dash-progress-kp" style="width:${kpPct}%"></div>
+                            </div>
+                        </div>
+                        <div style="background:var(--bg); border-radius:8px; padding:15px; border:1px solid var(--border);">
+                            <div style="font-size:0.75rem; color:var(--text-sub); font-weight:bold; margin-bottom:12px; text-align:center; letter-spacing:1px;">🤝 よく同卓する人 トップ10</div>
+                            ${partnerHtml}
+                        </div>
+                    </div>
+
+                    <div class="dash-card">
+                        <h3 class="dash-card-title">📊 探索者の平均能力値</h3>
+                        ${avgStatsHtml}
+                        <div style="text-align:center; font-size:0.65rem; color:var(--text-sub); margin-top:10px;">※登録されている全探索者の平均値（6版基準）</div>
+                    </div>
+                </div>
+
+                <div style="display:flex; flex-direction:column; gap:20px;">
+                    <div class="dash-card">
+                        <h3 class="dash-card-title">📅 進行中・待機中の物語</h3>
+                        ${upcomingHtml}
+                    </div>
+                    <div class="dash-card">
+                        <h3 class="dash-card-title">🏆 最近通過したシナリオ</h3>
+                        ${recentScnsHtml}
+                    </div>
+                </div>
+            </div>
+        `;
     }
 
     function openSyncSettings() { document.getElementById('sync-owner').value = syncConfig.owner; document.getElementById('sync-repo').value = syncConfig.repo; document.getElementById('sync-token').value = syncConfig.token; document.getElementById('sync-overlay').style.display = 'flex'; }
@@ -717,23 +1032,20 @@
     function clearSyncSettings() { syncConfig.token = ''; localStorage.setItem(KEY_SYNC, JSON.stringify(syncConfig)); isEditMode = false; applyAppMode(); closeSyncSettings(); }
 
     function updateStats() {
-        let plCount = 0; let kpCountTotal = 0; let pCounts = {};
+        let plCount = 0; let kpCountTotal = 0;
         scnLib.forEach(s => {
             if (s.genre === 'passed') plCount++;
-            if (s.kpCount) kpCountTotal += Number(s.kpCount);
-            if (s.genre === 'passed') {
-                const addPtn = (arr) => {
-                    if(!arr) return; let list = Array.isArray(arr) ? arr : arr.split(/[\/／,、]/);
-                    list.forEach(name => { let n = name.trim(); if(n && n !== MY_NAME && n !== '-') { pCounts[n] = (pCounts[n] || 0) + 1; } });
-                };
-                addPtn(s.kp); addPtn(s.pl); if(s.partners) addPtn(s.partners); 
-            }
+            
+            // KP回数のカウント（過去の詳細不明分 ＋ 今回追加した開催録の回数）
+            let runsCount = (s.runs && Array.isArray(s.runs)) ? s.runs.length : 0;
+            if (s.genre === 'kp') kpCountTotal += (Number(s.kpCount) || 0) + runsCount;
+            else if (s.kpCount) kpCountTotal += Number(s.kpCount);
         });
-        document.getElementById('stat-pl').innerText = plCount; document.getElementById('stat-kp').innerText = kpCountTotal;
-        let sortedP = Object.entries(pCounts).sort((a, b) => b[1] - a[1]).slice(0, 3);
-        let pArea = document.getElementById('stat-partners'); pArea.innerHTML = '';
-        if (sortedP.length === 0) { pArea.innerHTML = '<div style="color:rgba(255,255,255,0.3); font-style:italic; font-size:0.7rem; text-align:center;">記録がありません</div>'; } 
-        else { sortedP.forEach(p => { pArea.innerHTML += `<div class="stat-partner-row"><span class="stat-partner-name" title="${p[0]}">${p[0]}</span><span class="stat-partner-count">${p[1]}回</span></div>`; }); }
+        
+        const plDisp = document.getElementById('stat-pl');
+        const kpDisp = document.getElementById('stat-kp');
+        if (plDisp) plDisp.innerText = plCount;
+        if (kpDisp) kpDisp.innerText = kpCountTotal;
     }
     
     function syncScenarioToChar(charName, scenarioTitle) {
@@ -753,6 +1065,25 @@
                 let passDate = ""; if (s.dates && s.dates.length > 0) { const sortedDates = [...s.dates].sort(); passDate = sortedDates[sortedDates.length - 1].split('T')[0]; }
                 scnLib.push({ id: Date.now() + Math.floor(Math.random()*1000), title: s.title, genre: 'passed', date: passDate, pc: s.charName || "", kp: kpArr, pl: plArr, kpCount: 0 });
                 localStorage.setItem(KEY_SCN_LIB, JSON.stringify(scnLib)); renderScenarioLibrary(); 
+            }
+        } else if (s.role === 'キーパー（KP/SKP）' || s.role === 'キーパー（KPC）') {
+            const existingKp = scnLib.find(scn => scn.title === s.title && scn.genre === 'kp');
+            const plArr = (s.partners_pl || []).map(p => p.name);
+            const kpArr = (s.partners_kp || []).map(p => p.name);
+            const kpcName = (s.role === 'キーパー（KPC）' && s.charName) ? s.charName : "";
+            let passDate = ""; if (s.dates && s.dates.length > 0) { const sortedDates = [...s.dates].sort(); passDate = sortedDates[sortedDates.length - 1].split('T')[0]; }
+            
+            const runData = { date: passDate, kpc: kpcName, kp: kpArr, pl: plArr };
+
+            if (existingKp) {
+                if (!existingKp.runs) existingKp.runs = [];
+                if (!existingKp.runs.some(r => r.date === passDate)) {
+                    existingKp.runs.push(runData);
+                    localStorage.setItem(KEY_SCN_LIB, JSON.stringify(scnLib)); renderScenarioLibrary();
+                }
+            } else {
+                scnLib.push({ id: Date.now() + Math.floor(Math.random()*1000), title: s.title, genre: 'kp', runs: [runData], kpCount: 0 });
+                localStorage.setItem(KEY_SCN_LIB, JSON.stringify(scnLib)); renderScenarioLibrary();
             }
         }
     }
@@ -812,13 +1143,25 @@
         commands += `${cc}<=${ide} 【アイデア】\n`;
         commands += `${cc}<=${know} 【知識】\n\n`;
 
-        // 5. 成長した技能系
+        // 5. 成長した技能系 ＆ 必須三大技能（目星・聞き耳・図書館）
+        const outSkills = {};
+        const is7th = c.regulation === '7th';
+        
+        // 必須三大技能の初期値をセット（6版と7版で初期値を自動切替）
+        outSkills["目星"] = 25;
+        outSkills["聞き耳"] = is7th ? 20 : 25;
+        outSkills["図書館"] = is7th ? 20 : 25;
+
         (c.skills || []).forEach(s => {
             if(Number(s.t) > 0) {
                 let n = s.sub ? `${s.n}(${s.sub})` : s.n;
-                commands += `${cc}<=${s.t} 【${n}】\n`;
+                outSkills[n] = s.t;
             }
         });
+
+        for (let n in outSkills) {
+            commands += `${cc}<=${outSkills[n]} 【${n}】\n`;
+        }
         commands += `\n`;
 
         // 6. ダメージ系
@@ -860,7 +1203,7 @@
         });
     }
 
-    function showView(id) { document.querySelectorAll('.view-section').forEach(v => v.classList.remove('active')); document.getElementById(id).classList.add('active'); document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active')); const navMap = { 'v-calendar': 'nav-cal', 'v-characters': 'nav-char', 'v-scenarios': 'nav-scn' }; if(navMap[id]) document.getElementById(navMap[id]).classList.add('active'); if(id === 'v-calendar') renderScheduleView(); if(id === 'v-scenarios') renderScenarioLibrary(); }
+    function showView(id) { document.querySelectorAll('.view-section').forEach(v => v.classList.remove('active')); document.getElementById(id).classList.add('active'); document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active')); const navMap = { 'v-home': 'nav-home', 'v-calendar': 'nav-cal', 'v-characters': 'nav-char', 'v-scenarios': 'nav-scn' }; if(navMap[id]) document.getElementById(navMap[id]).classList.add('active'); if(id === 'v-calendar') renderScheduleView(); if(id === 'v-scenarios') renderScenarioLibrary(); if(id === 'v-home') renderHome(); }
     
     // ★ v9.7.2 縦長1カラム・レスポンシブ用ビューア
     // ★ v9.8.0 縦長1カラム＆全枠固定バッジデザイン対応のビューア
@@ -900,9 +1243,9 @@
                         <span class="reg-tag ${c.regulation === '7th' ? 'tag-7th' : 'tag-6th'}" style="box-shadow: 0 2px 5px rgba(0,0,0,0.1); font-size: 0.8rem; padding: 6px 14px; white-space:nowrap; position:relative; top:4px;">${c.regulation === '7th' ? '7th Ed.' : '6th Ed.'}</span>
                     </div>
                     
-                    <div style="width:100%; height:1px; background:var(--border); margin:15px 0; opacity:0.6;"></div>
+                    <div style="width:100%; height:1px; background:var(--border); margin:18px 0; opacity:0.6;"></div>
                     
-                    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <div style="display:flex; gap:14px; flex-wrap:wrap; margin-bottom: 5px;">
                         <div style="display:flex; align-items:center; background:var(--panel-header-bg); padding:4px 14px 4px 6px; border-radius:20px; border:1px solid var(--border); font-size:0.95rem; color:var(--text-main); font-family:'Noto Serif JP',serif; font-weight:bold;">
                             <span style="background:var(--card-bg); border-radius:15px; padding:2px 8px; font-size:0.65rem; color:var(--text-sub); font-family:'Noto Sans JP',sans-serif; margin-right:8px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">職業</span>${c.job || '無職'}
                         </div>
@@ -958,11 +1301,11 @@
                     
                     // 値が0のものは "badge-empty"、値があるものは色付きのクラスを付与
                     let badges = '';
-                    badges += `<span class="skill-badge ${Number(s.b) > 0 ? 'badge-b' : 'badge-empty'}">基 ${s.b||0}</span>`;
-                    badges += `<span class="skill-badge ${Number(s.j) > 0 ? 'badge-j' : 'badge-empty'}">職 ${s.j||0}</span>`;
-                    badges += `<span class="skill-badge ${Number(s.i) > 0 ? 'badge-i' : 'badge-empty'}">興 ${s.i||0}</span>`;
-                    badges += `<span class="skill-badge ${Number(s.g) > 0 ? 'badge-g' : 'badge-empty'}">成 ${s.g||0}</span>`;
-                    badges += `<span class="skill-badge ${Number(s.o) > 0 ? 'badge-o' : 'badge-empty'}">他 ${s.o||0}</span>`;
+                    badges += `<span class="skill-badge ${Number(s.b) > 0 ? 'badge-b' : 'badge-empty'}">基本 ${s.b||0}</span>`;
+                    badges += `<span class="skill-badge ${Number(s.j) > 0 ? 'badge-j' : 'badge-empty'}">職業 ${s.j||0}</span>`;
+                    badges += `<span class="skill-badge ${Number(s.i) > 0 ? 'badge-i' : 'badge-empty'}">興味 ${s.i||0}</span>`;
+                    badges += `<span class="skill-badge ${Number(s.g) > 0 ? 'badge-g' : 'badge-empty'}">成長 ${s.g||0}</span>`;
+                    badges += `<span class="skill-badge ${Number(s.o) > 0 ? 'badge-o' : 'badge-empty'}">その他 ${s.o||0}</span>`;
 
                     html += `<div class="viewer-skill-item" style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px dotted var(--border); padding:8px 0; font-size:1rem;">
                                 <span style="font-weight:bold; width:150px; flex-shrink:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${dispName}</span>
@@ -1032,39 +1375,47 @@
             ui.innerHTML += `
                 <div class="char-card" onclick="openViewer(${i})">
                     <img src="${c.img || ''}" class="char-icon" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIGZpbGw9IiNlMGUwZTAiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzlhOWE5YSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIEltZzwvdGV4dD48L3N2Zz4='">
-                    <div style="flex:1">
-                        <div style="position:absolute; top:20px; right:20px; display:flex; gap:8px;">
+                    <div style="flex:1; position:relative; z-index:2;">
+                        <div style="position:absolute; top:-5px; right:-5px; display:flex; gap:8px; z-index:10;">
                             <button onclick="event.stopPropagation(); copyShareUrl(${i}, this)" class="btn-action" style="border-color:var(--important); color:var(--important); background:transparent; padding:4px 10px;">URLコピー</button>
                             <button onclick="event.stopPropagation(); copyToCcfolia(${i}, this)" class="btn-action" style="background:var(--accent); color:white; border:none; padding:4px 10px;">駒出力</button>
                             <button onclick="event.stopPropagation(); editChar(${i})" class="btn-action admin-only">編集</button>
                             <button onclick="event.stopPropagation(); deleteChar(${i})" class="btn-action del admin-only">削除</button>
                         </div>
-                        <div class="name-area" style="margin-bottom:12px;">
+                        <div class="name-area">
                             <h3 class="char-name-ruby"><ruby>${c.name}<rt>${c.kana || ''}</rt></ruby></h3>
                             <span class="reg-tag ${c.regulation === '7th' ? 'tag-7th' : 'tag-6th'}">${c.regulation === '7th' ? '7th Ed.' : '6th Ed.'}</span>
                         </div>
-                        <div class="basic-info-row">
-                            <div class="info-item"><span class="info-label-inline">職業：</span>${c.job || '-'}</div><span class="info-sep">/</span>
-                            <div class="info-item"><span class="info-label-inline">性別：</span>${c.sex || '-'}</div><span class="info-sep">/</span>
-                            <div class="info-item"><span class="info-label-inline">年齢：</span>${c.age || '-'}</div><span class="info-sep">/</span>
-                            <div class="info-item"><span class="info-label-inline">身長：</span>${c.height ? c.height + 'cm' : '-'}</div>
-                            <div class="info-item" style="width:100%; margin-top:2px;"><span class="info-label-inline">通過シナリオ：</span>${scnDisp}</div>
+                        
+                        <div style="width:100%; height:1px; background:var(--border); margin:10px 0 15px; opacity:0.6;"></div>
+                        
+                        <div class="basic-info-row" style="margin-bottom:14px;">
+                            <div class="info-pill"><span class="info-pill-label">職業</span>${c.job || '無職'}</div>
+                            <div class="info-pill"><span class="info-pill-label">性別</span>${c.sex || '-'}</div>
+                            <div class="info-pill"><span class="info-pill-label">年齢</span>${c.age || '-'}</div>
+                            <div class="info-pill"><span class="info-pill-label">身長</span>${c.height ? c.height + 'cm' : '-'}</div>
                         </div>
-                        <div style="display:grid; grid-template-columns: repeat(9, 1fr); gap:4px;">
+                        <div class="basic-info-row" style="margin-bottom:15px;">
+                            <div class="info-pill"><span class="info-pill-label">通過シナリオ</span>${scnDisp}</div>
+                        </div>
+                        
+                        <div style="width:100%; height:1px; background:var(--border); margin:0 0 15px; opacity:0.6;"></div>
+
+                        <div style="display:grid; grid-template-columns: repeat(9, 1fr); gap:6px;">
                             ${['str','con','pow','dex','app','siz','int','edu'].map(k => `
-                                <div style="text-align:center; background:var(--panel-header-bg); border-radius:4px; padding:4px 0;">
+                                <div style="text-align:center; background:var(--panel-header-bg); border-radius:6px; padding:6px 0; border:1px solid var(--border); box-shadow:inset 0 2px 4px rgba(0,0,0,0.02);">
                                     <div style="font-size:0.55rem; color:var(--text-sub); font-weight:bold;">${k.toUpperCase()}</div>
-                                    <div style="font-size:0.9rem; font-weight:bold; font-family:'Noto Serif JP', serif;">${c.stats[k] || '-'}</div>
+                                    <div style="font-size:0.95rem; font-weight:bold; font-family:'Noto Serif JP', serif;">${c.stats[k] || '-'}</div>
                                 </div>
                             `).join('')}
-                            <div style="text-align:center; background:var(--san-bg); border:1px solid var(--san-border); border-radius:4px; padding:3px 0;">
+                            <div style="text-align:center; background:var(--san-bg); border:1px solid var(--san-border); border-radius:6px; padding:5px 0; box-shadow:inset 0 2px 4px rgba(0,0,0,0.02);">
                                 <div style="font-size:0.55rem; color:var(--accent); font-weight:bold;">SAN</div>
-                                <div style="font-size:0.9rem; font-weight:bold; color:var(--accent); font-family:'Noto Serif JP', serif;">${c.stats.san || '-'}</div>
+                                <div style="font-size:0.95rem; font-weight:bold; color:var(--accent); font-family:'Noto Serif JP', serif;">${c.stats.san || '-'}</div>
                             </div>
                         </div>
                     </div>
                 </div>`; 
-        }); 
+        });
     }
 
     function initNewForm() { const c = document.getElementById('form-container-new'); c.innerHTML = ''; c.appendChild(createFormNode('new')); crop.activeEl = c.querySelector('.crop-img-el'); updatePatternOptions(c, '6th'); applyPresets(c, '6th'); document.getElementById('sch-date-list-new').innerHTML = ''; addSchDateField(document.querySelector('#add-sch-form .btn-sub')); document.getElementById('sch-ptn-list-kp-new').innerHTML = ''; document.getElementById('sch-ptn-list-pl-new').innerHTML = ''; handleSchRoleChange(document.getElementById('sch-role')); document.getElementById('scn-ptn-list-kp-new').innerHTML = ''; document.getElementById('scn-ptn-list-pl-new').innerHTML = ''; }
@@ -1459,6 +1810,56 @@
         if (kpFields) kpFields.style.display = (val === 'kp') ? 'block' : 'none';
     }
 
+    function addScnRunField(mode, dateVal="", runData=null) {
+        const container = document.getElementById(mode === 'new' ? 'scn-run-list-new' : 'scn-run-list-edit');
+        const d = document.createElement('div');
+        d.className = "scn-run-item";
+        d.style.border = "1px solid var(--border)"; d.style.padding = "20px"; d.style.marginBottom = "15px"; d.style.borderRadius = "8px"; d.style.background = "var(--bg)"; d.style.boxShadow = "inset 0 2px 5px rgba(0,0,0,0.02)";
+        
+        let kpArr = runData && runData.kp ? runData.kp : [MY_NAME];
+        let plArr = [];
+        if (runData && runData.pl) { if (Array.isArray(runData.pl)) plArr = runData.pl; else plArr = runData.pl.split(/[,、]/).map(s => s.trim()).filter(s=>s); }
+        let kpcVal = runData && runData.kpc ? runData.kpc : "";
+
+        let kpHtml = '';
+        kpArr.forEach(p => { kpHtml += `<div style="display:flex; gap:8px; margin-bottom:8px;"><input type="text" class="run-kp-name" value="${p}" style="flex:1;"><button type="button" onclick="this.parentElement.remove()" class="btn-action admin-only">✕</button></div>`; });
+        let plHtml = '';
+        plArr.forEach(p => { plHtml += `<div style="display:flex; gap:8px; margin-bottom:8px;"><input type="text" class="run-pl-name" value="${p}" style="flex:1;"><button type="button" onclick="this.parentElement.remove()" class="btn-action admin-only">✕</button></div>`; });
+
+        let kpcOptions = '<option value="">選択しない</option>';
+        chars.forEach(c => { kpcOptions += `<option value="${c.name}" ${c.name === kpcVal ? 'selected' : ''}>${c.name}</option>`; });
+
+        d.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; border-bottom:1px dashed var(--border); padding-bottom:10px;">
+                <span style="font-size:0.85rem; font-weight:bold; color:var(--accent);">開催録</span>
+                <button type="button" onclick="this.closest('.scn-run-item').remove()" class="btn-action del admin-only" style="padding:4px 10px; font-size:0.7rem;">この記録を削除</button>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:15px;">
+                <div class="form-group" style="margin-bottom:0;"><label>日付</label><input type="date" class="run-date" value="${dateVal}"></div>
+                <div class="form-group" style="margin-bottom:0;"><label>KPC（担当探索者）</label><select class="run-kpc sch-char-select-el">${kpcOptions}</select></div>
+                <div>
+                    <label style="font-size:0.75rem; color:var(--text-sub); display:block; margin-bottom:5px; font-weight:bold;">キーパー（KP/SKP）</label>
+                    <div class="run-kp-list">${kpHtml}</div>
+                    <button type="button" class="btn-sub admin-only" onclick="addRunPartnerField(this, 'kp')" style="padding:8px; margin-bottom:0; font-size:0.75rem;">＋ KPを追加</button>
+                </div>
+                <div>
+                    <label style="font-size:0.75rem; color:var(--text-sub); display:block; margin-bottom:5px; font-weight:bold;">プレイヤー（PL）</label>
+                    <div class="run-pl-list">${plHtml}</div>
+                    <button type="button" class="btn-sub admin-only" onclick="addRunPartnerField(this, 'pl')" style="padding:8px; margin-bottom:0; font-size:0.75rem;">＋ PLを追加</button>
+                </div>
+            </div>
+        `;
+        container.appendChild(d);
+    }
+
+    function addRunPartnerField(btn, type) {
+        const container = btn.previousElementSibling;
+        const d = document.createElement('div');
+        d.style.display = "flex"; d.style.gap = "8px"; d.style.marginBottom = "8px";
+        d.innerHTML = `<input type="text" class="run-${type}-name" value="" style="flex:1;"><button type="button" onclick="this.parentElement.remove()" class="btn-action admin-only">✕</button>`;
+        container.appendChild(d);
+    }
+
     function addScnPartnerField(btn, category, name="") { 
         const root = btn.closest('.panel-content, .editor-page'); 
         const container = root.querySelector('.scn-partner-list-' + category); 
@@ -1485,7 +1886,13 @@
             pc: document.getElementById('scn-in-pc') ? document.getElementById('scn-in-pc').value : "",
             kp: kpList,
             pl: plList,
-            kpCount: document.getElementById('scn-in-kp-count') ? document.getElementById('scn-in-kp-count').value : "0"
+            kpCount: 0,
+            runs: Array.from(document.querySelectorAll('#add-scn-form .scn-run-item')).map(item => ({ 
+                date: item.querySelector('.run-date').value, 
+                kpc: item.querySelector('.run-kpc').value,
+                kp: Array.from(item.querySelectorAll('.run-kp-name')).map(i => i.value).filter(v => v),
+                pl: Array.from(item.querySelectorAll('.run-pl-name')).map(i => i.value).filter(v => v)
+            }))
         };
         
         scnLib.push(data);
@@ -1497,6 +1904,7 @@
         document.getElementById('scn-ptn-list-kp-new').innerHTML = '';
         document.getElementById('scn-ptn-list-pl-new').innerHTML = '';
         if(document.getElementById('scn-in-kp-count')) document.getElementById('scn-in-kp-count').value = '0';
+        if(document.getElementById('scn-run-list-new')) document.getElementById('scn-run-list-new').innerHTML = '';
         
         togglePanel('add-scn-form', false);
         renderScenarioLibrary(); pushData();
@@ -1530,7 +1938,22 @@
                 const plDisp = Array.isArray(s.pl) ? (s.pl.length > 0 ? s.pl.join(' / ') : '-') : (s.pl || s.partners || '-');
                 metaHtml = `<div class="scn-meta"><span><b>通過日:</b> ${s.date || '-'}</span><span><b>PC:</b> ${s.pc || '-'}</span><span><b>KP:</b> ${kpDisp}</span><span><b>PL:</b> ${plDisp}</span></div>`;
             } else if (s.genre === 'kp') {
-                metaHtml = `<div class="scn-meta"><span><b>KP回数:</b> ${s.kpCount || 0}回</span></div>`;
+                let runsCount = (s.runs && Array.isArray(s.runs)) ? s.runs.length : 0;
+                let totalKps = runsCount + (Number(s.kpCount) || 0);
+                metaHtml = `<div class="scn-meta" style="margin-bottom:8px;"><span><b style="color:var(--important);">総KP回数:</b> <span style="font-size:1.1rem; color:var(--text-main); font-weight:bold;">${totalKps}</span> 回</span></div>`;
+                if (runsCount > 0) {
+                    metaHtml += `<details class="run-details"><summary>開催の記録 (${runsCount}回)</summary><div style="display:flex; flex-direction:column; gap:6px; margin-top:12px;">`;
+                    s.runs.forEach((r, idx) => { 
+                        let plDisp = Array.isArray(r.pl) ? r.pl.join(', ') : (r.pl || '-'); 
+                        let kpDisp = Array.isArray(r.kp) ? r.kp.join(', ') : (r.kp || '-');
+                        let kpcDisp = r.kpc ? `<span style="margin-left:8px; color:var(--important);">[KPC: ${r.kpc}]</span>` : '';
+                        metaHtml += `<div style="padding:8px 10px; background:var(--bg); border:1px solid var(--border); border-radius:6px; font-size:0.8rem;">
+                            <div style="margin-bottom:4px; font-family:'Noto Serif JP',serif;"><span style="display:inline-block; width:18px; text-align:center; background:var(--border); color:var(--text-main); border-radius:4px; margin-right:6px; font-weight:bold; font-size:0.7rem;">${idx+1}</span> <b style="color:var(--accent);">${r.date || '日付不明'}</b>${kpcDisp}</div>
+                            <div style="padding-left:26px; color:var(--text-sub); line-height:1.6;"><b>KP:</b> ${kpDisp}<br><b>PL:</b> ${plDisp}</div>
+                        </div>`; 
+                    });
+                    metaHtml += `</div></details>`;
+                }
             }
             
             const cardHtml = `
@@ -1553,6 +1976,15 @@
         if(!listPassed.innerHTML) listPassed.innerHTML = emptyMsg;
         if(!listWatched.innerHTML) listWatched.innerHTML = emptyMsg;
         if(!listKp.innerHTML) listKp.innerHTML = emptyMsg;
+
+        // ★ 各セクションの件数を数えてボタンのバッジに反映
+        const countPassed = dList.filter(s => s.genre === 'passed').length;
+        const countWatched = dList.filter(s => s.genre === 'watched').length;
+        const countKp = dList.filter(s => s.genre === 'kp').length;
+        
+        if (document.getElementById('count-passed')) document.getElementById('count-passed').innerText = countPassed + '編';
+        if (document.getElementById('count-watched')) document.getElementById('count-watched').innerText = countWatched + '編';
+        if (document.getElementById('count-kp')) document.getElementById('count-kp').innerText = countKp + '編';
 
         if(typeof updateStats === 'function') updateStats();
     }
@@ -1586,7 +2018,8 @@
         kpArr.forEach(name => addScnPartnerField(kpContainer.parentElement.querySelector('.btn-sub'), 'kp', name));
         plArr.forEach(name => addScnPartnerField(plContainer.parentElement.querySelector('.btn-sub'), 'pl', name));
         
-        if (s.kpCount) document.getElementById('edit-scn-in-kp-count').value = s.kpCount;
+        const runContainer = document.getElementById('scn-run-list-edit'); runContainer.innerHTML = '';
+        if (s.runs && Array.isArray(s.runs)) s.runs.forEach(r => addScnRunField('edit', r.date, r));
         
         document.getElementById('scn-editor-overlay').style.display = 'flex';
     }
@@ -1601,10 +2034,16 @@
         
         const kpList = Array.from(document.querySelectorAll('#scn-editor-overlay .scn-partner-list-kp .scn-ptn-name')).map(i => i.value).filter(v => v);
         const plList = Array.from(document.querySelectorAll('#scn-editor-overlay .scn-partner-list-pl .scn-ptn-name')).map(i => i.value).filter(v => v);
+        const runList = Array.from(document.querySelectorAll('#scn-editor-overlay .scn-run-item')).map(item => ({ 
+            date: item.querySelector('.run-date').value, 
+            kpc: item.querySelector('.run-kpc').value,
+            kp: Array.from(item.querySelectorAll('.run-kp-name')).map(i => i.value).filter(v => v),
+            pl: Array.from(item.querySelectorAll('.run-pl-name')).map(i => i.value).filter(v => v)
+        }));
         
         const idx = scnLib.findIndex(x => x.id === currentScnEditId);
         if (idx !== -1) {
-            scnLib[idx] = { id: currentScnEditId, title: title, genre: genre, date: document.getElementById('edit-scn-in-date').value, pc: document.getElementById('edit-scn-in-pc').value, kp: kpList, pl: plList, kpCount: document.getElementById('edit-scn-in-kp-count').value };
+            scnLib[idx] = { id: currentScnEditId, title: title, genre: genre, date: document.getElementById('edit-scn-in-date').value, pc: document.getElementById('edit-scn-in-pc').value, kp: kpList, pl: plList, kpCount: 0, runs: runList };
             localStorage.setItem(KEY_SCN_LIB, JSON.stringify(scnLib));
             renderScenarioLibrary(); pushData();
         }
