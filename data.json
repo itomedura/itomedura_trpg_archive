@@ -4282,36 +4282,6 @@
         }
       ],
       "secrets": []
-    },
-    {
-      "regulation": "6th",
-      "name": "テスト",
-      "kana": "",
-      "job": "",
-      "sex": "",
-      "age": "",
-      "height": "",
-      "img": "",
-      "stats": {
-        "str": "",
-        "con": "",
-        "pow": "",
-        "dex": "",
-        "app": "",
-        "siz": "",
-        "int": "",
-        "edu": "",
-        "san": ""
-      },
-      "calcStats": {
-        "luck": ""
-      },
-      "ptPattern": "edu_only",
-      "ptManual": 0,
-      "skills": [],
-      "scns": [],
-      "profs": [],
-      "secrets": []
     }
   ],
   "schedules": [
