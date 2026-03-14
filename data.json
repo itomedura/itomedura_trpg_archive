@@ -4423,7 +4423,7 @@
       "img": "",
       "stats": {
         "str": "10",
-        "mod_str": "3",
+        "mod_str": "1",
         "con": "9",
         "mod_con": "-3",
         "pow": "12",
@@ -4446,7 +4446,7 @@
         "mod_luck": "",
         "mod_hp": "1",
         "mod_mp": "",
-        "mod_db": "2",
+        "mod_db": "1d3",
         "mod_ide": "",
         "mod_know": ""
       },
