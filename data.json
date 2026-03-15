@@ -4306,19 +4306,34 @@
       "img": "",
       "stats": {
         "str": "12",
+        "mod_str": "",
         "con": "10",
+        "mod_con": "",
         "pow": "16",
+        "mod_pow": "",
         "dex": "14",
+        "mod_dex": "",
         "app": "16",
+        "mod_app": "",
         "siz": "13",
+        "mod_siz": "",
         "int": "14",
+        "mod_int": "2",
         "edu": "13",
-        "san": "80"
+        "mod_edu": "",
+        "san": "80",
+        "mod_san": ""
       },
       "calcStats": {
-        "luck": "80"
+        "luck": "80",
+        "mod_luck": "",
+        "mod_hp": "",
+        "mod_mp": "",
+        "mod_db": "",
+        "mod_ide": "",
+        "mod_know": ""
       },
-      "ptPattern": "edu_only",
+      "ptPattern": "int",
       "ptManual": "0",
       "skills": [
         {
