@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎲</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📖</text></svg>">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>いとめんのTRPG ARCHIVE</title>
@@ -324,8 +324,8 @@
         .dash-task-list { display: flex; flex-direction: column; gap: 8px; }
 /* ★ スマホ最適化（レスポンシブデザイン） */
         @media (max-width: 768px) {
-            /* 1. ボトムナビゲーション化（絶対服従の !important 指定） */
-            .sidebar {
+            /* 1. ボトムナビゲーション化（宛先を nav に修正！） */
+            nav {
                 width: 100% !important; height: 65px !important;
                 flex-direction: row !important; bottom: 0 !important; top: auto !important; left: 0 !important;
                 position: fixed !important; padding: 0 !important; 
@@ -333,18 +333,28 @@
                 border-right: none !important; border-top: 1px solid var(--border) !important;
                 z-index: 9999 !important;
             }
-            /* 上下のタイトルとフッター（司書の軌跡）をスマホでは完全に非表示にする */
-            .sidebar-title, .sidebar-footer { 
+            /* 上下のタイトル、統計、フッターをスマホでは完全に非表示にする */
+            nav h1, .nav-stats, .nav-footer { 
                 display: none !important; 
+            }
+            .nav-items {
+                display: flex !important; flex-direction: row !important; width: 100% !important;
+                overflow: visible !important; padding: 0 !important;
             }
             .nav-item {
                 flex-direction: column !important; padding: 5px 0 !important; margin: 0 !important;
-                font-size: 0.65rem !important; gap: 4px !important; width: 33% !important;
+                font-size: 0.65rem !important; gap: 4px !important; width: 25% !important;
                 text-align: center !important; border-radius: 0 !important;
             }
-            .nav-item .icon { font-size: 1.3rem !important; margin: 0 auto !important; }
+            .nav-item.active {
+                background-color: var(--bg) !important; color: var(--accent) !important;
+                border-radius: 8px !important; margin: 4px !important; border: 1px solid var(--accent) !important;
+            }
+            [data-theme="dark"] .nav-item.active {
+                background-color: var(--accent) !important; color: #fff !important; border: none !important;
+            }
             
-            .main-content {
+            main {
                 margin-left: 0 !important; margin-bottom: 65px !important; 
                 padding: 15px 10px !important; width: 100% !important; box-sizing: border-box !important;
             }
@@ -386,6 +396,15 @@
                 border-bottom: 1px dashed var(--border) !important;
                 padding-right: 0 !important;
                 padding-bottom: 15px !important;
+            }
+            
+            /* 探索者ページ用の常時追従フッターをスマホ幅に合わせる */
+            .char-sticky-footer {
+                left: 0 !important; width: 100% !important; bottom: 65px !important;
+                flex-direction: column !important; gap: 10px !important; padding: 10px !important;
+            }
+            .char-sticky-footer > div {
+                width: 100% !important; justify-content: center !important; padding: 0 !important;
             }
         }    </style>
     </style>
@@ -1694,7 +1713,11 @@
         const editContainer = document.getElementById('v-edit-btn-container');
 
         c.stats = c.stats || {}; c.calcStats = c.calcStats || {}; c.skills = c.skills || []; c.scns = c.scns || []; c.profs = c.profs || []; c.secrets = c.secrets || [];
-        const str = Number(c.stats.str)||0; const con = Number(c.stats.con)||0; const pow = Number(c.stats.pow)||0; const dex = Number(c.stats.dex)||0; const app = Number(c.stats.app)||0; const siz = Number(c.stats.siz)||0; const int = Number(c.stats.int)||0; const edu = Number(c.stats.edu)||0; const san = Number(c.stats.san)||0;
+        
+        // ★ 閲覧画面でも能力値の「現在値（基本値＋補正値）」をベースにしてステータスを計算する
+        const g = (k) => (Number(c.stats[k]) || 0) + (Number(c.stats['mod_' + k]) || 0);
+        const str = g('str'); const con = g('con'); const pow = g('pow'); const dex = g('dex'); const app = g('app'); const siz = g('siz'); const int = g('int'); const edu = g('edu'); const san = g('san');
+        
         const luck = (c.calcStats && c.calcStats.luck) ? c.calcStats.luck : 0;
         const hp = Math.ceil((con+siz)/(c.regulation === '7th' ? 10 : 2));
         const mp = c.regulation === '7th' ? Math.floor(pow/5) : pow;
@@ -1709,7 +1732,7 @@
         const total_m = c.regulation === '7th' ? 4 : 20;
         if (c.ptPattern === 'manual') { jobMax = Number(c.ptManual) || 0; } 
         else if (c.ptPattern === 'edu_only') { jobMax = edu * total_m; } 
-        else if (c.ptPattern) { jobMax = (edu * m) + ((Number(c.stats[c.ptPattern]) || 0) * m); }
+        else if (c.ptPattern) { jobMax = (edu * m) + (g(c.ptPattern) * m); } // ★ 第2能力値も補正込みの現在値を使う
         const intMax = c.regulation === '7th' ? int * 2 : int * 10;
         
         let jUsed = 0, iUsed = 0;
@@ -2114,18 +2137,20 @@
         if (!p) return; 
 
         const r = p.querySelector('input[type="radio"]:checked').value; 
-        const g = (c) => Number(p.querySelector('.' + c).value) || 0; 
+        // ※ .mod-〇〇 が無い場合のエラーを防ぐため「?.」で安全に値を取得します
+        const g = (c) => Number(p.querySelector('.' + c)?.value) || 0; 
 
-        const str = g('in-str');
-        const con = g('in-con');
-        const pow = g('in-pow');
-        const dex = g('in-dex');
-        const app = g('in-app');
-        const siz = g('in-siz');
-        const int = g('in-int');
-        const edu = g('in-edu'); 
+        // ★ 能力値の「現在値（基本値＋補正値）」を算出し、以降の計算のベースにする
+        const str = g('in-str') + g('mod-str');
+        const con = g('in-con') + g('mod-con');
+        const pow = g('in-pow') + g('mod-pow');
+        const dex = g('in-dex') + g('mod-dex');
+        const app = g('in-app') + g('mod-app');
+        const siz = g('in-siz') + g('mod-siz');
+        const int = g('in-int') + g('mod-int');
+        const edu = g('in-edu') + g('mod-edu'); 
 
-        let hp, mp, ide, know, db; 
+        let hp, mp, ide, know, db;
 
         if (r === '6th') { 
             hp = Math.ceil((con + siz) / 2); 
@@ -2196,9 +2221,11 @@
             if (pattern === 'edu_only') {
                 jobMax = edu * total_m; 
             } else {
-                jobMax = (edu * m) + (g('in-' + pattern) * m); 
+                // ★ 職業ポイント計算時も、第2能力値の現在値（基本値＋補正値）を参照する
+                const secondStatCur = g('in-' + pattern) + g('mod-' + pattern);
+                jobMax = (edu * m) + (secondStatCur * m); 
             }
-        } 
+        }
         
         const intMax = r === '7th' ? int * 2 : int * 10; 
         let jUsed = 0, iUsed = 0; 
