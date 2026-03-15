@@ -4318,7 +4318,7 @@
         "siz": "13",
         "mod_siz": "",
         "int": "14",
-        "mod_int": "2",
+        "mod_int": "",
         "edu": "13",
         "mod_edu": "",
         "san": "80",
@@ -4333,7 +4333,7 @@
         "mod_ide": "",
         "mod_know": ""
       },
-      "ptPattern": "int",
+      "ptPattern": "edu_only",
       "ptManual": "0",
       "skills": [
         {
