@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📖</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎲</text></svg>">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>いとめんのTRPG ARCHIVE</title>
@@ -322,91 +322,79 @@
         .dash-stat-bar-val { width: 25px; text-align: right; font-weight: bold; font-family: 'Noto Serif JP', serif; color: var(--text-main); }
         .dash-partners-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(5, auto); grid-auto-flow: column; gap: 6px; }
         .dash-task-list { display: flex; flex-direction: column; gap: 8px; }
-/* ★ スマホ最適化（レスポンシブデザイン） */
-        @media (max-width: 768px) {
-            /* 1. ボトムナビゲーション化（宛先を nav に修正！） */
+
+        /* ★ 真・スマホ最適化（完全レスポンシブデザイン） */
+        @media screen and (max-width: 850px) {
+            /* 根幹レイアウトをスマホ用にリセット */
+            body { display: block !important; height: auto !important; overflow: visible !important; }
+            
+            /* 1. 下部ナビゲーションへの強制変形 */
             nav {
                 width: 100% !important; height: 65px !important;
                 flex-direction: row !important; bottom: 0 !important; top: auto !important; left: 0 !important;
                 position: fixed !important; padding: 0 !important; 
                 justify-content: space-evenly !important; align-items: center !important;
                 border-right: none !important; border-top: 1px solid var(--border) !important;
-                z-index: 9999 !important;
+                z-index: 9999 !important; background-color: var(--sidebar) !important;
             }
-            /* 上下のタイトル、統計、フッターをスマホでは完全に非表示にする */
-            nav h1, .nav-stats, .nav-footer { 
-                display: none !important; 
-            }
+            /* 邪魔な要素を完全消去 */
+            nav h1, .nav-stats, .nav-footer { display: none !important; }
+            
             .nav-items {
                 display: flex !important; flex-direction: row !important; width: 100% !important;
-                overflow: visible !important; padding: 0 !important;
+                overflow: visible !important; padding: 0 !important; justify-content: space-around !important;
             }
             .nav-item {
                 flex-direction: column !important; padding: 5px 0 !important; margin: 0 !important;
-                font-size: 0.65rem !important; gap: 4px !important; width: 25% !important;
+                font-size: 0.65rem !important; gap: 4px !important; width: 100% !important;
                 text-align: center !important; border-radius: 0 !important;
             }
             .nav-item.active {
-                background-color: var(--bg) !important; color: var(--accent) !important;
-                border-radius: 8px !important; margin: 4px !important; border: 1px solid var(--accent) !important;
+                background-color: transparent !important; color: var(--accent) !important;
+                border-radius: 0 !important; border: none !important; border-top: 3px solid var(--accent) !important;
             }
             [data-theme="dark"] .nav-item.active {
-                background-color: var(--accent) !important; color: #fff !important; border: none !important;
+                background-color: transparent !important; color: #fff !important; border: none !important; border-top: 3px solid #fff !important;
             }
             
             main {
-                margin-left: 0 !important; margin-bottom: 65px !important; 
-                padding: 15px 10px !important; width: 100% !important; box-sizing: border-box !important;
+                margin: 0 !important; padding: 15px 10px 85px 10px !important;
+                width: 100% !important; height: 100vh !important; box-sizing: border-box !important; overflow-y: auto !important;
             }
 
             /* 2. 技能リストの横スクロール化 */
             .skill-list-header, .sk-row { min-width: 650px !important; }
-            .skill-list-in {
-                overflow-x: auto !important; padding-bottom: 15px !important;
-                -webkit-overflow-scrolling: touch !important;
-            }
+            .skill-list-in { overflow-x: auto !important; padding-bottom: 15px !important; -webkit-overflow-scrolling: touch !important; }
 
-            /* 3. 余白圧縮とレイアウト調整 */
+            /* 3. 画面幅の圧縮調整 */
             .panel { padding: 15px !important; }
-            .grid-cards { grid-template-columns: 1fr !important; } /* 名簿を1列に */
+            .grid-cards { grid-template-columns: 1fr !important; }
             
-            /* ステータスの3列固定化 */
-            div[style*="minmax(65px"], div[style*="minmax(80px"] {
-                grid-template-columns: repeat(3, 1fr) !important;
-            }
+            div[style*="minmax(65px"], div[style*="minmax(80px"] { grid-template-columns: repeat(3, 1fr) !important; }
 
-            /* 4. オーバーレイ（ビューア・エディタ）の全画面化と縦積み */
-            #char-viewer-overlay, #char-editor-overlay, #sch-viewer-overlay, #sch-editor-overlay, #scn-editor-overlay {
-                padding: 0 !important;
-            }
-            .viewer-book, .editor-page {
+            /* 4. オーバーレイ（全画面化） */
+            #char-viewer-overlay, #char-editor-overlay, #sch-viewer-overlay, #sch-editor-overlay, #scn-editor-overlay, #import-overlay, #sync-overlay { padding: 0 !important; }
+            .viewer-book, .editor-book, .import-book, .sync-book {
                 width: 100% !important; max-width: 100% !important;
                 height: 100% !important; max-height: 100% !important;
-                border-radius: 0 !important; margin: 0 !important;
+                border-radius: 0 !important; margin: 0 !important; border: none !important;
             }
-            .close-btn { top: 15px !important; right: 15px !important; z-index: 100 !important; }
+            .viewer-book.single-column .viewer-page, .editor-book.single-column .editor-page { padding: 20px !important; padding-bottom: 100px !important; }
             
-            /* プロフィール（左）とステータス（右）の2カラムを縦並びに */
-            div:has(> div[style*="max-width:250px"]) {
-                flex-direction: column !important;
-            }
-            div[style*="max-width:250px"] {
-                max-width: 100% !important;
-                border-right: none !important;
-                border-bottom: 1px dashed var(--border) !important;
-                padding-right: 0 !important;
-                padding-bottom: 15px !important;
-            }
+            /* 押しやすいスマホ用閉じるボタン */
+            .close-btn { top: 15px !important; right: 15px !important; z-index: 9999 !important; background: var(--bg); border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
             
-            /* 探索者ページ用の常時追従フッターをスマホ幅に合わせる */
-            .char-sticky-footer {
-                left: 0 !important; width: 100% !important; bottom: 65px !important;
-                flex-direction: column !important; gap: 10px !important; padding: 10px !important;
-            }
-            .char-sticky-footer > div {
-                width: 100% !important; justify-content: center !important; padding: 0 !important;
-            }
-        }    </style>
+            div:has(> div[style*="max-width:250px"]) { flex-direction: column !important; }
+            div[style*="max-width:250px"] { max-width: 100% !important; border-right: none !important; border-bottom: 1px dashed var(--border) !important; padding-right: 0 !important; padding-bottom: 15px !important; }
+            
+            /* フッター群をナビバーの上に配置 */
+            .char-sticky-footer { left: 0 !important; width: 100% !important; bottom: 65px !important; flex-direction: column !important; gap: 10px !important; padding: 10px !important; }
+            .char-sticky-footer > div { width: 100% !important; justify-content: center !important; padding: 0 !important; flex-wrap: wrap !important; }
+            .sticky-footer { bottom: 65px !important; padding: 10px !important; }
+            
+            /* ホームの調整 */
+            .dashboard-grid { grid-template-columns: 1fr !important; }
+        }
     </style>
 </head>
 <body class="view-mode"> 
