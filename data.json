@@ -7344,6 +7344,18 @@
           "name": "いとめん"
         }
       ]
+    },
+    {
+      "id": 1777879889159,
+      "dates": [
+        "2026-05-24T00:00"
+      ],
+      "title": "お出かけ",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
     }
   ],
   "scnLib": [
