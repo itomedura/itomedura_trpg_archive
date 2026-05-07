@@ -6475,7 +6475,7 @@
       "regulation": "6th",
       "name": "楠見　綸",
       "kana": "くすみ　りん",
-      "job": "カフェ店員",
+      "job": "喫茶店",
       "jobSup": "2015",
       "jobNameSel": "料理人",
       "tokki": "専門のサービスを提供し、かつ芸術/製作(料理)に成功すれば、信用や説得などに＋10%のボーナス。",
@@ -6516,7 +6516,7 @@
         "mod_know": ""
       },
       "ptPattern": "edu_only",
-      "ptManual": 0,
+      "ptManual": "0",
       "skills": [
         {
           "n": "忍び歩き",
