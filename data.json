@@ -6471,7 +6471,7 @@
     },
     {
       "isLost": false,
-      "isSecret": false,
+      "isSecret": true,
       "regulation": "6th",
       "name": "楠見　綸",
       "kana": "くすみ　りん",
