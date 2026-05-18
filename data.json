@@ -7618,6 +7618,18 @@
           "name": "いとめん"
         }
       ]
+    },
+    {
+      "id": 1779110595709,
+      "dates": [
+        "2026-06-20T00:00"
+      ],
+      "title": "休卓",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
     }
   ],
   "scnLib": [
