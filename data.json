@@ -7666,6 +7666,18 @@
       "charName": "",
       "partners_kp": [],
       "partners_pl": []
+    },
+    {
+      "id": 1779110687156,
+      "dates": [
+        "2026-06-11T00:00"
+      ],
+      "title": "通院日",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
     }
   ],
   "scnLib": [
