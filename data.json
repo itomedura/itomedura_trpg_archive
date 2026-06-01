@@ -8167,6 +8167,30 @@
       "charName": "",
       "partners_kp": [],
       "partners_pl": []
+    },
+    {
+      "id": 1780314178094,
+      "dates": [
+        "2026-09-19T00:00"
+      ],
+      "title": "仮予定",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
+    },
+    {
+      "id": 1780314179721,
+      "dates": [
+        "2026-09-20T00:00"
+      ],
+      "title": "仮予定",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
     }
   ],
   "scnLib": [
