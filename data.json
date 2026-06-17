@@ -7266,6 +7266,105 @@
         }
       ],
       "artifacts": []
+    },
+    {
+      "isLost": false,
+      "isSecret": false,
+      "regulation": "6th",
+      "name": "sitoa",
+      "kana": "シトア",
+      "job": "旅人",
+      "jobSup": "6th_base",
+      "jobNameSel": "伝道者",
+      "tokki": "",
+      "tokucho": "",
+      "tokucho2": "",
+      "scnMemo": "",
+      "sex": "男性",
+      "age": "14",
+      "height": "156",
+      "img": "",
+      "stats": {
+        "str": "8",
+        "mod_str": "",
+        "con": "15",
+        "mod_con": "",
+        "pow": "9",
+        "mod_pow": "",
+        "dex": "13",
+        "mod_dex": "",
+        "app": "13",
+        "mod_app": "",
+        "siz": "13",
+        "mod_siz": "",
+        "int": "12",
+        "mod_int": "",
+        "edu": "16",
+        "mod_edu": "",
+        "san": "45",
+        "mod_san": ""
+      },
+      "calcStats": {
+        "luck": "45",
+        "mod_luck": "",
+        "mod_hp": "",
+        "mod_mp": "",
+        "mod_db": "",
+        "mod_ide": "",
+        "mod_know": ""
+      },
+      "ptPattern": "edu_only",
+      "ptManual": 0,
+      "skills": [
+        {
+          "n": "応急手当",
+          "b": "30",
+          "j": "50",
+          "i": "0",
+          "g": "0",
+          "o": "0",
+          "t": "80",
+          "sub": "",
+          "gr": "探索"
+        },
+        {
+          "n": "医学",
+          "b": "5",
+          "j": "55",
+          "i": "0",
+          "g": "0",
+          "o": "0",
+          "t": "60",
+          "sub": "",
+          "gr": "知識"
+        },
+        {
+          "n": "博物学",
+          "b": "10",
+          "j": "50",
+          "i": "0",
+          "g": "0",
+          "o": "0",
+          "t": "60",
+          "sub": "",
+          "gr": "知識"
+        },
+        {
+          "n": "芸術",
+          "b": "5",
+          "j": "45",
+          "i": "0",
+          "g": "0",
+          "o": "0",
+          "t": "50",
+          "sub": "",
+          "gr": "知識"
+        }
+      ],
+      "scns": [],
+      "profs": [],
+      "secrets": [],
+      "artifacts": []
     }
   ],
   "schedules": [
