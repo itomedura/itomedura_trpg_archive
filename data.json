@@ -8599,6 +8599,18 @@
           "name": "カルボナーラ"
         }
       ]
+    },
+    {
+      "id": 1781774572325,
+      "dates": [
+        "2026-08-14T00:00"
+      ],
+      "title": "花火",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
     }
   ],
   "scnLib": [
