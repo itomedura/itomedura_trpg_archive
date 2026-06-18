@@ -7269,7 +7269,7 @@
     },
     {
       "isLost": false,
-      "isSecret": false,
+      "isSecret": true,
       "regulation": "6th",
       "name": "sitoa",
       "kana": "シトア",
