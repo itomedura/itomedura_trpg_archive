@@ -7297,7 +7297,7 @@
       ]
     },
     {
-      "isLost": false,
+      "isLost": true,
       "isSecret": true,
       "regulation": "6th",
       "name": "sitoa",
