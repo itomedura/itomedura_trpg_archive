@@ -8655,18 +8655,6 @@
       "partners_pl": []
     },
     {
-      "id": 1780314232679,
-      "dates": [
-        "2026-09-22T00:00"
-      ],
-      "title": "仮予定",
-      "status": "プライベート",
-      "role": "",
-      "charName": "",
-      "partners_kp": [],
-      "partners_pl": []
-    },
-    {
       "id": 1773411399138,
       "dates": [],
       "title": "四季送り",
@@ -8860,6 +8848,18 @@
           "name": "きなこ"
         }
       ]
+    },
+    {
+      "id": 1783843735796,
+      "dates": [
+        "2026-09-13T00:00"
+      ],
+      "title": "仮予定",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
     }
   ],
   "scnLib": [
