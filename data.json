@@ -8298,7 +8298,7 @@
         "2026-07-14T21:00"
       ],
       "title": "BREAD AND BUTTER",
-      "status": "進行中",
+      "status": "完走",
       "role": "プレイヤー（PL）",
       "charName": "楠見　綸",
       "partners_kp": [
@@ -11225,6 +11225,21 @@
         "いとめん",
         "あきづ",
         "ひなた"
+      ],
+      "kpCount": 0
+    },
+    {
+      "id": 1784043836000,
+      "title": "BREAD AND BUTTER",
+      "genre": "passed",
+      "date": "2026-07-14",
+      "pc": "楠見　綸",
+      "kp": [
+        "晴幸"
+      ],
+      "pl": [
+        "いとめん",
+        "てる"
       ],
       "kpCount": 0
     }
