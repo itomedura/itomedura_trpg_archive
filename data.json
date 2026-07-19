@@ -8631,6 +8631,35 @@
       "partners_pl": []
     },
     {
+      "id": 1784200150904,
+      "dates": [
+        "2026-08-15T13:00"
+      ],
+      "title": "豪華客船と怪盗団",
+      "status": "待機中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "ぴょん子"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        },
+        {
+          "name": "あきづ"
+        },
+        {
+          "name": "あんちょび"
+        },
+        {
+          "name": "なお"
+        }
+      ]
+    },
+    {
       "id": 1774955932677,
       "dates": [
         "2026-08-15T13:00",
@@ -8720,15 +8749,15 @@
       "partners_pl": []
     },
     {
-      "id": 1784200150904,
+      "id": 1772717484506,
       "dates": [],
-      "title": "豪華客船と怪盗団",
+      "title": "クオリフィル世界における独ガ論",
       "status": "調整中",
       "role": "プレイヤー（PL）",
       "charName": "",
       "partners_kp": [
         {
-          "name": "ぴょん子"
+          "name": "Stella"
         }
       ],
       "partners_pl": [
@@ -8736,116 +8765,20 @@
           "name": "いとめん"
         },
         {
-          "name": "あきづ"
-        },
-        {
-          "name": "あんちょび"
-        },
-        {
-          "name": "なお"
+          "name": "ナス大臣"
         }
       ]
     },
     {
-      "id": 1773411399138,
+      "id": 1772717441103,
       "dates": [],
-      "title": "四季送り",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ねぎ"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        },
-        {
-          "name": "あきづ"
-        },
-        {
-          "name": "ひなた"
-        },
-        {
-          "name": "カルボナーラ"
-        }
-      ]
-    },
-    {
-      "id": 1772717517762,
-      "dates": [],
-      "title": "井藤チアキと云う女",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ねぎ"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        },
-        {
-          "name": "カルボナーラ"
-        },
-        {
-          "name": "きなこ"
-        }
-      ]
-    },
-    {
-      "id": 1772717458166,
-      "dates": [],
-      "title": "ワンルーム・ディスコン",
+      "title": "笑う人間師",
       "status": "調整中",
       "role": "プレイヤー（PL）",
       "charName": "",
       "partners_kp": [
         {
           "name": "てる"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1772717424651,
-      "dates": [],
-      "title": "Reverse city 2",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ナス大臣"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        },
-        {
-          "name": "てる"
-        }
-      ]
-    },
-    {
-      "id": 1772717376639,
-      "dates": [],
-      "title": "塔葬の国",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ナス大臣"
         }
       ],
       "partners_pl": [
@@ -8876,9 +8809,48 @@
       ]
     },
     {
-      "id": 1772717441103,
+      "id": 1772717376639,
       "dates": [],
-      "title": "笑う人間師",
+      "title": "塔葬の国",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "ナス大臣"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
+    },
+    {
+      "id": 1772717424651,
+      "dates": [],
+      "title": "Reverse city 2",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "ナス大臣"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        },
+        {
+          "name": "てる"
+        }
+      ]
+    },
+    {
+      "id": 1772717458166,
+      "dates": [],
+      "title": "ワンルーム・ディスコン",
       "status": "調整中",
       "role": "プレイヤー（PL）",
       "charName": "",
@@ -8894,15 +8866,15 @@
       ]
     },
     {
-      "id": 1772717484506,
+      "id": 1772717517762,
       "dates": [],
-      "title": "クオリフィル世界における独ガ論",
+      "title": "井藤チアキと云う女",
       "status": "調整中",
       "role": "プレイヤー（PL）",
       "charName": "",
       "partners_kp": [
         {
-          "name": "Stella"
+          "name": "ねぎ"
         }
       ],
       "partners_pl": [
@@ -8910,7 +8882,37 @@
           "name": "いとめん"
         },
         {
-          "name": "ナス大臣"
+          "name": "カルボナーラ"
+        },
+        {
+          "name": "きなこ"
+        }
+      ]
+    },
+    {
+      "id": 1773411399138,
+      "dates": [],
+      "title": "四季送り",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "ねぎ"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        },
+        {
+          "name": "あきづ"
+        },
+        {
+          "name": "ひなた"
+        },
+        {
+          "name": "カルボナーラ"
         }
       ]
     }
