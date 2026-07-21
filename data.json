@@ -8608,6 +8608,30 @@
       "partners_pl": []
     },
     {
+      "id": 1784625921159,
+      "dates": [
+        "2026-07-25T00:00"
+      ],
+      "title": "外出",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
+    },
+    {
+      "id": 1784625557210,
+      "dates": [
+        "2026-08-08T00:00"
+      ],
+      "title": "顔合わせ21:00～",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
+    },
+    {
       "id": 1784625546019,
       "dates": [
         "2026-08-08T13:00"
@@ -8722,179 +8746,43 @@
       ]
     },
     {
-      "id": 1773411399138,
-      "dates": [],
-      "title": "四季送り",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ねぎ"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        },
-        {
-          "name": "あきづ"
-        },
-        {
-          "name": "ひなた"
-        },
-        {
-          "name": "カルボナーラ"
-        }
-      ]
-    },
-    {
-      "id": 1772717517762,
-      "dates": [],
-      "title": "井藤チアキと云う女",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ねぎ"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        },
-        {
-          "name": "カルボナーラ"
-        },
-        {
-          "name": "きなこ"
-        }
-      ]
-    },
-    {
-      "id": 1772717458166,
-      "dates": [],
-      "title": "ワンルーム・ディスコン",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "てる"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1772717424651,
-      "dates": [],
-      "title": "Reverse city 2",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ナス大臣"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        },
-        {
-          "name": "てる"
-        }
-      ]
-    },
-    {
-      "id": 1772717376639,
-      "dates": [],
-      "title": "塔葬の国",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ナス大臣"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1772717398418,
-      "dates": [],
-      "title": "イザナミの棺",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "あきづ"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        },
-        {
-          "name": "てる"
-        }
-      ]
-    },
-    {
-      "id": 1772717441103,
-      "dates": [],
-      "title": "笑う人間師",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "てる"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1772717484506,
-      "dates": [],
-      "title": "クオリフィル世界における独ガ論",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "Stella"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        },
-        {
-          "name": "ナス大臣"
-        }
-      ]
-    },
-    {
-      "id": 1784625557210,
+      "id": 1784644018604,
       "dates": [
-        "2026-08-08T00:00"
+        "2026-08-30T21:00"
       ],
-      "title": "顔合わせ21:00～",
+      "title": "謎肉食べ食べ委員会",
+      "status": "待機中",
+      "role": "キーパー（KPC）",
+      "charName": "奥見　糸貴",
+      "partners_kp": [
+        {
+          "name": "いとめん"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "てる"
+        }
+      ]
+    },
+    {
+      "id": 1784625930897,
+      "dates": [
+        "2026-09-12T00:00"
+      ],
+      "title": "外出",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
+    },
+    {
+      "id": 1784625938451,
+      "dates": [
+        "2026-09-13T00:00"
+      ],
+      "title": "外出",
       "status": "プライベート",
       "role": "",
       "charName": "",
@@ -8938,40 +8826,172 @@
       "partners_pl": []
     },
     {
-      "id": 1784625921159,
-      "dates": [
-        "2026-07-25T00:00"
-      ],
-      "title": "外出",
-      "status": "プライベート",
-      "role": "",
+      "id": 1772717484506,
+      "dates": [],
+      "title": "クオリフィル世界における独ガ論",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
       "charName": "",
-      "partners_kp": [],
-      "partners_pl": []
+      "partners_kp": [
+        {
+          "name": "Stella"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        },
+        {
+          "name": "ナス大臣"
+        }
+      ]
     },
     {
-      "id": 1784625930897,
-      "dates": [
-        "2026-09-12T00:00"
-      ],
-      "title": "外出",
-      "status": "プライベート",
-      "role": "",
+      "id": 1772717441103,
+      "dates": [],
+      "title": "笑う人間師",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
       "charName": "",
-      "partners_kp": [],
-      "partners_pl": []
+      "partners_kp": [
+        {
+          "name": "てる"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
     },
     {
-      "id": 1784625938451,
-      "dates": [
-        "2026-09-13T00:00"
-      ],
-      "title": "外出",
-      "status": "プライベート",
-      "role": "",
+      "id": 1772717398418,
+      "dates": [],
+      "title": "イザナミの棺",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
       "charName": "",
-      "partners_kp": [],
-      "partners_pl": []
+      "partners_kp": [
+        {
+          "name": "あきづ"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        },
+        {
+          "name": "てる"
+        }
+      ]
+    },
+    {
+      "id": 1772717376639,
+      "dates": [],
+      "title": "塔葬の国",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "ナス大臣"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
+    },
+    {
+      "id": 1772717424651,
+      "dates": [],
+      "title": "Reverse city 2",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "ナス大臣"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        },
+        {
+          "name": "てる"
+        }
+      ]
+    },
+    {
+      "id": 1772717458166,
+      "dates": [],
+      "title": "ワンルーム・ディスコン",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "てる"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
+    },
+    {
+      "id": 1772717517762,
+      "dates": [],
+      "title": "井藤チアキと云う女",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "ねぎ"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        },
+        {
+          "name": "カルボナーラ"
+        },
+        {
+          "name": "きなこ"
+        }
+      ]
+    },
+    {
+      "id": 1773411399138,
+      "dates": [],
+      "title": "四季送り",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "ねぎ"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        },
+        {
+          "name": "あきづ"
+        },
+        {
+          "name": "ひなた"
+        },
+        {
+          "name": "カルボナーラ"
+        }
+      ]
     }
   ],
   "scnLib": [
