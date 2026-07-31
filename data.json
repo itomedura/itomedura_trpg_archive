@@ -7882,7 +7882,7 @@
     },
     {
       "isLost": false,
-      "isSecret": false,
+      "isSecret": true,
       "regulation": "6th",
       "name": "紺睡",
       "kana": "ランクン",
