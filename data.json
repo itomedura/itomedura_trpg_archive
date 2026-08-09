@@ -847,7 +847,8 @@
       ],
       "scns": [
         "辜月のN",
-        "89 charge"
+        "89 charge",
+        "Please, not right now！"
       ],
       "profs": [
         {
@@ -8847,7 +8848,7 @@
         "2026-08-08T13:00"
       ],
       "title": "Please, not right now！",
-      "status": "進行中",
+      "status": "完走",
       "role": "キーパー（KPC）",
       "charName": "氷見　紺奈",
       "partners_kp": [
@@ -11636,6 +11637,24 @@
       ],
       "pl": [
         "いとめん"
+      ],
+      "kpCount": 0
+    },
+    {
+      "id": 1786246079853,
+      "title": "Please, not right now！",
+      "genre": "kp",
+      "runs": [
+        {
+          "date": "2026-08-08",
+          "kpc": "氷見　紺奈",
+          "kp": [
+            "いとめん"
+          ],
+          "pl": [
+            "あきづ"
+          ]
+        }
       ],
       "kpCount": 0
     }
