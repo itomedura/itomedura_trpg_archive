@@ -9192,7 +9192,7 @@
       "title": "旅館の捕食者",
       "status": "進行中",
       "role": "プレイヤー（PL）",
-      "charName": "",
+      "charName": "小名糸　真奈見",
       "partners_kp": [
         {
           "name": "ひなた"
@@ -9380,63 +9380,87 @@
       ]
     },
     {
-      "id": 1785144660833,
+      "id": 1773411399138,
       "dates": [],
-      "title": "獣達ノ宴",
+      "title": "四季送り",
       "status": "調整中",
       "role": "プレイヤー（PL）",
       "charName": "",
       "partners_kp": [
         {
-          "name": "些目"
+          "name": "ねぎ"
         }
       ],
       "partners_pl": [
         {
           "name": "いとめん"
-        },
-        {
-          "name": "あきづ"
-        },
-        {
-          "name": "わさびもち"
-        },
-        {
-          "name": "さにー"
         }
       ]
     },
     {
-      "id": 1772717484506,
+      "id": 1772717517762,
       "dates": [],
-      "title": "クオリフィル世界における独ガ論",
+      "title": "井藤チアキと云う女",
       "status": "調整中",
       "role": "プレイヤー（PL）",
       "charName": "",
       "partners_kp": [
         {
-          "name": "Stella"
+          "name": "ねぎ"
         }
       ],
       "partners_pl": [
         {
           "name": "いとめん"
-        },
-        {
-          "name": "ナス大臣"
         }
       ]
     },
     {
-      "id": 1772717441103,
+      "id": 1772717458166,
       "dates": [],
-      "title": "笑う人間師",
+      "title": "ワンルーム・ディスコン",
       "status": "調整中",
       "role": "プレイヤー（PL）",
       "charName": "",
       "partners_kp": [
         {
           "name": "てる"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
+    },
+    {
+      "id": 1772717424651,
+      "dates": [],
+      "title": "Reverse city 2",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "ナス大臣"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
+    },
+    {
+      "id": 1772717376639,
+      "dates": [],
+      "title": "塔葬の国",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "ナス大臣"
         }
       ],
       "partners_pl": [
@@ -9467,45 +9491,9 @@
       ]
     },
     {
-      "id": 1772717376639,
+      "id": 1772717441103,
       "dates": [],
-      "title": "塔葬の国",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ナス大臣"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1772717424651,
-      "dates": [],
-      "title": "Reverse city 2",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ナス大臣"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1772717458166,
-      "dates": [],
-      "title": "ワンルーム・ディスコン",
+      "title": "笑う人間師",
       "status": "調整中",
       "role": "プレイヤー（PL）",
       "charName": "",
@@ -9521,38 +9509,50 @@
       ]
     },
     {
-      "id": 1772717517762,
+      "id": 1772717484506,
       "dates": [],
-      "title": "井藤チアキと云う女",
+      "title": "クオリフィル世界における独ガ論",
       "status": "調整中",
       "role": "プレイヤー（PL）",
       "charName": "",
       "partners_kp": [
         {
-          "name": "ねぎ"
+          "name": "Stella"
         }
       ],
       "partners_pl": [
         {
           "name": "いとめん"
+        },
+        {
+          "name": "ナス大臣"
         }
       ]
     },
     {
-      "id": 1773411399138,
+      "id": 1785144660833,
       "dates": [],
-      "title": "四季送り",
+      "title": "獣達ノ宴",
       "status": "調整中",
       "role": "プレイヤー（PL）",
       "charName": "",
       "partners_kp": [
         {
-          "name": "ねぎ"
+          "name": "些目"
         }
       ],
       "partners_pl": [
         {
           "name": "いとめん"
+        },
+        {
+          "name": "あきづ"
+        },
+        {
+          "name": "わさびもち"
+        },
+        {
+          "name": "さにー"
         }
       ]
     }
