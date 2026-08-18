@@ -8381,7 +8381,7 @@
     },
     {
       "isLost": false,
-      "isSecret": false,
+      "isSecret": true,
       "regulation": "7th",
       "name": "鬼瞳　紉",
       "kana": "きどう　じん",
@@ -8426,7 +8426,7 @@
         "mod_know": ""
       },
       "ptPattern": "str",
-      "ptManual": 0,
+      "ptManual": "0",
       "skills": [
         {
           "n": "回避",
