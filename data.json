@@ -9524,15 +9524,105 @@
       ]
     },
     {
-      "id": 1787047269042,
+      "id": 1787575679385,
       "dates": [],
-      "title": "拝啓、贖イ郵便局の皆様へ",
+      "title": "コードネーム：ドッペルゲンガー",
       "status": "調整中",
       "role": "プレイヤー（PL）",
       "charName": "",
       "partners_kp": [
         {
-          "name": "ちいた"
+          "name": "些目"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
+    },
+    {
+      "id": 1773411399138,
+      "dates": [],
+      "title": "四季送り",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "ねぎ"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
+    },
+    {
+      "id": 1772717517762,
+      "dates": [],
+      "title": "井藤チアキと云う女",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "ねぎ"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
+    },
+    {
+      "id": 1772717424651,
+      "dates": [],
+      "title": "Reverse city 2",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "ナス大臣"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
+    },
+    {
+      "id": 1772717376639,
+      "dates": [],
+      "title": "塔葬の国",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "ナス大臣"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
+    },
+    {
+      "id": 1772717398418,
+      "dates": [],
+      "title": "イザナミの棺",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "鬼瞳　紉",
+      "partners_kp": [
+        {
+          "name": "あきづ"
         }
       ],
       "partners_pl": [
@@ -9540,13 +9630,46 @@
           "name": "いとめん"
         },
         {
-          "name": "あきづ"
-        },
+          "name": "てる"
+        }
+      ]
+    },
+    {
+      "id": 1772717441103,
+      "dates": [],
+      "title": "笑う人間師",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
         {
           "name": "てる"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
+    },
+    {
+      "id": 1772717484506,
+      "dates": [],
+      "title": "クオリフィル世界における独ガ論",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "Stella"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
         },
         {
-          "name": "ひなた"
+          "name": "ナス大臣"
         }
       ]
     },
@@ -9578,134 +9701,29 @@
       ]
     },
     {
-      "id": 1772717484506,
+      "id": 1787047269042,
       "dates": [],
-      "title": "クオリフィル世界における独ガ論",
+      "title": "拝啓、贖イ郵便局の皆様へ",
       "status": "調整中",
       "role": "プレイヤー（PL）",
       "charName": "",
       "partners_kp": [
         {
-          "name": "Stella"
+          "name": "ちいた"
         }
       ],
       "partners_pl": [
         {
           "name": "いとめん"
         },
-        {
-          "name": "ナス大臣"
-        }
-      ]
-    },
-    {
-      "id": 1772717441103,
-      "dates": [],
-      "title": "笑う人間師",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "てる"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1772717398418,
-      "dates": [],
-      "title": "イザナミの棺",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "鬼瞳　紉",
-      "partners_kp": [
         {
           "name": "あきづ"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
         },
         {
           "name": "てる"
-        }
-      ]
-    },
-    {
-      "id": 1772717376639,
-      "dates": [],
-      "title": "塔葬の国",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
+        },
         {
-          "name": "ナス大臣"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1772717424651,
-      "dates": [],
-      "title": "Reverse city 2",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ナス大臣"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1772717517762,
-      "dates": [],
-      "title": "井藤チアキと云う女",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ねぎ"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1773411399138,
-      "dates": [],
-      "title": "四季送り",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ねぎ"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
+          "name": "ひなた"
         }
       ]
     }
