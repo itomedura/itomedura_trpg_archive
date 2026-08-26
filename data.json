@@ -9918,6 +9918,30 @@
       "charName": "",
       "partners_kp": [],
       "partners_pl": []
+    },
+    {
+      "id": 1787736481018,
+      "dates": [
+        "2026-10-29T00:00"
+      ],
+      "title": "～",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
+    },
+    {
+      "id": 1787736485167,
+      "dates": [
+        "2026-10-30T00:00"
+      ],
+      "title": "～夜勤",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
     }
   ],
   "scnLib": [
