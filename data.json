@@ -9460,6 +9460,30 @@
       ]
     },
     {
+      "id": 1788181538781,
+      "dates": [
+        "2026-09-11T21:00",
+        "2026-09-13T21:00"
+      ],
+      "title": "片鱗",
+      "status": "待機中",
+      "role": "キーパー（KP/SKP）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "いとめん"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "些目"
+        },
+        {
+          "name": "さにー"
+        }
+      ]
+    },
+    {
       "id": 1784625930897,
       "dates": [
         "2026-09-12T00:00"
@@ -9650,6 +9674,66 @@
       "partners_pl": []
     },
     {
+      "id": 1787914224594,
+      "dates": [
+        "2026-10-11T00:00"
+      ],
+      "title": "鴉鷺無声 13:00～",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
+    },
+    {
+      "id": 1787914226763,
+      "dates": [
+        "2026-10-12T00:00"
+      ],
+      "title": "鴉鷺無声 13:00～",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
+    },
+    {
+      "id": 1787914297969,
+      "dates": [
+        "2026-10-14T00:00"
+      ],
+      "title": "鴉鷺無声 21:00～",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
+    },
+    {
+      "id": 1787914299684,
+      "dates": [
+        "2026-10-16T00:00"
+      ],
+      "title": "鴉鷺無声 21:00～",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
+    },
+    {
+      "id": 1787914230097,
+      "dates": [
+        "2026-10-18T00:00"
+      ],
+      "title": "鴉鷺無声 13:00～",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
+    },
+    {
       "id": 1786581314139,
       "dates": [
         "2026-10-25T13:00",
@@ -9729,6 +9813,66 @@
       "id": 1787736485167,
       "dates": [
         "2026-10-30T00:00"
+      ],
+      "title": "～夜勤",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
+    },
+    {
+      "id": 1787909792043,
+      "dates": [
+        "2026-11-16T00:00"
+      ],
+      "title": "夜勤～",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
+    },
+    {
+      "id": 1787909795333,
+      "dates": [
+        "2026-11-17T00:00"
+      ],
+      "title": "～",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
+    },
+    {
+      "id": 1787909796806,
+      "dates": [
+        "2026-11-18T00:00"
+      ],
+      "title": "～",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
+    },
+    {
+      "id": 1787909798297,
+      "dates": [
+        "2026-11-19T00:00"
+      ],
+      "title": "～",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
+    },
+    {
+      "id": 1787909804293,
+      "dates": [
+        "2026-11-20T00:00"
       ],
       "title": "～夜勤",
       "status": "プライベート",
@@ -9834,279 +9978,6 @@
       "partners_pl": []
     },
     {
-      "id": 1787643939775,
-      "dates": [],
-      "title": "蕩々に尾鰭",
-      "status": "調整中",
-      "role": "キーパー（KPC）",
-      "charName": "氷見　紺奈",
-      "partners_kp": [
-        {
-          "name": "いとめん"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "あきづ"
-        }
-      ]
-    },
-    {
-      "id": 1787575679385,
-      "dates": [],
-      "title": "コードネーム：ドッペルゲンガー",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "些目"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1773411399138,
-      "dates": [],
-      "title": "四季送り",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ねぎ"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1772717517762,
-      "dates": [],
-      "title": "井藤チアキと云う女",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ねぎ"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1772717424651,
-      "dates": [],
-      "title": "Reverse city 2",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ナス大臣"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1772717376639,
-      "dates": [],
-      "title": "塔葬の国",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ナス大臣"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1772717398418,
-      "dates": [],
-      "title": "イザナミの棺",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "鬼瞳　紉",
-      "partners_kp": [
-        {
-          "name": "あきづ"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        },
-        {
-          "name": "てる"
-        }
-      ]
-    },
-    {
-      "id": 1772717441103,
-      "dates": [],
-      "title": "笑う人間師",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "てる"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1772717484506,
-      "dates": [],
-      "title": "クオリフィル世界における独ガ論",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "Stella"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        },
-        {
-          "name": "ナス大臣"
-        }
-      ]
-    },
-    {
-      "id": 1787047269042,
-      "dates": [],
-      "title": "拝啓、贖イ郵便局の皆様へ",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ちいた"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        },
-        {
-          "name": "あきづ"
-        },
-        {
-          "name": "てる"
-        },
-        {
-          "name": "ひなた"
-        }
-      ]
-    },
-    {
-      "id": 1787643883585,
-      "dates": [],
-      "title": "花葬標本",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "奥見　糸貴",
-      "partners_kp": [
-        {
-          "name": "てる"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1787909792043,
-      "dates": [
-        "2026-11-16T00:00"
-      ],
-      "title": "夜勤～",
-      "status": "プライベート",
-      "role": "",
-      "charName": "",
-      "partners_kp": [],
-      "partners_pl": []
-    },
-    {
-      "id": 1787909795333,
-      "dates": [
-        "2026-11-17T00:00"
-      ],
-      "title": "～",
-      "status": "プライベート",
-      "role": "",
-      "charName": "",
-      "partners_kp": [],
-      "partners_pl": []
-    },
-    {
-      "id": 1787909796806,
-      "dates": [
-        "2026-11-18T00:00"
-      ],
-      "title": "～",
-      "status": "プライベート",
-      "role": "",
-      "charName": "",
-      "partners_kp": [],
-      "partners_pl": []
-    },
-    {
-      "id": 1787909798297,
-      "dates": [
-        "2026-11-19T00:00"
-      ],
-      "title": "～",
-      "status": "プライベート",
-      "role": "",
-      "charName": "",
-      "partners_kp": [],
-      "partners_pl": []
-    },
-    {
-      "id": 1787909804293,
-      "dates": [
-        "2026-11-20T00:00"
-      ],
-      "title": "～夜勤",
-      "status": "プライベート",
-      "role": "",
-      "charName": "",
-      "partners_kp": [],
-      "partners_pl": []
-    },
-    {
       "id": 1787909863553,
       "dates": [
         "2027-01-04T00:00"
@@ -10179,64 +10050,217 @@
       "partners_pl": []
     },
     {
-      "id": 1787914224594,
-      "dates": [
-        "2026-10-11T00:00"
+      "id": 1787643883585,
+      "dates": [],
+      "title": "花葬標本",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "奥見　糸貴",
+      "partners_kp": [
+        {
+          "name": "てる"
+        }
       ],
-      "title": "鴉鷺無声 13:00～",
-      "status": "プライベート",
-      "role": "",
-      "charName": "",
-      "partners_kp": [],
-      "partners_pl": []
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
     },
     {
-      "id": 1787914226763,
-      "dates": [
-        "2026-10-12T00:00"
-      ],
-      "title": "鴉鷺無声 13:00～",
-      "status": "プライベート",
-      "role": "",
+      "id": 1787047269042,
+      "dates": [],
+      "title": "拝啓、贖イ郵便局の皆様へ",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
       "charName": "",
-      "partners_kp": [],
-      "partners_pl": []
+      "partners_kp": [
+        {
+          "name": "ちいた"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        },
+        {
+          "name": "あきづ"
+        },
+        {
+          "name": "てる"
+        },
+        {
+          "name": "ひなた"
+        }
+      ]
     },
     {
-      "id": 1787914230097,
-      "dates": [
-        "2026-10-18T00:00"
-      ],
-      "title": "鴉鷺無声 13:00～",
-      "status": "プライベート",
-      "role": "",
+      "id": 1772717484506,
+      "dates": [],
+      "title": "クオリフィル世界における独ガ論",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
       "charName": "",
-      "partners_kp": [],
-      "partners_pl": []
+      "partners_kp": [
+        {
+          "name": "Stella"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        },
+        {
+          "name": "ナス大臣"
+        }
+      ]
     },
     {
-      "id": 1787914297969,
-      "dates": [
-        "2026-10-14T00:00"
-      ],
-      "title": "鴉鷺無声 21:00～",
-      "status": "プライベート",
-      "role": "",
+      "id": 1772717441103,
+      "dates": [],
+      "title": "笑う人間師",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
       "charName": "",
-      "partners_kp": [],
-      "partners_pl": []
+      "partners_kp": [
+        {
+          "name": "てる"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
     },
     {
-      "id": 1787914299684,
-      "dates": [
-        "2026-10-16T00:00"
+      "id": 1772717398418,
+      "dates": [],
+      "title": "イザナミの棺",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "鬼瞳　紉",
+      "partners_kp": [
+        {
+          "name": "あきづ"
+        }
       ],
-      "title": "鴉鷺無声 21:00～",
-      "status": "プライベート",
-      "role": "",
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        },
+        {
+          "name": "てる"
+        }
+      ]
+    },
+    {
+      "id": 1772717376639,
+      "dates": [],
+      "title": "塔葬の国",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
       "charName": "",
-      "partners_kp": [],
-      "partners_pl": []
+      "partners_kp": [
+        {
+          "name": "ナス大臣"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
+    },
+    {
+      "id": 1772717424651,
+      "dates": [],
+      "title": "Reverse city 2",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "ナス大臣"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
+    },
+    {
+      "id": 1772717517762,
+      "dates": [],
+      "title": "井藤チアキと云う女",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "ねぎ"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
+    },
+    {
+      "id": 1773411399138,
+      "dates": [],
+      "title": "四季送り",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "ねぎ"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
+    },
+    {
+      "id": 1787575679385,
+      "dates": [],
+      "title": "コードネーム：ドッペルゲンガー",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "些目"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
+    },
+    {
+      "id": 1787643939775,
+      "dates": [],
+      "title": "蕩々に尾鰭",
+      "status": "調整中",
+      "role": "キーパー（KPC）",
+      "charName": "氷見　紺奈",
+      "partners_kp": [
+        {
+          "name": "いとめん"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "あきづ"
+        }
+      ]
     }
   ],
   "scnLib": [
