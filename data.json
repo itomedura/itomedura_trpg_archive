@@ -851,7 +851,8 @@
       "scns": [
         "辜月のN",
         "89 charge",
-        "Please, not right now！"
+        "Please, not right now！",
+        "蕩々に尾鰭"
       ],
       "profs": [
         {
@@ -9819,7 +9820,7 @@
         "2026-09-27T13:00"
       ],
       "title": "蕩々に尾鰭",
-      "status": "進行中",
+      "status": "完走",
       "role": "キーパー（KPC）",
       "charName": "氷見　紺奈",
       "partners_kp": [
@@ -12995,6 +12996,24 @@
         "いとめん",
         "てる",
         "ちいた"
+      ],
+      "kpCount": 0
+    },
+    {
+      "id": 1790522806518,
+      "title": "蕩々に尾鰭",
+      "genre": "kp",
+      "runs": [
+        {
+          "date": "2026-09-27",
+          "kpc": "氷見　紺奈",
+          "kp": [
+            "いとめん"
+          ],
+          "pl": [
+            "あきづ"
+          ]
+        }
       ],
       "kpCount": 0
     }
