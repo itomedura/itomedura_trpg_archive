@@ -7908,7 +7908,7 @@
         "mod_str": "3",
         "con": "12",
         "mod_con": "",
-        "pow": "10",
+        "pow": "12",
         "mod_pow": "",
         "dex": "13",
         "mod_dex": "",
@@ -7920,11 +7920,11 @@
         "mod_int": "",
         "edu": "11",
         "mod_edu": "",
-        "san": "50",
+        "san": "60",
         "mod_san": ""
       },
       "calcStats": {
-        "luck": "50",
+        "luck": "60",
         "mod_luck": "",
         "mod_hp": "5",
         "mod_mp": "",
