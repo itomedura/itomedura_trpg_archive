@@ -8615,7 +8615,7 @@
     },
     {
       "isLost": false,
-      "isSecret": true,
+      "isSecret": false,
       "regulation": "7th",
       "name": "結目　玲斗",
       "kana": "むすびめ　れいと",
