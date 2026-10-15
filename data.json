@@ -10165,6 +10165,40 @@
       "partners_pl": []
     },
     {
+      "id": 1773411399138,
+      "dates": [
+        "2026-11-23T21:00",
+        "2026-11-25T21:00",
+        "2026-11-26T21:00",
+        "2026-11-27T21:00",
+        "2026-11-28T21:00",
+        "2026-11-30T21:00"
+      ],
+      "title": "四季送り",
+      "status": "待機中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "ねぎ"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        },
+        {
+          "name": "あきづ"
+        },
+        {
+          "name": "ひなた"
+        },
+        {
+          "name": "カルボナーラ"
+        }
+      ]
+    },
+    {
       "id": 1790865322826,
       "dates": [
         "2026-12-04T21:00",
@@ -10361,99 +10395,15 @@
       "partners_pl": []
     },
     {
-      "id": 1787047269042,
+      "id": 1787575679385,
       "dates": [],
-      "title": "拝啓、贖イ郵便局の皆様へ",
+      "title": "コードネーム：ドッペルゲンガー",
       "status": "調整中",
       "role": "プレイヤー（PL）",
       "charName": "",
       "partners_kp": [
         {
-          "name": "ちいた"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        },
-        {
-          "name": "あきづ"
-        },
-        {
-          "name": "てる"
-        },
-        {
-          "name": "ひなた"
-        }
-      ]
-    },
-    {
-      "id": 1772717484506,
-      "dates": [],
-      "title": "クオリフィル世界における独ガ論",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "Stella"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        },
-        {
-          "name": "ナス大臣"
-        }
-      ]
-    },
-    {
-      "id": 1772717441103,
-      "dates": [],
-      "title": "笑う人間師",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "てる"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1772717376639,
-      "dates": [],
-      "title": "塔葬の国",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ナス大臣"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1772717424651,
-      "dates": [],
-      "title": "Reverse city 2",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ナス大臣"
+          "name": "些目"
         }
       ],
       "partners_pl": [
@@ -10481,15 +10431,90 @@
       ]
     },
     {
-      "id": 1773411399138,
+      "id": 1772717424651,
       "dates": [],
-      "title": "四季送り",
+      "title": "Reverse city 2",
       "status": "調整中",
       "role": "プレイヤー（PL）",
       "charName": "",
       "partners_kp": [
         {
-          "name": "ねぎ"
+          "name": "ナス大臣"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
+    },
+    {
+      "id": 1772717376639,
+      "dates": [],
+      "title": "塔葬の国",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "ナス大臣"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
+    },
+    {
+      "id": 1772717441103,
+      "dates": [],
+      "title": "笑う人間師",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "てる"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
+    },
+    {
+      "id": 1772717484506,
+      "dates": [],
+      "title": "クオリフィル世界における独ガ論",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "Stella"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        },
+        {
+          "name": "ナス大臣"
+        }
+      ]
+    },
+    {
+      "id": 1787047269042,
+      "dates": [],
+      "title": "拝啓、贖イ郵便局の皆様へ",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "ちいた"
         }
       ],
       "partners_pl": [
@@ -10500,28 +10525,10 @@
           "name": "あきづ"
         },
         {
-          "name": "ひなた"
+          "name": "てる"
         },
         {
-          "name": "カルボナーラ"
-        }
-      ]
-    },
-    {
-      "id": 1787575679385,
-      "dates": [],
-      "title": "コードネーム：ドッペルゲンガー",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "些目"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
+          "name": "ひなた"
         }
       ]
     }
