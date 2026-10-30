@@ -9027,8 +9027,8 @@
       "isLost": false,
       "isSecret": true,
       "regulation": "6th",
-      "name": "紕名乃",
-      "kana": "ひなの",
+      "name": "紕那",
+      "kana": "ひな",
       "job": "",
       "jobSup": "",
       "jobNameSel": "",
@@ -9061,7 +9061,7 @@
         "mod_san": ""
       },
       "calcStats": {
-        "luck": "",
+        "luck": "0",
         "mod_luck": "",
         "mod_hp": "",
         "mod_mp": "",
@@ -9070,7 +9070,7 @@
         "mod_know": ""
       },
       "ptPattern": "edu_only",
-      "ptManual": 0,
+      "ptManual": "0",
       "skills": [],
       "scns": [],
       "profs": [],
