@@ -10833,6 +10833,18 @@
       "charName": "",
       "partners_kp": [],
       "partners_pl": []
+    },
+    {
+      "id": 1793340324424,
+      "dates": [
+        "2026-11-28T00:00"
+      ],
+      "title": "出勤",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
     }
   ],
   "scnLib": [
