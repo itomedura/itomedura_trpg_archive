@@ -10423,6 +10423,30 @@
       "partners_pl": []
     },
     {
+      "id": 1793340312577,
+      "dates": [
+        "2026-11-20T00:00"
+      ],
+      "title": "～",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
+    },
+    {
+      "id": 1793340341775,
+      "dates": [
+        "2026-11-21T00:00"
+      ],
+      "title": "～夜勤",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
+    },
+    {
       "id": 1773411399138,
       "dates": [
         "2026-11-23T21:00",
@@ -10453,6 +10477,38 @@
         },
         {
           "name": "カルボナーラ"
+        }
+      ]
+    },
+    {
+      "id": 1793340324424,
+      "dates": [
+        "2026-11-28T00:00"
+      ],
+      "title": "出勤",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
+    },
+    {
+      "id": 1787575679385,
+      "dates": [
+        "2026-11-29T13:00"
+      ],
+      "title": "コードネーム：ドッペルゲンガー",
+      "status": "待機中",
+      "role": "プレイヤー（PL）",
+      "charName": "紕名乃",
+      "partners_kp": [
+        {
+          "name": "些目"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
         }
       ]
     },
@@ -10709,97 +10765,7 @@
       "partners_pl": []
     },
     {
-      "id": 1787575679385,
-      "dates": [],
-      "title": "コードネーム：ドッペルゲンガー",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "些目"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1772717517762,
-      "dates": [],
-      "title": "井藤チアキと云う女",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ねぎ"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1772717424651,
-      "dates": [],
-      "title": "Reverse city 2",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ナス大臣"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1772717376639,
-      "dates": [],
-      "title": "塔葬の国",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ナス大臣"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1772717441103,
-      "dates": [],
-      "title": "笑う人間師",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "てる"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1772717484506,
+      "id": 1792303280342,
       "dates": [],
       "title": "クオリフィル世界における独ガ論",
       "status": "調整中",
@@ -10813,9 +10779,6 @@
       "partners_pl": [
         {
           "name": "いとめん"
-        },
-        {
-          "name": "ナス大臣"
         }
       ]
     },
@@ -10847,7 +10810,7 @@
       ]
     },
     {
-      "id": 1792303280342,
+      "id": 1772717484506,
       "dates": [],
       "title": "クオリフィル世界における独ガ論",
       "status": "調整中",
@@ -10861,44 +10824,83 @@
       "partners_pl": [
         {
           "name": "いとめん"
+        },
+        {
+          "name": "ナス大臣"
         }
       ]
     },
     {
-      "id": 1793340312577,
-      "dates": [
-        "2026-11-20T00:00"
-      ],
-      "title": "～",
-      "status": "プライベート",
-      "role": "",
+      "id": 1772717441103,
+      "dates": [],
+      "title": "笑う人間師",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
       "charName": "",
-      "partners_kp": [],
-      "partners_pl": []
+      "partners_kp": [
+        {
+          "name": "てる"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
     },
     {
-      "id": 1793340324424,
-      "dates": [
-        "2026-11-28T00:00"
-      ],
-      "title": "出勤",
-      "status": "プライベート",
-      "role": "",
+      "id": 1772717376639,
+      "dates": [],
+      "title": "塔葬の国",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
       "charName": "",
-      "partners_kp": [],
-      "partners_pl": []
+      "partners_kp": [
+        {
+          "name": "ナス大臣"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
     },
     {
-      "id": 1793340341775,
-      "dates": [
-        "2026-11-21T00:00"
-      ],
-      "title": "～夜勤",
-      "status": "プライベート",
-      "role": "",
+      "id": 1772717424651,
+      "dates": [],
+      "title": "Reverse city 2",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
       "charName": "",
-      "partners_kp": [],
-      "partners_pl": []
+      "partners_kp": [
+        {
+          "name": "ナス大臣"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
+    },
+    {
+      "id": 1772717517762,
+      "dates": [],
+      "title": "井藤チアキと云う女",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "ねぎ"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
     }
   ],
   "scnLib": [
