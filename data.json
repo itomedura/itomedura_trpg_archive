@@ -8840,7 +8840,7 @@
         "mod_str": "",
         "con": "17",
         "mod_con": "2",
-        "pow": "9",
+        "pow": "10",
         "mod_pow": "",
         "dex": "15",
         "mod_dex": "",
@@ -8852,11 +8852,11 @@
         "mod_int": "-1",
         "edu": "13",
         "mod_edu": "",
-        "san": "45",
+        "san": "50",
         "mod_san": ""
       },
       "calcStats": {
-        "luck": "45",
+        "luck": "50",
         "mod_luck": "",
         "mod_hp": "",
         "mod_mp": "",
