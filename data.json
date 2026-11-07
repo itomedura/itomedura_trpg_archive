@@ -9049,8 +9049,8 @@
       "isLost": false,
       "isSecret": true,
       "regulation": "6th",
-      "name": "真奈子",
-      "kana": "まなこ",
+      "name": "瞳",
+      "kana": "ひとみ",
       "job": "闇医者",
       "jobSup": "2015",
       "jobNameSel": "闇医者",
@@ -9228,7 +9228,12 @@
         }
       ],
       "scns": [],
-      "profs": [],
+      "profs": [
+        {
+          "t": "プロフィール",
+          "x": "ドッペルゲンガーの片割れ。"
+        }
+      ],
       "secrets": [],
       "artifacts": []
     }
