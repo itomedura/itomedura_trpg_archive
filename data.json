@@ -9067,7 +9067,7 @@
         "mod_str": "",
         "con": "8",
         "mod_con": "",
-        "pow": "9",
+        "pow": "12",
         "mod_pow": "",
         "dex": "16",
         "mod_dex": "",
@@ -9079,11 +9079,11 @@
         "mod_int": "",
         "edu": "17",
         "mod_edu": "",
-        "san": "45",
+        "san": "60",
         "mod_san": ""
       },
       "calcStats": {
-        "luck": "45",
+        "luck": "60",
         "mod_luck": "",
         "mod_hp": "",
         "mod_mp": "",
