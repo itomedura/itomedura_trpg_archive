@@ -11117,6 +11117,30 @@
       "charName": "",
       "partners_kp": [],
       "partners_pl": []
+    },
+    {
+      "id": 1794734582310,
+      "dates": [
+        "2027-01-28T00:00"
+      ],
+      "title": "～",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
+    },
+    {
+      "id": 1794734590077,
+      "dates": [
+        "2027-01-29T00:00"
+      ],
+      "title": "～夜勤",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
     }
   ],
   "scnLib": [
