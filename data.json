@@ -11069,6 +11069,18 @@
           "name": "いとめん"
         }
       ]
+    },
+    {
+      "id": 1794734566510,
+      "dates": [
+        "2027-01-02T00:00"
+      ],
+      "title": "出勤",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
     }
   ],
   "scnLib": [
