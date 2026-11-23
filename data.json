@@ -10657,7 +10657,7 @@
       "title": "四季送り",
       "status": "待機中",
       "role": "プレイヤー（PL）",
-      "charName": "",
+      "charName": "佐川　いさな",
       "partners_kp": [
         {
           "name": "ねぎ"
@@ -10737,6 +10737,18 @@
           "name": "さにー"
         }
       ]
+    },
+    {
+      "id": 1795068851191,
+      "dates": [
+        "2026-12-05T00:00"
+      ],
+      "title": "出勤",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
     },
     {
       "id": 1787736560377,
@@ -10891,6 +10903,18 @@
       "partners_pl": []
     },
     {
+      "id": 1794734566510,
+      "dates": [
+        "2027-01-02T00:00"
+      ],
+      "title": "出勤",
+      "status": "プライベート",
+      "role": "",
+      "charName": "",
+      "partners_kp": [],
+      "partners_pl": []
+    },
+    {
       "id": 1787909863553,
       "dates": [
         "2027-01-04T00:00"
@@ -10963,138 +10987,6 @@
       "partners_pl": []
     },
     {
-      "id": 1787047269042,
-      "dates": [],
-      "title": "拝啓、贖イ郵便局の皆様へ",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ちいた"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        },
-        {
-          "name": "あきづ"
-        },
-        {
-          "name": "てる"
-        },
-        {
-          "name": "ひなた"
-        }
-      ]
-    },
-    {
-      "id": 1772717484506,
-      "dates": [],
-      "title": "クオリフィル世界における独ガ論",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "Stella"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        },
-        {
-          "name": "ナス大臣"
-        }
-      ]
-    },
-    {
-      "id": 1772717441103,
-      "dates": [],
-      "title": "笑う人間師",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "てる"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1772717376639,
-      "dates": [],
-      "title": "塔葬の国",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ナス大臣"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1772717424651,
-      "dates": [],
-      "title": "Reverse city 2",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ナス大臣"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1772717517762,
-      "dates": [],
-      "title": "井藤チアキと云う女",
-      "status": "調整中",
-      "role": "プレイヤー（PL）",
-      "charName": "",
-      "partners_kp": [
-        {
-          "name": "ねぎ"
-        }
-      ],
-      "partners_pl": [
-        {
-          "name": "いとめん"
-        }
-      ]
-    },
-    {
-      "id": 1794734566510,
-      "dates": [
-        "2027-01-02T00:00"
-      ],
-      "title": "出勤",
-      "status": "プライベート",
-      "role": "",
-      "charName": "",
-      "partners_kp": [],
-      "partners_pl": []
-    },
-    {
       "id": 1794734576234,
       "dates": [
         "2027-01-25T00:00"
@@ -11155,16 +11047,124 @@
       "partners_pl": []
     },
     {
-      "id": 1795068851191,
-      "dates": [
-        "2026-12-05T00:00"
-      ],
-      "title": "出勤",
-      "status": "プライベート",
-      "role": "",
+      "id": 1772717517762,
+      "dates": [],
+      "title": "井藤チアキと云う女",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
       "charName": "",
-      "partners_kp": [],
-      "partners_pl": []
+      "partners_kp": [
+        {
+          "name": "ねぎ"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
+    },
+    {
+      "id": 1772717424651,
+      "dates": [],
+      "title": "Reverse city 2",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "ナス大臣"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
+    },
+    {
+      "id": 1772717376639,
+      "dates": [],
+      "title": "塔葬の国",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "ナス大臣"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
+    },
+    {
+      "id": 1772717441103,
+      "dates": [],
+      "title": "笑う人間師",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "てる"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        }
+      ]
+    },
+    {
+      "id": 1772717484506,
+      "dates": [],
+      "title": "クオリフィル世界における独ガ論",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "Stella"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        },
+        {
+          "name": "ナス大臣"
+        }
+      ]
+    },
+    {
+      "id": 1787047269042,
+      "dates": [],
+      "title": "拝啓、贖イ郵便局の皆様へ",
+      "status": "調整中",
+      "role": "プレイヤー（PL）",
+      "charName": "",
+      "partners_kp": [
+        {
+          "name": "ちいた"
+        }
+      ],
+      "partners_pl": [
+        {
+          "name": "いとめん"
+        },
+        {
+          "name": "あきづ"
+        },
+        {
+          "name": "てる"
+        },
+        {
+          "name": "ひなた"
+        }
+      ]
     }
   ],
   "scnLib": [
